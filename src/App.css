@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin-top: 50px;
+}
+
+footer .container {
+  margin-top: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 2px solid #f5f5f5;
+  text-align: center;
+}
+
+#header {
+  background-image: url(https://mobiili.fi/wp-content/uploads/2018/02/verkkokauppa_com_logo.png);
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+}
