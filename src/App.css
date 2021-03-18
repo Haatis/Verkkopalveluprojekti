@@ -70,3 +70,8 @@ footer {
   width: 250px;
   height: 125px;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}
