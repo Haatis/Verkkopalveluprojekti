@@ -6,7 +6,6 @@ import About from './About';
 import NotFound from './NotFound';
 import ContactUs from './ContactUs';
 import NavBar from './NavBar';
-import Header from './Header';
 import Footer from './Footer';
 import Content from "./Content";
 
@@ -16,7 +15,6 @@ function App() {
     <>
     <div className="container">
    <NavBar />
-   <Header />
      <Switch>
        <Route path="/" component={Home} exact />
        <Route path="/content" component={Content} exact />
