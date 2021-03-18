@@ -40,10 +40,6 @@
 body, #header {
   font-family: 'Lato', sans-serif;
 }
-body {
-  background-image: url(img/circuit.png);
-  background-size: 100%;
-}
 
 .container {
   margin-top: 50px;
@@ -60,7 +56,6 @@ footer {
   height: 60px;
   border-top: 2px solid #f5f5f5;
   text-align: center;
-  background-color: white;
 }
 
 #header {
@@ -75,11 +70,11 @@ footer {
   width: 250px;
   height: 125px;
 }
-<<<<<<< HEAD
-=======
 
 a{
   text-decoration: none;
   color: black;
 }
->>>>>>> 8c1e001e866d7bbe06eb993b578b782c0baf31cf
+.tuotteet {
+  display: inline;
+}
