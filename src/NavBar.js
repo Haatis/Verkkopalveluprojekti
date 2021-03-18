@@ -1,10 +1,15 @@
 import React from 'react'
 import './App.css';
 import { Link } from 'react-router-dom'
+import logo from './img/comms.png';
 
 export default function NavBar() {
     return (
+      <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+       <img src={logo} className="comms" alt="Logo" />;
+       </div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -54,6 +59,6 @@ export default function NavBar() {
 
       </nav>
 
-      
+      </>
     )
 }
