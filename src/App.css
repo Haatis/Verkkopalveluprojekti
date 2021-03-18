@@ -46,7 +46,9 @@ body {
 }
 
 h1 {
-  color: rgb(141, 141, 141);
+  color: white;
+  background-color: #6c757d;
+  margin-bottom: 0;
 }
 .container {
   margin-top: 50px;
