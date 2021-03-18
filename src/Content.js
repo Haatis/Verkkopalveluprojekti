@@ -21,10 +21,25 @@ export default function Content() {
             </div>
             <div className="col-9 bg-secondary border border-dark">
                 <h1>content</h1>
+
+                <div>
+                    <a href="">
+                        <div class="card col-3">
+                            <img src="" class="card-img-top" alt=""></img>
+                            <div class="card-body">
+                                <h5 class="card-title">Card with stretched link</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+
+
+
             </div>
-
-
-
         </div>
     )
 }
