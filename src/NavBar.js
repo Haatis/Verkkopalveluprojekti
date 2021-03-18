@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -46,9 +46,9 @@ export default function NavBar() {
               <Link className="nav-link" to="contactus">Ota yhteyttä</Link>
             </li>
           </ul>
-          <form class="d-flex">
+          <form class="d-flex mx-5">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
         </div>
 
