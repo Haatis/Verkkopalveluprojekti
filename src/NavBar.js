@@ -8,7 +8,7 @@ export default function NavBar() {
     <>
       <div className="row">
         <img src={logo} className="comms col-12" alt="Logo" />
-        <nav className="navbar navbar-expand-lg navbar-light bg-secondary col-12 py-2 border border-dark mx-1">
+        <nav className="navbar navbar-expand-lg navbar-light bg-secondary col-12 py-2 border border-dark">
           <div>
 
           </div>
