@@ -40,6 +40,10 @@
 body, #header {
   font-family: 'Lato', sans-serif;
 }
+body {
+  background-image: url(img/circuit.png);
+  background-size: 100%;
+}
 
 h1 {
   color: rgb(141, 141, 141);
