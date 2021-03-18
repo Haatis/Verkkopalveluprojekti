@@ -19,18 +19,19 @@ export default function NavBar() {
 
 
 
-      <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-          Oheislaitteet
-        </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="#">Näppäimistöt</a>
-          <a className="dropdown-item" href="#">Hiiret</a>
-          <a className="dropdown-item" href="#">Kuulokkeet</a>
-          <a className="dropdown-item" href="#">Kaiuttimet</a>
-          <a className="dropdown-item" href="#">Näytöt</a>
-        </div>
-      </li>
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Oheislaitteet
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Näppäimistöt</a></li>
+            <li><a class="dropdown-item" href="#">Hiiret</a></li>
+            <li><a class="dropdown-item" href="#">Näytöt</a></li>
+          </ul>
+        </li>
+
+      
 
 
 
