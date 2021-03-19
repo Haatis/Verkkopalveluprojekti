@@ -1,3 +1,5 @@
+import rtx3090 from './tuoteimg/rtx3090.jpg';
+
 export default function Home() {
     return (
         <>
@@ -12,9 +14,15 @@ export default function Home() {
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                                <h5 class="card-title">Card with stretched link</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <img src={rtx3090} className="" alt="Logo" />
+                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
+                                <p class="card-text">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                               <div class="vasen-pohja">
+                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <div class="oikea-pohja">
+                                <p>150$</p>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -22,12 +30,13 @@ export default function Home() {
 
                 <div class="card col-3">
                     <a href="">
-                        <div>
+                        <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                                <h5 class="card-title">Card with stretched link</h5>
+                            <img src={rtx3090} className="" alt="Logo" />
+                                <h5 class="card-title">RTX3090</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
                             </div>
                         </div>
                     </a>
@@ -35,12 +44,13 @@ export default function Home() {
 
                 <div class="card col-3">
                     <a href="">
-                        <div>
+                        <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                                <h5 class="card-title">Card with stretched link</h5>
+                            <img src={rtx3090} className="" alt="Logo" />
+                                <h5 class="card-title">RTX3090</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
                             </div>
                         </div>
                     </a>
@@ -48,12 +58,13 @@ export default function Home() {
 
                 <div class="card col-3">
                     <a href="">
-                        <div>
+                        <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                                <h5 class="card-title">Card with stretched link</h5>
+                            <img src={rtx3090} className="" alt="Logo" />
+                                <h5 class="card-title">RTX3090</h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
                             </div>
                         </div>
                     </a>

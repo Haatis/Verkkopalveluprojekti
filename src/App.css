@@ -87,3 +87,14 @@ a{
 .tuotteet {
   display: inline;
 }
+
+.vasen-pohja {
+  display: inline;
+  text-align: right;
+}
+
+.oikea-pohja {
+  margin-left: 10em;
+  display: inline-block;
+  text-align: right;
+}
