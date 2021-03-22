@@ -49,6 +49,7 @@ h1 {
   color: white;
   background-color: #6c757d;
   margin-bottom: 0;
+  border-top: gray 1px solid;
 }
 .container {
   margin-top: 50px;
@@ -108,3 +109,9 @@ a{
 .tuotekuva {
   max-width: 250px;
 }
+
+.color-nav {
+  background-color: #6c757d;
+  padding: 0.75em;
+}
+
