@@ -91,11 +91,10 @@ a{
 
 .vasen-pohja {
   display: inline;
-  text-align: right;
 }
 
 .oikea-pohja {
-  margin-left: 10em;
+  margin-left: 9em;
   display: inline-block;
   text-align: right;
 }
@@ -104,4 +103,8 @@ a{
   color: rgb(186, 186, 186);
   display: block;
   margin-top: 1em;
+}
+
+.tuotekuva {
+  max-width: 250px;
 }
