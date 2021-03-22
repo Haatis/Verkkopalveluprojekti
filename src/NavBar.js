@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import { Link } from 'react-router-dom'
-import logo from './img/commss.png';
+import logo from './img/commsv2.png';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -10,12 +10,12 @@ export default function NavBar() {
     <>
 
     <div className="row">
-        <img src={logo} className="comms col-12" alt="Logo" />
+        <img src={logo} className="comms col-12 commslogo" alt="Logo" />
      <Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark">
   <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link  href="/" className="active mx-1">Etusivu</Nav.Link>
+      <Nav.Link  href="/" className="mx-1">Etusivu</Nav.Link>
       <NavDropdown title="Komponentit" id="collasible-nav-dropdown" className="mx-1">
         <NavDropdown.Item href="#action/3.1">Prosessorit</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Emolevyt</NavDropdown.Item>
