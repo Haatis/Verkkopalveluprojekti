@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import kuva1 from './tuoteimg/1.jpg';
+import kuva2 from './tuoteimg/2.jpg';
 
 export default function Content() {
 
@@ -8,7 +10,7 @@ export default function Content() {
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
-
+    const kuvat = [kuva1, kuva2]
     useEffect(() => {
         let status = 0;
         fetch(URL + "index.php")
@@ -97,9 +99,10 @@ export default function Content() {
                                 <div>
                                     <a href="">
                                         <div >
+                                      
                                             <img src="" class="card-img-top" alt=""></img>
                                             <div class="card-body">
-                                                <img src="" className="" alt="Logo" />
+                                                <img src={kuvat[item.id-1]} className="" alt="Logo" />
                                                 <h5 class="card-title">{item.tuotenimi}</h5>
                                                 <p class="card-text">{item.tuotenimi}</p>
                                                 <p class="card-text">{item.tuotekuvaus}</p>
