@@ -19,28 +19,28 @@ export default function Home() {
             </div>
             <div className="carousel-inner ">
                 <div className="carousel-item active ">
-                <img src={geforce} className="d-block w-100" alt="..."></img>
-                <div className="carousel-caption d-none d-md-block blackcolor">
-                    {/* <h5>Gigabyte GeForce RTX3090</h5>
+                <img src={geforce} className="d-block w-100" alt="geforce"></img>
+                {/* <div className="carousel-caption d-none d-md-block blackcolor">
+                    <h5>Gigabyte GeForce RTX3090</h5>
                     <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p> */}
-                </div>
+                    <p>150$</p>
+                </div> */}
                 </div>
                 <div className="carousel-item">
-                <img src={asus} className="d-block w-100" alt="..."></img>
-                <div className="carousel-caption d-none d-md-block blackcolor">
-                    {/* <h5>Gigabyte GeForce RTX3090</h5>
+                <img src={asus} className="d-block w-100" alt="asus"></img>
+                {/* <div className="carousel-caption d-none d-md-block blackcolor">
+                    <h5>Gigabyte GeForce RTX3090</h5>
                     <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p> */}
-                </div>
+                    <p>150$</p>
+                </div> */}
                 </div>
                 <div className="carousel-item">
-                <img src={adrus} className="d-block w-100" alt="..."></img>
-                <div className="carousel-caption d-none d-md-block blackcolor">
-                    {/* <h5>Gigabyte GeForce RTX3090</h5>
+                <img src={adrus} className="d-block w-100" alt="adrus"></img>
+                {/* <div className="carousel-caption d-none d-md-block blackcolor">
+                    <h5>Gigabyte GeForce RTX3090</h5>
                     <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p> */}
-                </div>
+                    <p>150$</p>
+                </div> */}
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
