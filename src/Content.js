@@ -3,7 +3,9 @@ import kuva1 from './tuoteimg/1.jpg';
 import kuva2 from './tuoteimg/2.jpg';
 
 export default function Content() {
-    const URL = "http://localhost/verkkokauppa/";
+
+    const URL = "HTTP://localhost/verkkokauppa/"
+    const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
@@ -30,6 +32,43 @@ export default function Content() {
             );
     }, []);
 
+    
+
+        let status = 0;
+    function searchItem(e) {
+        e.preventDefault();
+        let status = 0
+        fetch(URL + "search.php", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                search: search
+            })
+        })
+            .then(response => {
+                status = parseInt(response.status);
+                return response.json();
+            })
+            .then(
+                (response) => {
+                    if (status === 200) {
+                        setItems(response);
+                    } else {
+                        alert(response.error);
+                    }
+                },
+                (error) => {
+                    alert(error);
+                }
+            );
+    }
+
+
+
+
     return (
         <>
             <div className="row">
@@ -37,19 +76,10 @@ export default function Content() {
 
                 <div className="col-3 bg-secondary border border-dark">
                     <h1>Haku</h1>
-                    <div>
-                        <form className="d-flex">
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button className="btn bt text-dark bg-light" type="submit">
-                                Hae
-              </button>
-                        </form>
-                    </div>
+                    <form class="d-flex" onSubmit={searchItem}>
+                        <input class="form-control me-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
+                        <button class="btn bt text-light" type="submit">Search</button>
+                    </form>
                     <div>
                         <select className="form-select" aria-label="Default select example">
                             <option selected>Lajittele</option>
