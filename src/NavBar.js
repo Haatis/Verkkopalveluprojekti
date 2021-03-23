@@ -32,10 +32,10 @@ export default function NavBar() {
         <NavDropdown.Item href="#action/3.11">Näytöt</NavDropdown.Item>
       </NavDropdown>
       <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
-      <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
+      <Nav.Link className="mx-1" href="/contactus">Ota yhteyttä</Nav.Link>
       <form class="d-flex mx-5">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn bt text-light" type="submit">Search</button>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn bt text-light" type="submit">Search</button>
             </form>
     </Nav>
   </Navbar.Collapse>
