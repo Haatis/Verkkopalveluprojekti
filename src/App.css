@@ -98,3 +98,9 @@ a{
   display: inline-block;
   text-align: right;
 }
+
+ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
