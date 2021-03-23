@@ -41,7 +41,7 @@ body, #header {
   font-family: 'Lato', sans-serif;
 }
 body {
-  background-image: url(img/circuit.png);
+  background-image: url(img/backdrop-874452.jpg);
   background-size: 100%;
 }
 
@@ -49,6 +49,7 @@ h1 {
   color: white;
   background-color: #6c757d;
   margin-bottom: 0;
+  border-top: gray 1px solid;
 }
 .container {
   margin-top: 50px;
@@ -61,10 +62,11 @@ footer .container {
 footer {
   bottom: 0;
   width: 100%;
-  height: 60px;
-  border-top: 2px solid #f5f5f5;
+  height: 100%;
+  border-top: 2px solid gray;
   text-align: center;
-  color: white;
+  color:  rgb(186, 186, 186);
+  background-color: #353535;
 }
 
 #header {
@@ -75,10 +77,6 @@ footer {
   
 }
 
-.comms {
-  width: 250px;
-  height: 125px;
-}
 
 a{
   text-decoration: none;
@@ -90,17 +88,39 @@ a{
 
 .vasen-pohja {
   display: inline;
-  text-align: right;
 }
 
 .oikea-pohja {
-  margin-left: 10em;
+  margin-left: 9em;
   display: inline-block;
   text-align: right;
 }
 
-ul{
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
+.footerlink {
+  color: rgb(186, 186, 186);
+  display: block;
+  margin-top: 1em;
+}
+
+.tuotekuva {
+  max-width: 250px;
+}
+
+.color-nav {
+  background-color: #6c757d;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: whitesmoke;
+  padding: 1em;
+}
+
+.nav-link:hover {
+  background-color: #767f86;
+}
+
+.commslogo {
+  height: 130px;
+  width: 275px;
+  margin-bottom: 5px;
 }

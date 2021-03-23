@@ -9,14 +9,14 @@ export default function Home() {
         </div>
 
         <div class="row">
-        <div class="card col-3">
+        <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
                     <a href="">
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                            <img src={rtx3090} className="" alt="Logo" />
+                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
                                 <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
-                                <p class="card-text">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
                                <div class="vasen-pohja">
                                 <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
                                 </div>
@@ -28,43 +28,58 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div class="card col-3">
+                <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
                     <a href="">
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                            <img src={rtx3090} className="" alt="Logo" />
-                                <h5 class="card-title">RTX3090</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
+                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
+                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
+                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                               <div class="vasen-pohja">
+                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <div class="oikea-pohja">
+                                <p>150$</p>
+                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="card col-3">
+                <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
                     <a href="">
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                            <img src={rtx3090} className="" alt="Logo" />
-                                <h5 class="card-title">RTX3090</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
+                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
+                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
+                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                               <div class="vasen-pohja">
+                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <div class="oikea-pohja">
+                                <p>150$</p>
+                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
 
-                <div class="card col-3">
+                <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
                     <a href="">
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                            <img src={rtx3090} className="" alt="Logo" />
-                                <h5 class="card-title">RTX3090</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Lisää ostoskoriin</a>
+                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
+                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
+                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                               <div class="vasen-pohja">
+                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <div class="oikea-pohja">
+                                <p>150$</p>
+                                </div>
                             </div>
                         </div>
                     </a>
