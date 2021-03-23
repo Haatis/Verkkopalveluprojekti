@@ -13,6 +13,7 @@ import Content from "./Content";
 
 
 
+
 export default function Home() {
     const URL = "http://localhost/verkkokauppa/";
     const [tuotenimi, setTuotenimi] = useState("");
@@ -83,7 +84,7 @@ export default function Home() {
         <div className="row">
         {items.slice(0,4).map((item) => (
         <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
-                    <a href={"/Product/"+item.id}>
+                    <a href={"/Product/" + item.id}>
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
@@ -100,6 +101,7 @@ export default function Home() {
                         </div>
                     </a>
                 </div>
+                
                  ))}
         </div>
 
