@@ -1,11 +1,45 @@
-import rtx3090 from './tuoteimg/rtx3090.jpg';
+
 import asus from './tuoteimg/asus.jpg';
 import adrus from './tuoteimg/adrus.jpg';
 import geforce from './tuoteimg/geforce.jpg';
+import kuva1 from './tuoteimg/1.jpg';
+import kuva2 from './tuoteimg/2.jpg';
+import kuva3 from './tuoteimg/3.jpg';
+import kuva4 from './tuoteimg/4.jpg';
+import { useState, useEffect } from "react";
+import Content from "./Content";
+
+
 
 
 
 export default function Home() {
+    const URL = "http://localhost/verkkokauppa/";
+    const [tuotenimi, setTuotenimi] = useState("");
+    const [hinta, setHinta] = useState("");
+    const [tuotekuvaus, setTuotekuvaus] = useState("");
+    const [items, setItems] = useState([]);
+    const kuvat = [kuva1, kuva2, kuva3, kuva4]
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "index.php")
+            .then((response) => {
+                status = parseInt(response.status);
+                return response.json();
+            })
+            .then(
+                (response) => {
+                    if (status === 200) {
+                        setItems(response);
+                    } else {
+                        alert(response.error);
+                    }
+                },
+                (error) => {
+                    alert(error);
+                }
+            );
+    }, []);
     return (
         <>
 
@@ -20,27 +54,15 @@ export default function Home() {
             <div className="carousel-inner ">
                 <div className="carousel-item active ">
                 <img src={geforce} className="d-block w-100" alt="geforce"></img>
-                {/* <div className="carousel-caption d-none d-md-block blackcolor">
-                    <h5>Gigabyte GeForce RTX3090</h5>
-                    <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p>
-                </div> */}
+               
                 </div>
                 <div className="carousel-item">
                 <img src={asus} className="d-block w-100" alt="asus"></img>
-                {/* <div className="carousel-caption d-none d-md-block blackcolor">
-                    <h5>Gigabyte GeForce RTX3090</h5>
-                    <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p>
-                </div> */}
+                
                 </div>
                 <div className="carousel-item">
                 <img src={adrus} className="d-block w-100" alt="adrus"></img>
-                {/* <div className="carousel-caption d-none d-md-block blackcolor">
-                    <h5>Gigabyte GeForce RTX3090</h5>
-                    <p>Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                    <p>150$</p>
-                </div> */}
+               
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
@@ -55,86 +77,30 @@ export default function Home() {
         </div>
         <div className="row">
            <h1>Päivän tarjoukset</h1>
-        </div>
+        </div>          
+                           
+                       
         <div className="row">
-        <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
+        {items.slice(0,4).map((item) => (
+        <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
                     <a href="">
                         <div >
                             <img src="" class="card-img-top" alt=""></img>
                             <div class="card-body">
-                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
-                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
-                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
+                            <img src={kuvat[item.id-1]} className="tuotekuva" alt="Logo" />
+                                <h5 class="card-title">{item.tuotenimi}</h5>
+                                <p class="card-text text-left">{item.tuotekuvaus}</p>
                                <div class="vasen-pohja">
                                 <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
                                 </div>
                                 <div class="oikea-pohja">
-                                <p>150$</p>
+                                <p>{item.hinta + "€"}</p>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-
-                <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
-                    <a href="">
-                        <div >
-                            <img src="" class="card-img-top" alt=""></img>
-                            <div class="card-body">
-                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
-                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
-                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                               <div class="vasen-pohja">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <div class="oikea-pohja">
-                                <p>150$</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
-                    <a href="">
-                        <div >
-                            <img src="" class="card-img-top" alt=""></img>
-                            <div class="card-body">
-                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
-                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
-                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                               <div class="vasen-pohja">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <div class="oikea-pohja">
-                                <p>150$</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                 <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center">
-                    <a href="">
-                        <div >
-                            <img src="" class="card-img-top" alt=""></img>
-                            <div class="card-body">
-                            <img src={rtx3090} className="tuotekuva" alt="Logo" />
-                                <h5 class="card-title">Gigabyte GeForce RTX3090</h5>
-                                <p class="card-text text-left">Gigabyte GeForce RTX3090<br></br> 24 GT GDDR6<br></br> Näytönohjain vain parasta haluavalle</p>
-                               <div class="vasen-pohja">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <div class="oikea-pohja">
-                                <p>150$</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
+                 ))}
         </div>
 
         <div class="row">

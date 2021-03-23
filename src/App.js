@@ -8,6 +8,7 @@ import ContactUs from './ContactUs';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Content from "./Content";
+import Product from "./Product";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
        <Route path="/content" component={Content} exact />
        <Route path="/about" component={About} />
        <Route path="/contactus" component={ContactUs} />
+       <Route path="/product" component={Product} />
        <Route component={NotFound} />
      </Switch>
    <Footer />

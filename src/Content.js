@@ -76,6 +76,7 @@ export default function Content() {
                                                 <h5 class="card-title">{item.tuotenimi}</h5>
                                                 <p class="card-text">{item.tuotenimi}</p>
                                                 <p class="card-text">{item.tuotekuvaus}</p>
+                                                <p class="card-text">{item.id}</p>
                                                 <div class="vasen-pohja">
                                                     <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
                                                 </div>
