@@ -100,15 +100,15 @@ export default function Content() {
                                     <a href="">
                                         <div >
                                       
-                                            <img src="" class="card-img-top" alt=""></img>
-                                            <div class="card-body">
+                                            <img src="" className="card-img-top" alt=""></img>
+                                            <div className="card-body">
                                                 <img src={kuvat[item.id-1]} className="" alt="Logo" />
-                                                <h5 class="card-title">{item.tuotenimi}</h5>
-                                                <p class="card-text">{item.tuotenimi}</p>
-                                                <p class="card-text">{item.tuotekuvaus}</p>
-                                                <p class="card-text">{item.id}</p>
-                                                <div class="vasen-pohja">
-                                                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
+                                                <h5 className="card-title">{item.tuotenimi}</h5>
+                                                <p className="card-text">{item.tuotenimi}</p>
+                                                <p className="card-text">{item.tuotekuvaus}</p>
+                                                <p className="card-text">{item.id}</p>
+                                                <div className="vasen-pohja">
+                                                    <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
                                                 </div>
                                                 <p>{item.hinta + "€"}</p>
                                             </div>
