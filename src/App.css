@@ -138,3 +138,10 @@ a{
 .blackcolor {
   color: black;
 }
+
+/* @media (max-width: 720) {
+.commslogo {
+    height: 90px;
+    width: 220;
+}
+} */

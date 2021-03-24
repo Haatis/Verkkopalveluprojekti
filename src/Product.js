@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 export default function Product() {
     const URL = "HTTP://localhost/verkkokauppa/"
-    const kuvaURL = "http://localhost/verkkokauppa/img/"
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");

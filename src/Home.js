@@ -3,7 +3,7 @@ import asus from './tuoteimg/asus.jpg';
 import adrus from './tuoteimg/adrus.jpg';
 import geforce from './tuoteimg/geforce.jpg';
 import { useState, useEffect } from "react";
-import Content from "./Content";
+import Search from "./Search";
 
 
 
@@ -16,7 +16,7 @@ export default function Home() {
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
-    const kuvaURL = "http://localhost/verkkokauppa/img/"
+    const [kuva, setTuotekuva] = useState("");
     useEffect(() => {
         let status = 0;
         fetch(URL + "index.php")
@@ -106,7 +106,7 @@ export default function Home() {
         <h1>Comm's Suosittelee</h1>
         </div>
         <div className="row">
-        <div className="card col-3">
+        <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
@@ -119,7 +119,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -132,7 +132,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -145,7 +145,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
         </div>
         <div className="row">
-        <div className="card col-3">
+        <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
@@ -172,7 +172,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -185,7 +185,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -198,7 +198,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>

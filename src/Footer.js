@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className="row">
         <footer>
-            <p className="col-12">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</p>
+            <h5 className="col-12 ">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
             <div className="row">
                 <div className="col-4">
                     <p>Asiakaspalvelu</p>
