@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <div className="row">
         <footer>
-            <h5 className="col-12 ">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
+            <h5 className="col-12 mb-4">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
             <div className="row">
                 <div className="col-4">
                     <p>Asiakaspalvelu</p>
@@ -24,8 +24,8 @@ export default function Footer() {
                 <div className="col-4">
                     <p>Sosiaalinen media</p>
                     <a className="footerlink" href="https://www.facebook.com"> <i className="fab fa-facebook-square">&nbsp;</i>Facebook</a>
-                    <a className="footerlink" href="https://www.twitter.com"><i className="fab fa-twitter-square">&nbsp;</i>Twitter</a>
-                    <a className="footerlink" href="https://www.youtube.com"> <i className="fab fa-youtube-square">&nbsp;</i>Youtube</a>
+                    <a className="footerlink lightblue" href="https://www.twitter.com"><i className="fab fa-twitter-square">&nbsp;</i>Twitter</a>
+                    <a className="footerlink red" href="https://www.youtube.com"> <i className="fab fa-youtube-square ">&nbsp;</i>Youtube</a>
                 </div>
             </div>
         </footer>
