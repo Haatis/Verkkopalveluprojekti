@@ -58,9 +58,7 @@ export default function Product() {
                             <h3>Tuotekuvaus</h3>
                             <h5 class="me-5">{item.tuotekuvaus}</h5>
                             </div>
-                            </div>
-
-                            <div className="row">
+                            
                                 <div className="col-6">
                                 <a href="#" class="btn btn-primary col-7">Lisää ostoskoriin<i class="fa fa-shopping-cart"></i></a>
                                 </div>
