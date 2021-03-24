@@ -8,6 +8,7 @@ export default function Product() {
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
+    const [kuva, setTuotekuva] = useState("");
     const [items, setItems] = useState([]);
     const { it } = useParams();
     useEffect(() => {
@@ -47,7 +48,7 @@ export default function Product() {
                             <h2 className="ms-4">{item.tuotenimi}</h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
-                            <img src={kuvaURL+it+".jpg"} className="tuotesivukuva" alt="Logo" />
+                            <img src={item.kuva} className="tuotesivukuva" alt="Logo" />
                             </div>
                             <div className="col-md-6 col-sm-12"> 
                             <h3>Tuotekuvaus</h3>

@@ -85,7 +85,7 @@ export default function Home() {
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
                             <div className="card-body">
-                            <img src={kuvaURL+item.id+".jpg"} className="tuotekuva" alt="Logo" />
+                            <img src={item.kuva} className="tuotekuva" alt="Logo" />
                                 <h5 className="card-title">{item.tuotenimi}</h5>
                                 <p className="card-text text-left">{item.tuotekuvaus}</p>
                                <div className="vasen-pohja">

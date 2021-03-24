@@ -101,7 +101,7 @@ export default function Content() {
                                       
                                             <img src="" className="card-img-top" alt=""></img>
                                             <div className="card-body">
-                                                <img src={kuvaURL+item.id+".jpg"} className="" alt="Logo" />
+                                                <img src={item.kuva} className="" alt="Logo" />
                                                 <h5 className="card-title">{item.tuotenimi}</h5>
                                                 <p className="card-text">{item.tuotenimi}</p>
                                                 <p className="card-text">{item.tuotekuvaus}</p>
