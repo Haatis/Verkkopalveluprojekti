@@ -53,7 +53,7 @@ export default function Category() {
 
           <ul className="row">
             {items.map((item) => (
-              <li className="card col-3 my-2 mx-4 p-1" key={item.id}>
+              <li className="card col-lg-6 col-md-12 text-center" key={item.id}>
                 <div>
                   <a href="">
                     <div>
