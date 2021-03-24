@@ -45,26 +45,26 @@ export default function Product() {
     <div className="bg-light">
     
 {items.splice(it-1,1).map((item) => (
-        <div class="" key={item.id}>
+        <div className="" key={item.id}>
                     
                         <div >
-                            <div class="">
-                            <h2 class="ms-4">{item.tuotenimi}</h2>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
+                            <div className="">
+                            <h2 className="ms-4">{item.tuotenimi}</h2>
+                            <div className="row">
+                                <div className="col-md-6 col-sm-12">
                             <img src={kuvat[item.id-1]} className="tuotesivukuva" alt="Logo" />
                             </div>
-                            <div class="col-md-6 col-sm-12"> 
+                            <div className="col-md-6 col-sm-12"> 
                             <h3>Tuotekuvaus</h3>
-                            <h5 class="me-5">{item.tuotekuvaus}</h5>
+                            <h5 className="me-5">{item.tuotekuvaus}</h5>
                             </div>
                             </div>
 
                             <div className="row">
                                 <div className="col-6">
-                                <a href="#" class="btn btn-primary col-7">Lisää ostoskoriin<i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" className="btn btn-primary col-7">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></a>
                                 </div>
-                                <div class="col-6">
+                                <div className="col-6">
                                 <h4>{item.hinta + "€"}</h4>
                                 </div>
                                 </div>
