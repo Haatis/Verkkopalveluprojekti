@@ -64,10 +64,7 @@ export default function NavBar() {
               </NavDropdown>
               <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
               <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
-              <form class="d-flex mx-5" onSubmit={searchItem}>
-                <input class="form-control me-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
-                <button class="btn bt text-light" type="submit">Search</button>
-              </form>
+              <Nav.Link href="/search" className="mx-1">Haku<i class="fas fa-search ms-2"></i></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

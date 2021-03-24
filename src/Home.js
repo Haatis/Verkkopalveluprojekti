@@ -93,7 +93,7 @@ export default function Home() {
                                 <h5 className="card-title">{item.tuotenimi}</h5>
                                 <p className="card-text text-left">{item.tuotekuvaus}</p>
                                <div className="vasen-pohja">
-                                <a href="#" claclassNamesclassNames="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
+                                <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
                                 </div>
                                 <div className="oikea-pohja">
                                 <p>{item.hinta + "€"}</p>
