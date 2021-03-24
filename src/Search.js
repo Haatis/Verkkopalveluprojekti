@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import kuva1 from './tuoteimg/1.jpg';
 import kuva2 from './tuoteimg/2.jpg';
 
-export default function Content() {
+export default function Search() {
 
     const URL = "HTTP://localhost/verkkokauppa/"
     const [search, setSearch] = useState("")
@@ -11,7 +11,8 @@ export default function Content() {
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
     const kuvat = [kuva1, kuva2]
-    useEffect(() => {
+
+    useEffect(() => { //näyttää kaikki tuotteet frontendissä
         let status = 0;
         fetch(URL + "index.php")
             .then((response) => {
@@ -34,8 +35,7 @@ export default function Content() {
 
     
 
-        let status = 0;
-    function searchItem(e) {
+    const searchItem = function(e) { //hakukentällä hakee tiedon backendistä ja näyttää frontendissä
         e.preventDefault();
         let status = 0
         fetch(URL + "search.php", {
@@ -64,6 +64,7 @@ export default function Content() {
                     alert(error);
                 }
             );
+            
     }
 
 
@@ -100,15 +101,15 @@ export default function Content() {
                                     <a href="">
                                         <div >
                                       
-                                            <img src="" className="card-img-top" alt=""></img>
-                                            <div className="card-body">
-                                                <img src={kuvat[item.id-1]} className="" alt="Logo" />
-                                                <h5 className="card-title">{item.tuotenimi}</h5>
-                                                <p className="card-text">{item.tuotenimi}</p>
-                                                <p className="card-text">{item.tuotekuvaus}</p>
-                                                <p className="card-text">{item.id}</p>
-                                                <div className="vasen-pohja">
-                                                    <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
+                                            <img src="" class="card-img-top" alt=""></img>
+                                            <div class="card-body">
+                                                <img src={kuvat[item.id-1]} className="tuotekuva" alt="Logo" />
+                                                <h5 class="card-title">{item.tuotenimi}</h5>
+                                                <p class="card-text">{item.tuotenimi}</p>
+                                                <p class="card-text">{item.tuotekuvaus}</p>
+                                                <p class="card-text">{item.tuotetiivistelmä}</p>
+                                                <div class="vasen-pohja">
+                                                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
                                                 </div>
                                                 <p>{item.hinta + "€"}</p>
                                             </div>

@@ -7,8 +7,9 @@ import NotFound from './NotFound';
 import ContactUs from './ContactUs';
 import NavBar from './NavBar';
 import Footer from './Footer';
-import Content from "./Content";
+import Search from "./Search";
 import Product from "./Product";
+import Category from "./Category";
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
    <NavBar />
      <Switch>
        <Route path="/" component={Home} exact />
-       <Route path="/content" component={Content} exact />
+       <Route path="/search" component={Search} exact />
+       <Route path="/category/:it" component={Category} exact />
        <Route path="/about" component={About} />
        <Route path="/contactus" component={ContactUs} />
        <Route path="/product/:it" component={Product} />
