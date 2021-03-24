@@ -7,7 +7,7 @@ import kuva2 from './tuoteimg/2.jpg';
 import kuva3 from './tuoteimg/3.jpg';
 import kuva4 from './tuoteimg/4.jpg';
 import { useState, useEffect } from "react";
-import Content from "./Content";
+import Search from "./Search";
 
 
 

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import kuva1 from './tuoteimg/1.jpg';
 import kuva2 from './tuoteimg/2.jpg';
+import { useParams } from "react-router-dom";
 
-export default function Content() {
+export default function Category() {
 
     const URL = "HTTP://localhost/verkkokauppa/"
     const [search, setSearch] = useState("")
@@ -11,41 +12,19 @@ export default function Content() {
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
     const kuvat = [kuva1, kuva2]
+    const { it } = useParams();
+    console.log(it);
+
     useEffect(() => {
-        let status = 0;
-        fetch(URL + "index.php")
-            .then((response) => {
-                status = parseInt(response.status);
-                return response.json();
-            })
-            .then(
-                (response) => {
-                    if (status === 200) {
-                        setItems(response);
-                    } else {
-                        alert(response.error);
-                    }
-                },
-                (error) => {
-                    alert(error);
-                }
-            );
-    }, []);
-
-    
-
-        let status = 0;
-    function searchItem(e) {
-        e.preventDefault();
         let status = 0
-        fetch(URL + "search.php", {
+        fetch(URL + "category.php", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
-                search: search
+                search: it
             })
         })
             .then(response => {
@@ -64,10 +43,9 @@ export default function Content() {
                     alert(error);
                 }
             );
-    }
 
 
-
+    }, []);
 
     return (
         <>
@@ -76,18 +54,6 @@ export default function Content() {
 
                 <div className="col-3 bg-secondary border border-dark">
                     <h1>Haku</h1>
-                    <form class="d-flex" onSubmit={searchItem}>
-                        <input class="form-control me-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
-                        <button class="btn bt text-light" type="submit">Search</button>
-                    </form>
-                    <div>
-                        <select className="form-select" aria-label="Default select example">
-                            <option selected>Lajittele</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
                 </div>
                 <div className="col-9 bg-secondary border border-dark">
                     <h1>content</h1>
@@ -99,14 +65,14 @@ export default function Content() {
                                 <div>
                                     <a href="">
                                         <div >
-                                      
+
                                             <img src="" class="card-img-top" alt=""></img>
                                             <div class="card-body">
-                                                <img src={kuvat[item.id-1]} className="" alt="Logo" />
+                                                <img src={kuvat[item.id - 1]} className="tuotekuva" alt="Logo" />
                                                 <h5 class="card-title">{item.tuotenimi}</h5>
                                                 <p class="card-text">{item.tuotenimi}</p>
                                                 <p class="card-text">{item.tuotekuvaus}</p>
-                                                <p class="card-text">{item.id}</p>
+                                                <p class="card-text">{item.tuotetiivistelmä}</p>
                                                 <div class="vasen-pohja">
                                                     <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></a>
                                                 </div>
