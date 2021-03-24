@@ -2,10 +2,6 @@
 import asus from './tuoteimg/asus.jpg';
 import adrus from './tuoteimg/adrus.jpg';
 import geforce from './tuoteimg/geforce.jpg';
-import kuva1 from './tuoteimg/1.jpg';
-import kuva2 from './tuoteimg/2.jpg';
-import kuva3 from './tuoteimg/3.jpg';
-import kuva4 from './tuoteimg/4.jpg';
 import { useState, useEffect } from "react";
 import Content from "./Content";
 
@@ -20,7 +16,7 @@ export default function Home() {
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
-    const kuvat = [kuva1, kuva2, kuva3, kuva4]
+    const kuvaURL = "http://localhost/verkkokauppa/img/"
     useEffect(() => {
         let status = 0;
         fetch(URL + "index.php")
@@ -89,7 +85,7 @@ export default function Home() {
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
                             <div className="card-body">
-                            <img src={kuvat[item.id-1]} className="tuotekuva" alt="Logo" />
+                            <img src={kuvaURL+item.id+".jpg"} className="tuotekuva" alt="Logo" />
                                 <h5 className="card-title">{item.tuotenimi}</h5>
                                 <p className="card-text text-left">{item.tuotekuvaus}</p>
                                <div className="vasen-pohja">

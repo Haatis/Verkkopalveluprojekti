@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import kuva1 from './tuoteimg/1.jpg';
-import kuva2 from './tuoteimg/2.jpg';
+
 
 export default function Content() {
 
     const URL = "HTTP://localhost/verkkokauppa/"
+    const kuvaURL = "http://localhost/verkkokauppa/img/"
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
-    const kuvat = [kuva1, kuva2]
     useEffect(() => {
         let status = 0;
         fetch(URL + "index.php")
@@ -102,7 +101,7 @@ export default function Content() {
                                       
                                             <img src="" className="card-img-top" alt=""></img>
                                             <div className="card-body">
-                                                <img src={kuvat[item.id-1]} className="" alt="Logo" />
+                                                <img src={kuvaURL+item.id+".jpg"} className="" alt="Logo" />
                                                 <h5 className="card-title">{item.tuotenimi}</h5>
                                                 <p className="card-text">{item.tuotenimi}</p>
                                                 <p className="card-text">{item.tuotekuvaus}</p>

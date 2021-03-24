@@ -1,19 +1,14 @@
-import rtx3090 from './tuoteimg/1.jpg';
-import kuva1 from './tuoteimg/1.jpg';
-import kuva2 from './tuoteimg/2.jpg';
-import kuva3 from './tuoteimg/3.jpg';
-import kuva4 from './tuoteimg/4.jpg';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Product() {
     const URL = "HTTP://localhost/verkkokauppa/"
+    const kuvaURL = "http://localhost/verkkokauppa/img/"
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
-    const kuvat = [kuva1, kuva2, kuva3, kuva4]
     const { it } = useParams();
     useEffect(() => {
         let status = 0;
@@ -52,7 +47,7 @@ export default function Product() {
                             <h2 className="ms-4">{item.tuotenimi}</h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
-                            <img src={kuvat[item.id-1]} className="tuotesivukuva" alt="Logo" />
+                            <img src={kuvaURL+it+".jpg"} className="tuotesivukuva" alt="Logo" />
                             </div>
                             <div className="col-md-6 col-sm-12"> 
                             <h3>Tuotekuvaus</h3>
