@@ -44,8 +44,8 @@ export default function Home() {
         <div className="row">
 
         <div id="carouselExampleCaptions" className="carousel slide p-0" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <div className="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
@@ -80,7 +80,7 @@ export default function Home() {
                        
         <div className="row">
         {items.slice(0,4).map((item) => (
-        <div class="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
+        <div className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
                     <a href={"/Product/" + item.id}>
                         <div >
                             <img src="" className="card-img-top" alt=""></img>

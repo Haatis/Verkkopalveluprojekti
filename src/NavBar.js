@@ -8,46 +8,26 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState } from "react";
 
 
+
 export default function NavBar() {
-
   const [search, setSearch] = useState("")
-  const URL = "HTTP://localhost/verkkokauppa/"
-
 
   function searchItem(e) {
     e.preventDefault();
-    let status = 0
-    fetch(URL + "search.php", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        search: search
-      })
-    })
-      .then(response => {
-        status = parseInt(response.status);
-        return response.json();
-      })
+    window.location.href = "http://localhost:3000/search=" + search;
   }
-
 
   const [showOheis, setshowOheis] = useState(false);
   const [showKomp, setshowKomp] = useState(false);
   const showOheisDropdown = (e) => {
     setshowOheis(!showOheis);
   }
-
   const showKompDropdown = (e) => {
     setshowKomp(!showKomp);
   }
-
   const hideKompDropdown = (e) => {
     setshowKomp(false);
   }
-
   const hideOheisDropdown = (e) => {
     setshowOheis(false);
   }
@@ -57,12 +37,14 @@ export default function NavBar() {
 
       <div className="row">
         <img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" />
-        <Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark">
+        <Navbar collapseOnSelect expand="lg" className="color-nav py-0 px-0" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav className="mr-auto d-flex">
               <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link>
-              <NavDropdown href="#action/3.1" title="Komponentit" id="collasible-nav-dropdown" className="mx-1"
+              <div className="border border-dark my-0 py-0"></div>
+              <Nav.Link href="/Category/komponentit" className="ms-1">Komponentit</Nav.Link>
+              <NavDropdown title="" id="collasible-nav-dropdown" className=""
                 show={showKomp}
                 onMouseEnter={showKompDropdown}
                 onMouseLeave={hideKompDropdown}>
@@ -75,7 +57,9 @@ export default function NavBar() {
                 <NavDropdown.Item href="/Category/Jäähdytys">Jäähdytys</NavDropdown.Item>
                 <NavDropdown.Item href="/Category/Kotelot">Kotelot</NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Oheislaitteet" id="collasible-nav-dropdown  " className="mx-1"
+              <div className="border border-dark my-0 py-0"></div>
+              <Nav.Link href="/Category/oheislaitteet" className="ms-1">Oheislaitteet</Nav.Link>
+              <NavDropdown title="" id="collasible-nav-dropdown  " className="mx-1"
                 show={showOheis}
                 onMouseEnter={showOheisDropdown}
                 onMouseLeave={hideOheisDropdown}>
@@ -83,9 +67,15 @@ export default function NavBar() {
                 <NavDropdown.Item href="/Category/Hiiret">Hiiret</NavDropdown.Item>
                 <NavDropdown.Item href="/Category/Näytöt">Näytöt</NavDropdown.Item>
               </NavDropdown>
+              <div className="border border-dark my-0 py-0"></div>
               <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
+              <div className="border border-dark my-0 py-0"></div>
               <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
-              <Nav.Link href="/search" className="mx-1">Haku<i class="fas fa-search ms-2"></i></Nav.Link>
+              <div className="border border-dark my-0 py-0"></div>
+              <form className="d-flex float-end" onSubmit={searchItem}>
+                <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
+                <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
+              </form>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
