@@ -145,3 +145,9 @@ a{
     width: 220;
 }
 } */
+.red:hover {
+  color: red;
+}
+.lightblue:hover {
+  color: rgb(0, 191, 255);
+}
