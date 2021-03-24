@@ -41,7 +41,7 @@ export default function NavBar() {
     <>
 
       <div className="row">
-        <img src={logo} className="comms col-12 commslogo" alt="Logo" />
+        <img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" />
         <Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -64,9 +64,9 @@ export default function NavBar() {
               </NavDropdown>
               <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
               <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
-              <form class="d-flex mx-5" onSubmit={searchItem}>
-                <input class="form-control me-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
-                <button class="btn bt text-light" type="submit">Search</button>
+              <form className="d-flex mx-5" onSubmit={searchItem}>
+                <input className="form-control me-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
+                <button className="btn bt text-light" type="submit">Search</button>
               </form>
             </Nav>
           </Navbar.Collapse>

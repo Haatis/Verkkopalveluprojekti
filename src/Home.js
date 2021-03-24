@@ -110,7 +110,7 @@ export default function Home() {
         <h1>Comm's Suosittelee</h1>
         </div>
         <div className="row">
-        <div className="card col-3">
+        <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
@@ -123,7 +123,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -136,7 +136,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -149,7 +149,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -163,7 +163,7 @@ export default function Home() {
                 </div>
         </div>
         <div className="row">
-        <div className="card col-3">
+        <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div >
                             <img src="" className="card-img-top" alt=""></img>
@@ -176,7 +176,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -189,7 +189,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
@@ -202,7 +202,7 @@ export default function Home() {
                     </a>
                 </div>
 
-                <div className="card col-3">
+                <div className="card  col-md-3 col-sm-6">
                     <a href="">
                         <div>
                             <img src="" className="card-img-top" alt=""></img>
