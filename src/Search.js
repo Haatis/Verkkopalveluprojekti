@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import querystring from 'query-string'
 
 export default function Search() {
   const URL = "HTTP://localhost/verkkokauppa/";

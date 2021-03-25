@@ -1,13 +1,10 @@
 import React from 'react'
 import './App.css';
-import { Link } from 'react-router-dom'
 import logo from './img/commsv2.png';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState } from "react";
-import queryString from "query-string";
-
 
 export default function NavBar() {
   const [search, setSearch] = useState("")
