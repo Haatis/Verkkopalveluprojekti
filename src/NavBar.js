@@ -40,7 +40,7 @@ export default function NavBar() {
             <Nav className="mr-auto d-flex">
               <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link href="/Category/komponentit" className="ms-1">Komponentit</Nav.Link>
+              <Nav.Link href="/Class/komponentit" className="ms-1">Komponentit</Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown" className=""
                 show={showKomp}
                 onMouseEnter={showKompDropdown}
@@ -55,7 +55,7 @@ export default function NavBar() {
                 <NavDropdown.Item href="/Category/Kotelot">Kotelot</NavDropdown.Item>
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link href="/Category/oheislaitteet" className="ms-1">Oheislaitteet</Nav.Link>
+              <Nav.Link href="/Class/oheislaitteet" className="ms-1">Oheislaitteet</Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown  " className="mx-1"
                 show={showOheis}
                 onMouseEnter={showOheisDropdown}

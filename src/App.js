@@ -11,6 +11,7 @@ import Search from "./Search";
 import Product from "./Product";
 import Category from "./Category";
 import Order from "./Order";
+import Class from "./Class";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
        <Route path="/contactus" component={ContactUs} />
        <Route path="/product/:it" component={Product} />
        <Route path="/order" component={Order} />
+       <Route path="/class/:it" component={Class} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
