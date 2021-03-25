@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Search from "./Search";
 import Product from "./Product";
 import Category from "./Category";
+import Order from "./Order";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
        <Route path="/about" component={About} />
        <Route path="/contactus" component={ContactUs} />
        <Route path="/product/:it" component={Product} />
+       <Route path="/order" component={Order} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
