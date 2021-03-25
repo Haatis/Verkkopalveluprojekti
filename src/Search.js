@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import querystring from 'query-string'
 
 export default function Search() {
   const URL = "HTTP://localhost/verkkokauppa/";
@@ -9,8 +10,8 @@ export default function Search() {
   const [tuotekuvaus, setTuotekuvaus] = useState("");
   const [kuva, setTuotekuva] = useState("");
   const [items, setItems] = useState([]);
-  let { it } = useParams();
 
+  /*
   useEffect(() => {
     //näyttää kaikki tuotteet frontendissä
     let status = 0;
@@ -32,15 +33,16 @@ export default function Search() {
         }
       );
   }, []);
+*/
 
   function searchItem(e) {
     e.preventDefault();
-    window.location.href = "http://localhost:3000/search=" + search;
+    window.location.href = "http://localhost:3000/search?query=" + search;
   }
 
-  if(typeof it == "undefined"){
-    it = ""
-  }
+  const queryString = require('query-string');
+const parsed = queryString.parse(window.location.search);
+
 
   useEffect(() => {
         let status = 0;
@@ -51,7 +53,7 @@ export default function Search() {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            search: it,
+            search: parsed.query,
           }),
         })
           .then((response) => {

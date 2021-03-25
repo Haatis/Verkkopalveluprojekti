@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState } from "react";
-
+import queryString from "query-string";
 
 
 export default function NavBar() {
@@ -14,7 +14,7 @@ export default function NavBar() {
 
   function searchItem(e) {
     e.preventDefault();
-    window.location.href = "http://localhost:3000/search=" + search;
+    window.location.href = "http://localhost:3000/search?query=" + search;
   }
 
   const [showOheis, setshowOheis] = useState(false);
