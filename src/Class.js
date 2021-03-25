@@ -55,7 +55,7 @@ export default function Class() {
             {items.map((item) => (
               <li className="card col-lg-6 col-md-12 text-center" key={item.id}>
                 <div>
-                  <a href="">
+                <a href={"/Product/" + item.id}>
                     <div>
                       <img src="" className="card-img-top" alt=""></img>
                       <div className="card-body">
