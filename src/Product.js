@@ -12,26 +12,35 @@ export default function Product() {
     const { it } = useParams();
     useEffect(() => {
         let status = 0;
-        fetch(URL + "index.php")
-            .then((response) => {
-                status = parseInt(response.status);
-                return response.json();
-            })
-            .then(
-                (response) => {
-                    if (status === 200) {
-                        setItems(response);
-                    } else {
-                        alert(response.error);
-                    }
-                },
-                (error) => {
-                    alert(error);
-                }
-            );
-    }, []);
+        fetch(URL + "retrieve.php", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            search: it,
+          }),
+        })
+          .then((response) => {
+            status = parseInt(response.status);
+            return response.json();
+          })
+          .then(
+            (response) => {
+              if (status === 200) {
+                setItems(response);
+              } else {
+                alert(response.error);
+              }
+            },
+            (error) => {
+              alert(error);
+            }
+          );
+      }, []);
+  
 
-    
     return (
 <>
 
@@ -39,7 +48,7 @@ export default function Product() {
 <div className="row">
     <div className="bg-light">
     
-{items.splice(it-1,1).map((item) => (
+{items.map((item) => (
         <div className="" key={item.id}>
                     
                         <div >
@@ -53,7 +62,7 @@ export default function Product() {
                             <h3>Tuotekuvaus</h3>
                             <h5 className="me-5">{item.tuotekuvaus}</h5>
                             <h4>{item.hinta + "€"}</h4>
-                            <a href="#" className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></a>
+                            <button className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
                             </div>
                                 </div>
                             </div>
