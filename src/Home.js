@@ -10,6 +10,7 @@ import Search from "./Search";
 
 
 
+
 export default function Home() {
     const URL = "http://localhost/verkkokauppa/";
     const [tuotenimi, setTuotenimi] = useState("");
@@ -37,10 +38,13 @@ export default function Home() {
                 }
             );
     }, []);
+
+
+
     return (
         <>
 
-        
+    
         <div className="row">
 
         <div id="carouselExampleCaptions" className="carousel slide p-0" data-bs-ride="carousel">

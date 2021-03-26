@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {Switch, Route} from 'react-router-dom'
 import Home from './Home';
@@ -12,9 +12,16 @@ import Product from "./Product";
 import Category from "./Category";
 import Order from "./Order";
 import Class from "./Class";
+import Logging from "./Logging";
+import LoginForm from "./LoginForm";
+
+
 
 
 function App() {
+
+ 
+
   return (
     <>
     <div className="container">
@@ -28,6 +35,8 @@ function App() {
        <Route path="/product/:it" component={Product} />
        <Route path="/order" component={Order} />
        <Route path="/class/:it" component={Class} />
+       <Route path="/logging" component={Logging} />
+       <Route path="/loginform" component={LoginForm} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
