@@ -96,7 +96,8 @@ export default function Home() {
                                 <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
                                 </div>
                                 <div className="oikea-pohja">
-                                <p>{item.hinta + "€"}</p>
+                                <p><del>{item.hinta + "€"}</del></p>
+                                <h5>{item.hinta*0.90 + "€"}</h5>
                                 </div>
                             </div>
                         </div>
