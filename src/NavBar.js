@@ -73,7 +73,7 @@ export default function NavBar() {
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
-              <Nav.Link href="/logging" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
+              <Nav.Link href="/login" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

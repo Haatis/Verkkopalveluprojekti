@@ -12,8 +12,7 @@ import Product from "./Product";
 import Category from "./Category";
 import Order from "./Order";
 import Class from "./Class";
-import Logging from "./Logging";
-import LoginForm from "./LoginForm";
+import Login from "./Login";
 
 
 
@@ -35,8 +34,7 @@ function App() {
        <Route path="/product/:it" component={Product} />
        <Route path="/order" component={Order} />
        <Route path="/class/:it" component={Class} />
-       <Route path="/logging" component={Logging} />
-       <Route path="/loginform" component={LoginForm} />
+       <Route path="/login" component={Login} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
