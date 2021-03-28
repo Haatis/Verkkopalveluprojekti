@@ -13,6 +13,7 @@ import Category from "./Category";
 import Order from "./Order";
 import Class from "./Class";
 import Login from "./Login";
+import Register from "./Register";
 
 
 
@@ -35,6 +36,7 @@ function App() {
        <Route path="/order" component={Order} />
        <Route path="/class/:it" component={Class} />
        <Route path="/login" component={Login} />
+       <Route path="/register" component={Register} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
