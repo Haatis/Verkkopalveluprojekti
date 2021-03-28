@@ -14,6 +14,7 @@ import Order from "./Order";
 import Class from "./Class";
 import Login from "./Login";
 import Register from "./Register";
+import Add from "./Add";
 
 
 
@@ -37,6 +38,7 @@ function App() {
        <Route path="/class/:it" component={Class} />
        <Route path="/login" component={Login} />
        <Route path="/register" component={Register} />
+       <Route path="/add" component={Add} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
