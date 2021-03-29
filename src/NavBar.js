@@ -4,10 +4,13 @@ import logo from './img/commsv2.png';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 export default function NavBar() {
+  const URL = "HTTP://localhost/verkkokauppa/";
   const [search, setSearch] = useState("")
+  const [shoppingCartItem, setShoppingCartItem] = useState([])
+  const [items, setItems] = useState([])
 
   function searchItem(e) {
     e.preventDefault();
@@ -28,6 +31,46 @@ export default function NavBar() {
   const hideOheisDropdown = (e) => {
     setshowOheis(false);
   }
+
+
+
+
+
+    let cart = localStorage.getItem("cart")
+    console.log(cart)
+
+    
+
+
+  useEffect(() => {
+    let status = 0;
+    fetch(URL + "cart.php", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        search: 1
+      }),
+    })
+      .then((response) => {
+        status = parseInt(response.status);
+        return response.json();
+      })
+      .then(
+        (response) => {
+          if (status === 200) {
+            setItems(response);
+          } else {
+            alert(response.error);
+          }
+        },
+        (error) => {
+          alert(error);
+        }
+      );
+  }, []);
 
   return (
     <>
@@ -73,6 +116,14 @@ export default function NavBar() {
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
+              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown  " className="mx-1">
+                
+              {items.map((item) => (
+              <NavDropdown.Item key={item.id}>{item.tuotenimi} {item.hinta}€</NavDropdown.Item>
+
+            ))}
+              
+            </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
