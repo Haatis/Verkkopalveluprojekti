@@ -7,6 +7,7 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [viesti, setViesti] = useState('');
+  const [loginStatus, setLoginStatus] = useState('');
  
 
  
@@ -17,34 +18,33 @@ export default function Login() {
             username: username,
             password: password,
         }).then((response) => {
-             console.log(response);
-             /*if(){
-              alert("kirjautuminen onnistui")
-            } else {
-              alert("kirjautuminen epäonnistui")
-            } */
-            
-        });
+
+          if (response.data.message) {
+            setLoginStatus(response.data.message)
+          } else {
+            setLoginStatus(response.data[0].username)
+          }
+             console.log(response.data);
+             });
     };
 
-    
 
   return (
     <div>
-
+      
 
       <form className="bg-light">
         <div className="row">
           <label for="exampleEmail" sm={2}>Username</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setUsername(e.target.value)} type="text" />
+            <input onChange={(e) => setUsername(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="row">
           <label for="examplePassword" sm={2}>Password</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setPassword(e.target.value)} type="text"/>
+            <input onChange={(e) => setPassword(e.target.value)} type="text" required/>
           </div>
         </div>
 
@@ -54,7 +54,10 @@ export default function Login() {
             <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
           </div>
         </div>
+        <h1>{loginStatus}</h1>
       </form>
+
+        
 
     </div>
 

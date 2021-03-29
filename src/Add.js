@@ -7,13 +7,36 @@ export default function Add() {
   const [hinta, setHinta] = useState('');
   const [tuotetiivistelma, setTuotetiivistelma] = useState('');
   const [tuotekuvaus, setTuotekuvaus] = useState('');
+  const [id, setId] = useState('');
   const [kuva, setKuva] = useState('');
   const [kategoria, setKategoria] = useState('');
   const [luokka, setLuokka] = useState('');
   const [viesti, setViesti] = useState('');
+  const [items, setItems] = useState([]);
+  const URL = "http://localhost/verkkokauppa/";
+    
+  useEffect(() => {
+    let status = 0;
+    fetch(URL + "index.php")
+        .then((response) => {
+            status = parseInt(response.status);
+            return response.json();
+        })
+        .then(
+            (response) => {
+                if (status === 200) {
+                    setItems(response);
+                } else {
+                    alert(response.error);
+                }
+            },
+            (error) => {
+                alert(error);
+            }
+        );
+}, []);
 
-    const add = (e) => {
-        e.preventDefault();
+  const add = (e) => {
         axios.post('http://localhost/verkkokauppa/add.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
@@ -24,13 +47,21 @@ export default function Add() {
           luokka:luokka,
         }).then((response) => {
             console.log(response);
-            alert("Tuotteen lisäys onnistui!");
-
-            
-
+            window.location.href = "http://localhost:3000/add"
         });
     };
+
+    function remove(id) {
+      axios.post('http://localhost/verkkokauppa/delete.php', {
+        id:id,
+      }).then((response) => {
+          console.log(response);
+          window.location.href = "http://localhost:3000/add"
+      });
+  };
+
     
+   
 
   return (
     <div>
@@ -90,9 +121,34 @@ export default function Add() {
             <button onClick={add}>Lisää tuote</button>
           </div>
         </div>
-      </form>
 
     
+      </form>
+      <div className="row">
+      {items.map((item) => (
+        <div className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
+                    <a href={"/Product/" + item.id}>
+                        <div >
+                            <img src="" className="card-img-top" alt=""></img>
+                            <div className="card-body">
+                            <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                                <h5 className="card-title">{item.tuotenimi}</h5>
+                                <p className="card-text text-left">{item.tuotekuvaus}</p>
+                                
+                               <div className="vasen-pohja">
+                                <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <div className="oikea-pohja">
+                                <p>{item.hinta + "€"}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <button className="delete" onClick={() => remove(item.id)} href="#">Delete</button>
+                </div>
+                
+                 ))}
+        </div>
     </div>
 
     
