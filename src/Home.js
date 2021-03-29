@@ -46,6 +46,7 @@ export default function Home() {
         const newCart = [...cart, item];
         setCart(newCart);
         localStorage.setItem("cart", JSON.stringify(newCart));
+        window.location.reload(false);
     }
 
     return (

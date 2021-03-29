@@ -10,6 +10,8 @@ export default function Product() {
     const [kuva, setTuotekuva] = useState("");
     const [items, setItems] = useState([]);
     const { it } = useParams();
+    const [cart, setCart] = useState([]);
+
     useEffect(() => {
         let status = 0;
         fetch(URL + "retrieve.php", {
@@ -40,6 +42,18 @@ export default function Product() {
           );
       }, []);
   
+      useEffect(() => {
+        if ("cart" in localStorage) {
+          setCart(JSON.parse(localStorage.getItem("cart")));
+        }
+      }, []);
+    
+      function addToCart(item) {
+        const newCart = [...cart, item];
+        setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        window.location.reload(false);
+      }
 
     return (
 <>
@@ -62,7 +76,7 @@ export default function Product() {
                             <h3>Tuotekuvaus</h3>
                             <h5 className="me-5">{item.tuotekuvaus}</h5>
                             <h4>{item.hinta + "€"}</h4>
-                            <button className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
                             </div>
                                 </div>
                             </div>
