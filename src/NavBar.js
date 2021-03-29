@@ -61,7 +61,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link>
+              <Nav.Link href="/" className="mx-1 expand">Etusivu</Nav.Link>
               <NavDropdown href="#action/3.1" title="Komponentit" id="collasible-nav-dropdown" className="mx-1"
                 show={showKomp}
                 onMouseEnter={showKompDropdown}
