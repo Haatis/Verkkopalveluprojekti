@@ -3,12 +3,6 @@ import asus from './tuoteimg/asus.jpg';
 import adrus from './tuoteimg/adrus.jpg';
 import geforce from './tuoteimg/geforce.jpg';
 import { useState, useEffect } from "react";
-import Search from "./Search";
-
-
-
-
-
 
 export default function Home() {
     const URL = "http://localhost/verkkokauppa/";
@@ -18,7 +12,6 @@ export default function Home() {
     const [items, setItems] = useState([]);
     const [kuva, setTuotekuva] = useState("");
     const [cart, setCart] = useState([])
-    //const [quantity, setquantity] = useState([])
 
     useEffect(() => {
         let status = 0;
@@ -41,22 +34,13 @@ export default function Home() {
             );
     }, []);
 
-/*
-    function addToCart(item) { //tallentaa localstorageen tuotteet ostoskoriin muotoon {"tuoteid":määrä} 
-        quantity.push("id:" + item);
-        let counts = ""
 
-        const countUnique = arr => {
-            const counts = {};
-            for (var i = 0; i < quantity.length; i++) {
-               counts[quantity[i]] = 1 + (counts[quantity[i]] || 0);
-            };
-            return counts;
-         };
-        //console.log(JSON.stringify(countUnique(counts)));
-        localStorage.setItem("cart", JSON.stringify(countUnique(counts)))
-    }
-    */
+
+    useEffect(() =>{
+        if("cart" in localStorage){
+            setCart(JSON.parse(localStorage.getItem("cart")))
+        }
+    }, [])
 
     function addToCart(item){
         const newCart = [...cart, item];
@@ -103,32 +87,37 @@ export default function Home() {
             <div className="row">
                 <h1>Päivän tarjoukset</h1>
             </div>
-
-
             <div className="row">
-                {items.slice(0, 4).map((item) => (
-                    <div className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
-                        <a /* href={"/Product/" + item.id} */>
-                            <div >
-                                <img src="" className="card-img-top" alt=""></img>
-                                <div className="card-body">
-                                    <img src={item.kuva} className="tuotekuva" alt="Logo" />
-                                    <h5 className="card-title">{item.tuotenimi}</h5>
-                                    <p className="card-text text-left">{item.tuotekuvaus}</p>
-                                    <div className="vasen-pohja">
-                                        <button onClick={() => addToCart(item.id)} value={item.id} className="btn btn-primary"><i className="fa fa-shopping-cart"></i></button>
-                                    </div>
-                                    <div className="oikea-pohja">
-                                        <p>{item.hinta + "€"}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                ))}
+            {items.slice(0, 4).map((item) => (
+        <div
+          className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
+          key={item.id}
+        >
+          <a /* href={"/Product/" + item.id} */>
+            <div>
+              <img src="" className="card-img-top" alt=""></img>
+              <div className="card-body">
+                <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                <h5 className="card-title">{item.tuotenimi}</h5>
+                <p className="card-text text-left">{item.tuotekuvaus}</p>
+                <div className="vasen-pohja">
+                  <button
+                    onClick={() => addToCart(item.id)}
+                    value={item.id}
+                    className="btn btn-primary"
+                  >
+                    <i className="fa fa-shopping-cart"></i>
+                  </button>
+                </div>
+                <div className="oikea-pohja">
+                  <p>{item.hinta + "€"}</p>
+                </div>
+              </div>
             </div>
-
+          </a>
+        </div>
+      ))}
+            </div>
             <div className="row">
                 <h1>Comm's Suosittelee</h1>
             </div>
