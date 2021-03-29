@@ -47,7 +47,7 @@ export default function Add() {
           luokka:luokka,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/add"
+           window.location.href = "http://localhost:3000/add"
         });
     };
 
@@ -59,6 +59,9 @@ export default function Add() {
           window.location.href = "http://localhost:3000/add"
       });
   };
+
+  
+ 
 
     
    
@@ -145,6 +148,7 @@ export default function Add() {
                         </div>
                     </a>
                     <button className="delete" onClick={() => remove(item.id)} href="#">Delete</button>
+                    <a  href={"/Edit/" + item.id} ><button className="edit" >Edit</button></a>
                 </div>
                 
                  ))}

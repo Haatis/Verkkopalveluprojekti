@@ -108,7 +108,7 @@ export default function Home() {
             <div className="row">
                 {items.slice(0, 4).map((item) => (
                     <div className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center" key={item.id}>
-                        <a /* href={"/Product/" + item.id} */>
+                        <a  href={"/Product/" + item.id} >
                             <div >
                                 <img src="" className="card-img-top" alt=""></img>
                                 <div className="card-body">
