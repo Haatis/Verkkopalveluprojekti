@@ -39,7 +39,7 @@ export default function NavBar() {
     let cart = localStorage.getItem("cart")
     console.log(cart)
 
-    
+
 
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function NavBar() {
             <Nav className="mr-auto d-flex">
               <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link href="/Category/komponentit" className="ms-1">Komponentit</Nav.Link>
+              <Nav.Link href="/Class/komponentit" className="ms-1">Komponentit</Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown" className=""
                 show={showKomp}
                 onMouseEnter={showKompDropdown}
@@ -98,7 +98,7 @@ export default function NavBar() {
                 <NavDropdown.Item href="/Category/Kotelot">Kotelot</NavDropdown.Item>
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link href="/Category/oheislaitteet" className="ms-1">Oheislaitteet</Nav.Link>
+              <Nav.Link href="/Class/oheislaitteet" className="ms-1">Oheislaitteet</Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown  " className="mx-1"
                 show={showOheis}
                 onMouseEnter={showOheisDropdown}
@@ -116,14 +116,7 @@ export default function NavBar() {
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
-              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown  " className="mx-1">
-                
-              {items.map((item) => (
-              <NavDropdown.Item key={item.id}>{item.tuotenimi} {item.hinta}€</NavDropdown.Item>
-
-            ))}
-              
-            </NavDropdown>
+              <Nav.Link href="/login" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

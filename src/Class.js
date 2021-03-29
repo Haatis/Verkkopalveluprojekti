@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
-export default function Category() {
+export default function Class() {
   const URL = "HTTP://localhost/verkkokauppa/";
   const [search, setSearch] = useState("");
   const [tuotenimi, setTuotenimi] = useState("");
@@ -14,7 +14,7 @@ export default function Category() {
 
   useEffect(() => {
     let status = 0;
-    fetch(URL + "category.php", {
+    fetch(URL + "class.php", {
       method: "POST",
       headers: {
         Accept: "application/json",

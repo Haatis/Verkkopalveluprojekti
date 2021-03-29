@@ -59,7 +59,7 @@ export default function Home() {
     */
 
     function addToCart(item){
-        const newCart = [...cart, item];
+        const newCart = [cart, item];
         setCart(newCart);
         localStorage.setItem("cart", JSON.stringify(newCart));
     }
