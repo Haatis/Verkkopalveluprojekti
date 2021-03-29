@@ -18,7 +18,7 @@ export default function Footer() {
                     <p>Joona Haataja</p>
                     <p>Joona Lappalainen</p>
                     <p>Joni Karvonen</p>
-                    <p >Roope Puhakka</p>
+                    <p>Roope Puhakka</p>
                     <p>Waltteri Ylisirniö</p>
                 </div>
                 <div className="col-4">

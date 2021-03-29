@@ -15,6 +15,7 @@ import Class from "./Class";
 import Login from "./Login";
 import Register from "./Register";
 import Add from "./Add";
+import Cart from "./Cart";
 
 
 
@@ -32,7 +33,7 @@ function App() {
        <Route path="/" component={Home} exact />
        <Route path="/search" component={Search} exact />
        <Route path="/category/:it" component={Category} exact />
-       {/* <Route path="/Cart" component={Cart} /> */}
+       <Route path="/Cart" component={Cart} />
        <Route path="/about" component={About} />
        <Route path="/contactus" component={ContactUs} />
        <Route path="/product/:it" component={Product} />
