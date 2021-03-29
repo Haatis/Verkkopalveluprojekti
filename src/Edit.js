@@ -44,7 +44,6 @@ export default function Edit() {
           );
       }, []);
 
-
       const edit = (e) => {
         e.preventDefault();
         axios.post('http://localhost/verkkokauppa/edit.php', {
@@ -54,6 +53,8 @@ export default function Edit() {
           tuotekuvaus:tuotekuvaus,
           kuva:kuva,
           id:it,
+          kategoria:kategoria,
+          luokka:luokka,
         }).then((response) => {
             console.log(response);
             window.location.href = "http://localhost:3000/add"
@@ -87,6 +88,7 @@ export default function Edit() {
                 </div>
                 
                  ))}
+                 
 
 <div>
       <form className="bg-light">
@@ -124,6 +126,21 @@ export default function Edit() {
             <input onChange={(e) => setKuva(e.target.value)} type="text"/>
           </div>
         </div>
+
+        <div className="row">
+          <label for="examplePassword" sm={2}>kategoria</label>
+          <div className="col-sm-10" >
+            <input onChange={(e) => setKategoria(e.target.value)} type="text"/>
+          </div>
+        </div>
+
+        <div className="row">
+          <label for="examplePassword" sm={2}>luokka</label>
+          <div className="col-sm-10" >
+            <input onChange={(e) => setLuokka(e.target.value)} type="text"/>
+          </div>
+        </div>
+
 
         
         <div className="row">
