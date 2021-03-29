@@ -88,35 +88,7 @@ export default function Home() {
                 <h1>Päivän tarjoukset</h1>
             </div>
             <div className="row">
-            {items.slice(0, 4).map((item) => (
-        <div
-          className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
-          key={item.id}
-        >
-          <a /* href={"/Product/" + item.id} */>
-            <div>
-              <img src="" className="card-img-top" alt=""></img>
-              <div className="card-body">
-                <img src={item.kuva} className="tuotekuva" alt="Logo" />
-                <h5 className="card-title">{item.tuotenimi}</h5>
-                <p className="card-text text-left">{item.tuotekuvaus}</p>
-                <div className="vasen-pohja">
-                  <button
-                    onClick={() => addToCart(item.id)}
-                    value={item.id}
-                    className="btn btn-primary"
-                  >
-                    <i className="fa fa-shopping-cart"></i>
-                  </button>
-                </div>
-                <div className="oikea-pohja">
-                  <p>{item.hinta + "€"}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      ))}
+            
             </div>
             <div className="row">
                 <h1>Comm's Suosittelee</h1>

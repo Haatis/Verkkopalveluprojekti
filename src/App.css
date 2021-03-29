@@ -91,9 +91,8 @@ a{
 }
 
 .oikea-pohja {
-  margin-left: 9em;
   display: inline-block;
-  text-align: right;
+  text-align: center;
 }
 
 .footerlink {
