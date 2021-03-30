@@ -6,6 +6,7 @@ export default function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [admin, setAdmin] = useState([]);
   const [viesti, setViesti] = useState([]);
   const [loginStatus, setLoginStatus] = useState('');
   const [user, setUser] = useState([]);
@@ -18,7 +19,12 @@ export default function Login() {
             password: password,
         }).then((response) => {
 
-          if ((response.data.id)>0) {
+          if (response.data.oikeudet==='admin'){
+            addToUser(response.data.username)
+            addToAdmin(response.data.oikeudet)
+            alert("sisäänkirjautuminen ylläpitäjänä onnistui")
+            window.location.href = "http://localhost:3000/add"
+          } else  if ((response.data.id)>0) {
             addToUser(response.data.username)
             alert("sisäänkirjautuminen onnistui")
             window.location.href = "http://localhost:3000/"
@@ -45,6 +51,12 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(newUser));
       window.location.reload(false);
   }
+  function addToAdmin(item){
+    const newAdmin = [...admin, item];
+    setAdmin(newAdmin);
+    localStorage.setItem("admin", JSON.stringify(newAdmin));
+    window.location.reload(false);
+}
 
   function emptyUser() {
     localStorage.clear("user")
