@@ -8,10 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [viesti, setViesti] = useState([]);
   const [loginStatus, setLoginStatus] = useState('');
-
- 
-
- 
+  const [user, setUser] = useState([])
 
     const login = (e) => {
         e.preventDefault();
@@ -21,7 +18,8 @@ export default function Login() {
         }).then((response) => {
 
           if ((response.data.id)>0) {
-            setLoginStatus(response.data.username)
+            setLoginStatus(response.data.id)
+            addToUser(response.data.username)
             
           } else {
             setLoginStatus("hommat kusi")
@@ -31,6 +29,23 @@ export default function Login() {
              });
     };
 
+    useEffect(() =>{
+      if("user" in localStorage){
+          setUser(JSON.parse(localStorage.getItem("user")))
+      }
+  }, [])
+  
+  function addToUser(item){
+      const newUser = [...user, item];
+      setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
+      window.location.reload(false);
+  }
+
+  function emptyUser() {
+    localStorage.clear("user")
+    window.location.reload(false);
+  }
 
   return (
     <div>
@@ -53,12 +68,20 @@ export default function Login() {
 
         <div className="row">
         <div className="col-sm-10" >
-            <button onClick={login}>kirjaudu</button>
+            <button type="submit" value="Submit" onClick={login}>kirjaudu</button>
             <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
+            <button className="ms-5" type="button" onClick={() => emptyUser()}>Kirjaudu ulos</button>
           </div>
         </div>
-        <h1>{loginStatus}</h1>
-        <h1>{viesti}</h1>
+        <h1>
+       
+      </h1>
+        <div className="row">
+        <div className="col-sm-10" >
+            
+          </div>
+        </div>
+        <h1>{user}</h1>
       </form>
 
         
