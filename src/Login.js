@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [viesti, setViesti] = useState([]);
   const [loginStatus, setLoginStatus] = useState('');
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
 
 
     const login = (e) => {
@@ -20,8 +20,10 @@ export default function Login() {
 
           if ((response.data.id)>0) {
             addToUser(response.data.username)
+            alert("sisäänkirjautuminen onnistui")
+            window.location.href = "http://localhost:3000/"
           } else {
-            setLoginStatus("hommat kusi")
+            setLoginStatus("Väärä salasana/käyttäjänimi")
             
             
           }
@@ -56,7 +58,7 @@ export default function Login() {
           <div className="row">
           <label for="exampleEmail" sm={2}>Username</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setUsername(e.target.value)} type="text" required/>
+          <input onChange={(e) => setUsername(e.target.value)} type="text" required/>
           </div>
         </div>
         <div className="row">
@@ -69,15 +71,13 @@ export default function Login() {
         <div className="col-sm-10" >
             <button type="submit" value="Submit" onClick={login}>kirjaudu</button>
              <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
+             <h1>{loginStatus}</h1>
           </div>
         </div>
         <h1>
       </h1>
       
       <div>
-    <h1>{user}</h1>
-    <h1>{loginStatus}</h1>
-    {("user" in localStorage) &&<button className="ms-5" type="button" onClick={() => emptyUser()}>Kirjaudu ulos</button>}
    </div>
 
       </form>
