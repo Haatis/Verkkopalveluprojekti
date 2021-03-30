@@ -6,7 +6,7 @@ export default function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [viesti, setViesti] = useState('');
+  const [viesti, setViesti] = useState([]);
   const [loginStatus, setLoginStatus] = useState('');
 
  
@@ -20,11 +20,12 @@ export default function Login() {
             password: password,
         }).then((response) => {
 
-          if (response.data.length>4) {
-            setLoginStatus(response.data)
-            setViesti(response.data.id)
+          if ((response.data.id)>0) {
+            setLoginStatus(response.data.username)
+            
           } else {
-            alert("väärä käyttäjätunnus/salasana")
+            setLoginStatus("hommat kusi")
+            
           }
              console.log(response.data);
              });
