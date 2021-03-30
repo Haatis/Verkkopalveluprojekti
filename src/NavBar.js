@@ -117,7 +117,9 @@ export default function NavBar() {
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
               <Nav.Link href="/login" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
-              <Nav.Link href="/Cart" className="mx-1 ms-3"><i className="fa fa-shopping-cart"></i></Nav.Link>
+              <div className="border border-dark my-0 py-0"></div>
+              <Nav.Link href="/Cart" className="mx-1"><i className="fa fa-shopping-cart"></i></Nav.Link>
+              <div className="border border-dark my-0 py-0"></div>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
