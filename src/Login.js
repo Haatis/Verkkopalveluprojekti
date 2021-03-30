@@ -34,6 +34,8 @@ export default function Login() {
     useEffect(() =>{
       if("user" in localStorage){
           setUser(JSON.parse(localStorage.getItem("user")))
+          alert("Olet jo kirjaantunut sisään")
+          window.location.href = "http://localhost:3000/"
       }
   }, [])
   
@@ -50,10 +52,10 @@ export default function Login() {
   }
   
 
+
   return (
     <>
     
-
     <form className="bg-light">
           <div className="row">
           <label for="exampleEmail" sm={2}>Username</label>
@@ -74,12 +76,7 @@ export default function Login() {
              <h1>{loginStatus}</h1>
           </div>
         </div>
-        <h1>
-      </h1>
-      
-      <div>
-   </div>
-
+     
       </form>
    </>
 
