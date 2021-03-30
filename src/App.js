@@ -16,6 +16,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Add from "./Add";
 import Cart from "./Cart";
+import Edit from "./Edit";
 
 
 
@@ -42,6 +43,7 @@ function App() {
        <Route path="/login" component={Login} />
        <Route path="/register" component={Register} />
        <Route path="/add" component={Add} />
+       <Route path="/edit/:it" component={Edit} />
        <Route component={NotFound} />
      </Switch>
    <Footer />

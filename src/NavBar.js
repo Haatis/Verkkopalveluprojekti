@@ -4,7 +4,7 @@ import logo from './img/commsv2.png';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 export default function NavBar() {
   const URL = "HTTP://localhost/verkkokauppa/";
@@ -32,45 +32,56 @@ export default function NavBar() {
     setshowOheis(false);
   }
 
+  //hakee ostoskorin tiedot localsoragesta
+  const cart = localStorage.getItem("cart")
+  const arr = JSON.parse(cart)
+  var counts = {};
+
+  function emptyCart() {
+    localStorage.clear("cart")
+    window.location.reload(false);
+  }
 
 
-
-
-    let cart = localStorage.getItem("cart")
-    console.log(cart)
-
-
-
+  //laskee uniikkien arvojen määrän 
+  if ("cart" in localStorage) {
+    for (var i = 0; i < arr.length; i++) {
+      counts[arr[i]] = 1 + (counts[arr[i]] || 0);
+    }
+  }
 
   useEffect(() => {
-    let status = 0;
-    fetch(URL + "cart.php", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        search: 1
-      }),
-    })
-      .then((response) => {
-        status = parseInt(response.status);
-        return response.json();
-      })
-      .then(
-        (response) => {
-          if (status === 200) {
-            setItems(response);
-          } else {
-            alert(response.error);
-          }
+    if ("cart" in localStorage) {
+      //hakee ostoskori tuotteet tietokannasta
+      let status = 0;
+      fetch(URL + "cart.php", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
         },
-        (error) => {
-          alert(error);
-        }
-      );
-  }, []);
+        body: JSON.stringify({
+          search: arr
+        }),
+      })
+        .then((response) => {
+          status = parseInt(response.status);
+          return response.json();
+        })
+        .then(
+          (response) => {
+            if (status === 200) {
+              setItems(response);
+            } else {
+              alert(response.error);
+            }
+          },
+          (error) => {
+            alert(error);
+          }
+        );
+    }
+  }, [])
 
   return (
     <>
@@ -116,10 +127,34 @@ export default function NavBar() {
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
+<<<<<<< HEAD
               <Nav.Link href="/login" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
               <div className="border border-dark my-0 py-0"></div>
               <Nav.Link href="/Cart" className="mx-1"><i className="fa fa-shopping-cart"></i></Nav.Link>
               <div className="border border-dark my-0 py-0"></div>
+=======
+              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1">
+
+                {items.map((item) => (
+                  <NavDropdown.Item key={item.id} className="border" href={"/Product/" + item.id}>
+                    <div>
+                      {item.tuotenimi}
+                    </div>
+                    <div className="float-end text-danger">
+                      {(counts[item.id] * item.hinta).toLocaleString("fi-FI")} €
+                    </div>
+                    <div className="">
+                      <p><small>
+                        {counts[item.id]} X {(item.hinta).toLocaleString("fi-FI")}€
+                      </small></p>
+                    </div>
+                  </NavDropdown.Item>
+                ))}
+                <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
+                <button className="btn btn-primary float-end col-6" type="button" onClick="">Kassalle</button>
+              </NavDropdown>
+              <Nav.Link href="/login" className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
+>>>>>>> 22da2a86b30c56688ec5e23287366fca93af9677
             </Nav>
           </Navbar.Collapse>
         </Navbar>
