@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 export default function NavBar() {
   const URL = "HTTP://localhost/verkkokauppa/";
   const [search, setSearch] = useState("")
-  const [shoppingCartItem, setShoppingCartItem] = useState([])
   const [items, setItems] = useState([])
 
   function searchItem(e) {
@@ -38,7 +37,7 @@ export default function NavBar() {
   var counts = {};
 
   function emptyCart() {
-    localStorage.clear("cart")
+    localStorage.removeItem("cart")
     window.location.reload(false);
   }
 
@@ -127,12 +126,6 @@ export default function NavBar() {
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
-<<<<<<< HEAD
-              <Nav.Link href="/login" className="mx-1 ms-3"><i class="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
-              <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link href="/Cart" className="mx-1"><i className="fa fa-shopping-cart"></i></Nav.Link>
-              <div className="border border-dark my-0 py-0"></div>
-=======
               <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1">
 
                 {items.map((item) => (
@@ -151,10 +144,9 @@ export default function NavBar() {
                   </NavDropdown.Item>
                 ))}
                 <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
-                <button className="btn btn-primary float-end col-6" type="button" onClick="">Kassalle</button>
+                <a href="/cart" className="btn btn-primary float-end col-6" type="button" onClick="">Kassalle</a>
               </NavDropdown>
               <Nav.Link href="/login" className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
->>>>>>> 22da2a86b30c56688ec5e23287366fca93af9677
             </Nav>
           </Navbar.Collapse>
         </Navbar>
