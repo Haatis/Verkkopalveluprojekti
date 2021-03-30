@@ -51,6 +51,11 @@ h1 {
   margin-bottom: 0;
   border-top: gray 1px solid;
 }
+.text {
+  color: white;
+  background-color: #6c757d;
+  margin-bottom: 0;
+}
 .container {
   margin-top: 50px;
 }
@@ -149,4 +154,23 @@ a{
 }
 .lightblue:hover {
   color: rgb(0, 191, 255);
+}
+
+.btn-own {
+    color: #fff;
+    background-color: #00af34;
+    border-color: #005f33;
+}
+.grey {
+  background-color: grey;
+}
+
+.right {
+  float: right;
+}
+
+.btn-warning:hover {
+  color: #000;
+  background-color: #b48906;
+  border-color: #b48906;
 }
