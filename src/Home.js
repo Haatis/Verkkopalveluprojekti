@@ -93,7 +93,7 @@ export default function Home() {
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>
           
-            <div>
+            <div className="yläosa">
             <a  href={"/Product/" + item.id} >
               <img src="" className="card-img-top" alt=""></img>
               <div className="card-body">
@@ -103,8 +103,8 @@ export default function Home() {
                 </div>
                 </a>
                 </div>
-                <div className="row">
-                <div className="vasen-pohja col-6">
+                <div className="row align-bottom">
+                <div className="vasen-pohja col-6 align-bottom">
                   <button
                     onClick={() => addToCart(item.id)}
                     value={item.id}
@@ -113,7 +113,7 @@ export default function Home() {
                     <i className="fa fa-shopping-cart"></i>
                   </button>
                 </div>
-                <div className="oikea-pohja col-6 mt-2">
+                <div className="oikea-pohja col-6 mt-2 align-bottom">
                   <h5>{item.hinta + "€"}</h5>
                 </div>
                 </div>
@@ -131,7 +131,7 @@ export default function Home() {
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>
           
-            <div>
+            <div className="yläosa">
             <a  href={"/Product/" + item.id} >
               <img src="" className="card-img-top" alt=""></img>
               <div className="card-body">
@@ -141,8 +141,8 @@ export default function Home() {
                 </div>
                 </a>
                 </div>
-                <div className="row">
-                <div className="vasen-pohja col-6">
+                <div className="row align-bottom">
+                <div className="vasen-pohja col-6 align-bottom">
                   <button
                     onClick={() => addToCart(item.id)}
                     value={item.id}
@@ -151,7 +151,7 @@ export default function Home() {
                     <i className="fa fa-shopping-cart"></i>
                   </button>
                 </div>
-                <div className="oikea-pohja col-6 mt-2">
+                <div className="oikea-pohja col-6 mt-2 align-bottom">
                   <h5>{item.hinta + "€"}</h5>
                 </div>
                 </div>

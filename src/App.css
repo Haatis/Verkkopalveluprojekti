@@ -98,6 +98,7 @@ a{
 .oikea-pohja {
   display: inline-block;
   text-align: center;
+  
 }
 
 .footerlink {
@@ -173,4 +174,9 @@ a{
   color: #000;
   background-color: #b48906;
   border-color: #b48906;
+}
+
+
+.yläosa {
+  height: 410px;
 }

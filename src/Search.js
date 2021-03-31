@@ -142,35 +142,39 @@ export default function Search() {
           <h1>content</h1>
 
           <div className="row">
-            {items.map((item) => (
-              <div
-                className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 p-0 text-center"
-                key={item.id}
-              >
-                <a /* href={"/Product/" + item.id} */>
-                  <div>
-                    <img src="" className="card-img-top" alt=""></img>
-                    <div className="card-body">
-                      <img src={item.kuva} className="img-fluid" alt="Logo" />
-                      <h5 className="card-title">{item.tuotenimi}</h5>
-                      <p className="card-text text-left">{item.tuotetiivistelmä}</p>
-                      <div className="vasen-pohja">
-                        <button
-                          onClick={() => addToCart(item.id)}
-                          value={item.id}
-                          className="btn btn-primary"
-                        >
-                          <i className="fa fa-shopping-cart"></i>
-                        </button>
-                      </div>
-                      <div className="oikea-pohja">
-                        <p>{item.hinta + "€"}</p>
-                      </div>
-                    </div>
-                  </div>
+          {items.map((item) => (
+        <div
+          className="card col-xl-6 col-lg-6 col-md-12 col-sm-12 text-center"
+          key={item.id}>
+          
+            <div className="yläosa">
+            <a  href={"/Product/" + item.id} >
+              <img src="" className="card-img-top" alt=""></img>
+              <div className="card-body">
+                <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                <h5 className="card-title">{item.tuotenimi}</h5>
+                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
+                </div>
                 </a>
-              </div>
-            ))}
+                </div>
+                <div className="row align-bottom">
+                <div className="vasen-pohja col-6 align-bottom">
+                  <button
+                    onClick={() => addToCart(item.id)}
+                    value={item.id}
+                    className="btn btn-primary mb-2"
+                  >
+                    <i className="fa fa-shopping-cart"></i>
+                  </button>
+                </div>
+                <div className="oikea-pohja col-6 mt-2 align-bottom">
+                  <h5>{item.hinta + "€"}</h5>
+                </div>
+                </div>
+            
+          
+        </div>
+      ))}
           </div>
         </div>
       </div>

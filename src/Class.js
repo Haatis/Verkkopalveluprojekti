@@ -12,6 +12,7 @@ export default function Class() {
   const [kuva, setTuotekuva] = useState("");
   const { it } = useParams();
   const [sortSql, setSortSql] = useState("")
+  const [cart, setCart] = useState([])
 
 
   useEffect(() => {
@@ -44,6 +45,19 @@ export default function Class() {
         }
       );
   }, [sortSql]);
+
+  useEffect(() =>{
+    if("cart" in localStorage){
+        setCart(JSON.parse(localStorage.getItem("cart")))
+    }
+}, [])
+
+function addToCart(item){
+    const newCart = [...cart, item];
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    window.location.reload(false);
+}
 
   function sort(e) {
     if (e == 1) {
@@ -82,29 +96,39 @@ export default function Class() {
           <h1>content</h1>
 
           <ul className="row">
-            {items.map((item) => (
-              <li className="card col-lg-6 col-md-12 text-center" key={item.id}>
-                <div>
-                <a href={"/Product/" + item.id}>
-                    <div>
-                      <img src="" className="card-img-top" alt=""></img>
-                      <div className="card-body">
-                        <img src={item.kuva} className="tuotekuva" alt="Logo" />
-                        <h5 className="card-title">{item.tuotenimi}</h5>
-                        <p className="card-text">{item.tuotenimi}</p>
-                        <p className="card-text">{item.tuotetiivistelmä}</p>
-                        <div className="vasen-pohja">
-                          <a href="#" className="btn btn-primary">
-                            <i className="fa fa-shopping-cart"></i>
-                          </a>
-                        </div>
-                        <p>{item.hinta + "€"}</p>
-                      </div>
-                    </div>
-                  </a>
+          {items.map((item) => (
+        <div
+          className="card col-xl-6 col-lg-6 col-md-12 col-sm-12 text-center"
+          key={item.id}>
+          
+            <div className="yläosa">
+            <a  href={"/Product/" + item.id} >
+              <img src="" className="card-img-top" alt=""></img>
+              <div className="card-body">
+                <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                <h5 className="card-title">{item.tuotenimi}</h5>
+                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                 </div>
-              </li>
-            ))}
+                </a>
+                </div>
+                <div className="row align-bottom">
+                <div className="vasen-pohja col-6 align-bottom">
+                  <button
+                    onClick={() => addToCart(item.id)}
+                    value={item.id}
+                    className="btn btn-primary mb-2"
+                  >
+                    <i className="fa fa-shopping-cart"></i>
+                  </button>
+                </div>
+                <div className="oikea-pohja col-6 mt-2 align-bottom">
+                  <h5>{item.hinta + "€"}</h5>
+                </div>
+                </div>
+            
+          
+        </div>
+      ))}
           </ul>
         </div>
       </div>
