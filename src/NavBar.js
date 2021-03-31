@@ -130,12 +130,12 @@ alert("Olet nyt kirjautunut ulos")
     <>
 
       <div className="row">
-        <img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" />
+      <a href="/"><img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" /></a>
         <Navbar collapseOnSelect expand="lg" className="color-nav py-0 px-0" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto d-flex">
-              <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link>
+              {/* <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link> */}
               <div className="border border-dark my-0 py-0"></div>
               <Nav.Link href="/Class/komponentit" className="ms-1">Komponentit</Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown" className=""
@@ -170,7 +170,7 @@ alert("Olet nyt kirjautunut ulos")
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
               </form>
-              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1">
+              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1"> 
 
                 {items.map((item) => (
                   <NavDropdown.Item key={item.id} className="border" href={"/Product/" + item.id}>
@@ -192,7 +192,7 @@ alert("Olet nyt kirjautunut ulos")
               </NavDropdown>
 
               {("user" in localStorage) ? (<Nav.Link href="/" onClick={() => emptyUser()}className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos<br></br> <p className="mb-1 text-center">({user})</p></Nav.Link>):(
-              <Nav.Link href="/login" className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
+              <Nav.Link href="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
            
             </Nav>
           </Navbar.Collapse>
