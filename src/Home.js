@@ -1,4 +1,3 @@
-
 import asus from './tuoteimg/asus.jpg';
 import adrus from './tuoteimg/adrus.jpg';
 import geforce from './tuoteimg/geforce.jpg';
@@ -92,33 +91,37 @@ export default function Home() {
             {items.slice(0, 4).map((item) => (
         <div
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
-          key={item.id}
-        >
-          <a /* href={"/Product/" + item.id} */>
+          key={item.id}>
+          
             <div>
+            <a  href={"/Product/" + item.id} >
               <img src="" className="card-img-top" alt=""></img>
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
                 <p className="card-text text-left">{item.tuotekuvaus}</p>
-                <div className="vasen-pohja">
+                </div>
+                </a>
+                </div>
+                <div className="row">
+                <div className="vasen-pohja col-6">
                   <button
                     onClick={() => addToCart(item.id)}
                     value={item.id}
-                    className="btn btn-primary"
+                    className="btn btn-primary mb-2"
                   >
                     <i className="fa fa-shopping-cart"></i>
                   </button>
                 </div>
-                <div className="oikea-pohja">
-                  <p>{item.hinta + "€"}</p>
+                <div className="oikea-pohja col-6 mt-2">
+                  <h5>{item.hinta + "€"}</h5>
                 </div>
-              </div>
-            </div>
-          </a>
+                </div>
+            
+          
         </div>
       ))}
-            </div>
+      </div>
             <div className="row">
                 <h1>Comm's Suosittelee</h1>
             </div>
