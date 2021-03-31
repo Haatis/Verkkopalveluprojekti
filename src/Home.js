@@ -126,110 +126,39 @@ export default function Home() {
                 <h1>Comm's Suosittelee</h1>
             </div>
             <div className="row">
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div >
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
+            {items.splice(4, 8).map((item) => (
+        <div
+          className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
+          key={item.id}>
+          
+            <div>
+            <a  href={"/Product/" + item.id} >
+              <img src="" className="card-img-top" alt=""></img>
+              <div className="card-body">
+                <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                <h5 className="card-title">{item.tuotenimi}</h5>
+                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                 </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
+                </a>
                 </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
+                <div className="row">
+                <div className="vasen-pohja col-6">
+                  <button
+                    onClick={() => addToCart(item.id)}
+                    value={item.id}
+                    className="btn btn-primary mb-2"
+                  >
+                    <i className="fa fa-shopping-cart"></i>
+                  </button>
                 </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
+                <div className="oikea-pohja col-6 mt-2">
+                  <h5>{item.hinta + "€"}</h5>
                 </div>
-            </div>
-            <div className="row">
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div >
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
                 </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div className="card  col-md-3 col-sm-6">
-                    <a href="">
-                        <div>
-                            <img src="" className="card-img-top" alt=""></img>
-                            <div className="card-body">
-                                <h5 className="card-title">Card with stretched link</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            
+          
+        </div>
+      ))}
             </div>
 
         </>
