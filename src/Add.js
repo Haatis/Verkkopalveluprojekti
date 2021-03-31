@@ -171,7 +171,7 @@ alert("Olet nyt kirjautunut ulos")
                             <div className="card-body">
                             <img src={item.kuva} className="tuotekuva" alt="Logo" />
                                 <h5 className="card-title">{item.tuotenimi}</h5>
-                                <p className="card-text text-left">{item.tuotekuvaus}</p>
+                                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                                 
                                <div className="vasen-pohja">
                                 <a href="#" className="btn btn-primary"><i className="fa fa-shopping-cart"></i></a>

@@ -129,7 +129,7 @@ export default function Search() {
                     <div className="card-body">
                       <img src={item.kuva} className="img-fluid" alt="Logo" />
                       <h5 className="card-title">{item.tuotenimi}</h5>
-                      <p className="card-text text-left">{item.tuotekuvaus}</p>
+                      <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                       <div className="vasen-pohja">
                         <button
                           onClick={() => addToCart(item.id)}

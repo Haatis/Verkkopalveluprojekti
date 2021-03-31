@@ -62,7 +62,6 @@ export default function Class() {
                         <img src={item.kuva} className="tuotekuva" alt="Logo" />
                         <h5 className="card-title">{item.tuotenimi}</h5>
                         <p className="card-text">{item.tuotenimi}</p>
-                        <p className="card-text">{item.tuotekuvaus}</p>
                         <p className="card-text">{item.tuotetiivistelmä}</p>
                         <div className="vasen-pohja">
                           <a href="#" className="btn btn-primary">
