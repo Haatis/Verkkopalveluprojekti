@@ -5,11 +5,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 export default function NavBar() {
   const URL = "HTTP://localhost/verkkokauppa/";
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
+  const [user, setUser] = useState([]);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState('');
 
   function searchItem(e) {
     e.preventDefault();
@@ -82,6 +87,45 @@ export default function NavBar() {
     }
   }, [])
 
+  const login = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost/verkkokauppa/login.php', {
+        username: username,
+        password: password,
+    }).then((response) => {
+
+      if ((response.data.id)>0) {
+        addToUser(response.data.username)
+      } else {
+        setLoginStatus("hommat kusi")
+        
+        
+      }
+         console.log(response.data);
+         });
+};
+
+useEffect(() =>{
+  if("user" in localStorage){
+      setUser(JSON.parse(localStorage.getItem("user")))
+  }
+}, [])
+
+function addToUser(item){
+  const newUser = [...user, item];
+  setUser(newUser);
+  localStorage.setItem("user", JSON.stringify(newUser));
+  window.location.reload(false);
+}
+
+function emptyUser() {
+localStorage.clear("user")
+window.location.reload(false);
+alert("Olet nyt kirjautunut ulos")
+}
+
+
+
   return (
     <>
 
@@ -146,7 +190,10 @@ export default function NavBar() {
                 <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
                 <a href="/cart" className="btn btn-primary float-end col-6" type="button" onClick="">Kassalle</a>
               </NavDropdown>
-              <Nav.Link href="/login" className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>
+
+              {("user" in localStorage) ? (<Nav.Link href="/" onClick={() => emptyUser()}className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos<br></br> <p className="mb-1 text-center">({user})</p></Nav.Link>):(
+              <Nav.Link href="/login" className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
+           
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -13,6 +13,11 @@ export default function Add() {
   const [luokka, setLuokka] = useState('');
   const [viesti, setViesti] = useState('');
   const [items, setItems] = useState([]);
+   const [user, setUser] = useState([]);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState('');
+  const [admin, setAdmin] = useState([]);
   const URL = "http://localhost/verkkokauppa/";
     
   useEffect(() => {
@@ -35,6 +40,37 @@ export default function Add() {
             }
         );
 }, []);
+
+
+
+useEffect(() =>{
+  if("admin" in localStorage) {
+    alert("Ylläpitäjänä voit lisätä/poistaa/muokata tuotteita")
+  } else {
+    alert("Et ole kirjautunut ylläpitäjänä")
+    window.location.href = "http://localhost:3000/"
+} 
+}, [])
+
+function addToUser(item){
+const newUser = [...user, item];
+setUser(newUser);
+localStorage.setItem("user", JSON.stringify(newUser));
+window.location.reload(false);
+}
+
+function addToAdmin(item){
+  const newAdmin = [...admin, item];
+  setAdmin(newAdmin);
+  localStorage.setItem("admin", JSON.stringify(newAdmin));
+  window.location.reload(false);
+}
+
+function emptyUser() {
+localStorage.clear("user")
+window.location.reload(false);
+alert("Olet nyt kirjautunut ulos")
+}
 
   const add = (e) => {
         axios.post('http://localhost/verkkokauppa/add.php', {
@@ -75,7 +111,6 @@ export default function Add() {
             <input onChange={(e) => setTuotenimi(e.target.value)} type="text" />
           </div>
         </div>
-
         <div className="row">
           <label for="examplePassword" sm={2}>Hinta</label>
           <div className="col-sm-10" >
