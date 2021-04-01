@@ -1,8 +1,77 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Order() {
     const [show, setShow]=useState(false)
+    const [items, setItems] = useState([]);
+    const URL = "HTTP://localhost/verkkokauppa/";
+
+
+    const cart = localStorage.getItem("cart");
+    let arr = JSON.parse(cart);
+
+    //poistaa cartin localstoragesta jos se on tyhjä, muuten näyttää virhettä fetchissä
+    if ("cart" in localStorage) {
+        if (arr.length === 0) {
+            localStorage.removeItem("cart");
+        }
+    }
+
+
+    //laskee uniikkien arvojen määrän
+    var counts = {};
+    if ("cart" in localStorage) {
+        for (var i = 0; i < arr.length; i++) {
+            counts[arr[i]] = 1 + (counts[arr[i]] || 0);
+        }
+    }
+
+
+
+    useEffect(() => {
+        if ("cart" in localStorage) {
+            //hakee ostoskori tuotteet tietokannasta
+            let status = 0;
+            fetch(URL + "cart.php", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    search: arr,
+                }),
+            })
+                .then((response) => {
+                    status = parseInt(response.status);
+                    return response.json();
+                })
+                .then(
+                    (response) => {
+                        if (status === 200) {
+                            setItems(response);
+                        } else {
+                            alert(response.error);
+                        }
+                    },
+                    (error) => {
+                        alert(error);
+                    }
+                );
+        }
+    }, []);
+
+
+    //laskee kokonaishinnan
+
+    const numbers = items.map((item) => Number(item.hinta))
+    const amounts = Object.values(counts)
+    let arr2 = []
+    for (let i = 0; i < amounts.length; i++) {
+        arr2[i] = numbers[i] * amounts[i]
+    }
+    let sum = arr2.reduce((a, b) => a + b, 0)
+    console.log(sum)
 
     return (
         <>
@@ -34,36 +103,6 @@ export default function Order() {
   </div>
   </div>
 
-  <div class="form-check form-check">
-  <input class="form-check-input" onChange={()=>setShow(false)} type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-  <label class="form-check-label" for="inlineRadio1">Laskutusosoitteeni on sama kuin toimitusosoitteeni</label>
-</div>
-<div class="form-check form-check">
-  <input class="form-check-input" onChange={()=>setShow(true)} type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-  <label class="form-check-label" for="inlineRadio2">Laskutusosoitteeni on eri kuin toimitusosoitteeni</label>
-</div>
-
-
-
-  {show?<div><h4 className="m-3">Laskuosoite</h4><div className="row"><div class="mb-3 col-5">
-    <label for="nimi2" class="form-label">Etu- ja sukunimi</label>
-    <input type="text" placeholder="Etu ja sukunimi" class="form-control" id="nimi2"/>
-    
-  </div>
-  <div class="mb-3 col-5">
-    <label for="puhelin2" class="form-label">Puhelin</label>
-    <input type="text" placeholder="Puhelin" class="form-control" id="puhelin2"/>
-  </div>
-  </div>
-  <div className="row">
-  <div class="mb-3 col-5">
-    <label for="osoite2" class="form-label">Katuosoite</label>
-    <input type="text" placeholder="Katuosoite" class="form-control" id="osoite2"/>
-  </div><div class="mb-3 col-5">
-    <label for="posti2" class="form-label">Postinumero</label>
-    <input type="text" placeholder="Postinumero" class="form-control" id="posti2"/>
-  </div></div></div>:null}
-
    <div class="mb-3 col-10">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
@@ -94,7 +133,31 @@ export default function Order() {
   
     </form>
     </div>
-    <div className="col-5 mt-5"><h3>OSTOSKORI NÄKYVIIN TÄHÄN</h3></div>
+    <div className="col-5 mt-5"><ul className="text-center d-flex flex-column">
+                {items.map((item) => (
+                    <li key={item.id} className="border-top border-3 mt-2" href={"/Product/" + item.id}>
+                        
+                        <div>
+                            <img src={item.kuva} className="img-fluid col-1 float-start" alt="Logo" />
+                            <h2 className="float-start">{item.tuotenimi}</h2>
+                        </div>
+                        <h2 className="text-danger float-end">
+                            {(counts[item.id] * item.hinta).toLocaleString("fi-FI")} €
+                        </h2>
+                        <h3 className="float-end">
+                            {counts[item.id]} X {item.hinta.toLocaleString("fi-FI")}€
+                        </h3>
+                        
+
+                    </li>
+                ))}
+                         <h2 className="">
+                            Yhteensä:
+                        </h2>
+                        <h2 className="text-primary">
+                           {sum}€
+                        </h2>
+            </ul></div>
   </div>
     
         </>
