@@ -11,6 +11,7 @@ export default function Product() {
     const [kuva, setTuotekuva] = useState("");
     const [items, setItems] = useState([]);
     const [kommentit, setKommentit] = useState([]);
+    const [keskiarvo, setKeskiarvo] = useState([]);
     const { it } = useParams();
     const [cart, setCart] = useState([]);
     const [otsikko, setOtsikko] = useState('');
@@ -41,6 +42,36 @@ export default function Product() {
             (response) => {
               if (status === 200) {
                 setItems(response);
+              } else {
+                alert(response.error);
+              }
+            },
+            (error) => {
+              alert(error);
+            }
+          );
+      }, []);
+
+      useEffect(() => {
+        let status = 0;
+        fetch(URL + "average.php", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            search: it,
+          }),
+        })
+          .then((response) => {
+            status = parseInt(response.status);
+            return response.json();
+          })
+          .then(
+            (response) => {
+              if (status === 200) {
+                setKeskiarvo(response);
               } else {
                 alert(response.error);
               }
@@ -130,17 +161,27 @@ export default function Product() {
       }
 
       function tähti (e) {
-        if (e === 4) {
-          return (<><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i></>)
-        }  else if (e === 3) {
-          return (<><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i></>)
-        } else if (e === 2) {
-          return (<><i class='fa fa-star'></i> <i class='fa fa-star'></i></>)
-        } else if (e === 1) {
-          return (<><i class='fa fa-star'></i></>)
-        } else {
-          return (<><i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i></>)
-        }
+        if (e > 4.5) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+        } else if(e > 4.0) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+        } else if(e > 3.5) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+        }else if(e > 3.0) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+        }else if(e > 2.5) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+        }else if(e > 2.0) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+        } else if(e > 1.5) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+        } else if(e > 1.0) {
+          return(<><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+        } else if(e > 0.5) {
+          return(<><i class="fa fa-star"></i></>)
+        }  else if(e > 0.0) {
+          return(<><i class="fa fa-star-half"></i></>)
+        } 
       }
 
     return (
@@ -172,6 +213,19 @@ export default function Product() {
                  ))}
                  </div>
         </div>    
+
+        {keskiarvo.map((keskiarvo) => (
+            <div className="row kommenttitausta">
+        <div className="" key={keskiarvo.id}>
+                    
+
+                        <div className="bg-white p-2 m-2 border border-dark">
+                           <div>keskiarvo {tähti(Math.round(keskiarvo.keskiarvo*10)/10)}</div>
+                        </div>
+                </div>
+                </div>
+                
+                 ))}
        
           {kommentit.map((kommentti) => (
             <div className="row kommenttitausta">
@@ -180,7 +234,7 @@ export default function Product() {
 
                         <div className="bg-white p-2 m-2 border border-dark">
                             <div className="">
-                            <h3 className="ms-4">{kommentti.otsikko} {tähti(parseInt(kommentti.arvosana))} </h3>
+                            <h3 className="ms-4">{kommentti.otsikko} {tähti(kommentti.arvosana)} </h3>
                             <h4 className="ms-4">{kommentti.kommentti}</h4>
                             <h5 className="ms-4">{kommentti.käyttäjä}</h5>
                             {("admin" in localStorage) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
