@@ -16,8 +16,10 @@ export default function Product() {
     const [otsikko, setOtsikko] = useState('');
     const [kommentti, setKommentti] = useState('');
     const [arvosana, setArvosana] = useState('');
+    const [id, setId] = useState('');
     const [kayttaja, setKayttaja] = useState('');
     const [user, setUser] = useState([]);
+    const [admin, setAdmin] = useState([]);
 
     useEffect(() => {
         let status = 0;
@@ -79,7 +81,14 @@ export default function Product() {
           );
       }, []);
 
-
+      function remove(id) {
+        axios.post('http://localhost/verkkokauppa/deletecomment.php', {
+          id:id,
+        }).then((response) => {
+            console.log(response);
+            window.location.href = "http://localhost:3000/product/" + it
+        });
+    };
 
       const comment = (e) => {
         axios.post('http://localhost/verkkokauppa/postcomment.php', {
@@ -106,6 +115,12 @@ export default function Product() {
           setCart(JSON.parse(localStorage.getItem("cart")));
         }
       }, []);
+
+      useEffect(() =>{
+        if("admin" in localStorage) {
+          setAdmin(JSON.parse(localStorage.getItem("admin")));
+        } 
+      }, [])
     
       function addToCart(item) {
         const newCart = [...cart, item];
@@ -168,6 +183,7 @@ export default function Product() {
                             <h3 className="ms-4">{kommentti.otsikko} {tähti(parseInt(kommentti.arvosana))} </h3>
                             <h4 className="ms-4">{kommentti.kommentti}</h4>
                             <h5 className="ms-4">{kommentti.käyttäjä}</h5>
+                            {("admin" in localStorage) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
                             
                           
                             </div>
@@ -178,32 +194,33 @@ export default function Product() {
                  ))}
                 
                  <div className="row bg-white">
-                 <div className="row">
+                 {("user" in localStorage) && <div className="row">
                    
-          <label for="examplePassword" sm={2}>Otsikko</label>
+           <label for="examplePassword" sm={2}>Otsikko</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setOtsikko(e.target.value)} type="text"/>
           </div>
-        </div>
-        <div className="row">
+        </div>}
+        {("user" in localStorage) &&<div className="row">
           <label for="examplePassword" sm={2}>Kommentti</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setKommentti(e.target.value)} type="text"/>
           </div>
-        </div>
+        </div>}
 
-        <div className="row">
+        {("user" in localStorage) && <div className="row">
           <label for="examplePassword" sm={2}>Arvosana</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setArvosana(e.target.value)} type="text"/>
           </div>
-        </div>
+        </div>}
 
-        <div className="row">
+        {("user" in localStorage) &&<div className="row">
         <div className="col-sm-10" >
+        
             <button onClick={comment}>Lisää arvostelu</button>
           </div>
-        </div>
+        </div>}
 
         </div>
         
