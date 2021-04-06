@@ -64,7 +64,7 @@ export default function Home() {
                     </div>
                     <div className="carousel-inner ">
                         <div className="carousel-item active ">
-                            <img src={geforce} className="d-block w-100" alt="geforce"></img>
+                            <a href="/Product/4"><img src={geforce} className="d-block w-100" alt="geforce"></img></a>
 
                         </div>
                         <div className="carousel-item">

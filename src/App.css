@@ -169,6 +169,27 @@ a{
   color: white;
 }
 
+.priceinfo {
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 20px;
+  padding-bottom: 2px;
+  border: 1px solid #ccc;
+  background: #f6f6f6;
+}
+
+.pricebackground {
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  background-color: rgb(223, 223, 223);
+}
+
+.lisäinfo {
+  font-size: 14px;
+}
+
 .right {
   float: right;
 }
@@ -191,4 +212,19 @@ background-color: #cecece;
 .käyttäjä {
   text-align: center;
   margin: 1px;
+}
+
+.titlecolor {
+  border-radius: 5px;
+  padding-left: 4px;
+  background-color: rgb(57, 197, 132);
+}
+
+/* Pystysuora viiva */
+.vr {
+  height: 100%;
+  width: 0.5px;
+  border-left: 1px solid gray;
+  /*display: inline-block;*/    
+  /*margin: 0 auto;*/
 }
