@@ -162,10 +162,6 @@ alert("Olet nyt kirjautunut ulos")
                 <NavDropdown.Item href="/Category/Näytöt">Näytöt</NavDropdown.Item>
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
-              <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
-              <div className="border border-dark my-0 py-0"></div>
               <form className="d-flex float-end" onSubmit={searchItem}>
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 <button className="btn bt btn-primary my-2 py-0 text-light" type="submit">Search</button>
@@ -191,9 +187,11 @@ alert("Olet nyt kirjautunut ulos")
                 <a href="/cart" className="btn btn-primary float-end col-6" type="button" onClick="">Kassalle</a>
               </NavDropdown>
 
-              {("user" in localStorage) ? (<Nav.Link href="/" onClick={() => emptyUser()}className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos<br></br> <p className="mb-1 text-center">({user})</p></Nav.Link>):(
-              <Nav.Link href="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
-           
+              <NavDropdown title="Tili" classname="">
+                {("user" in localStorage) ? (<Nav.Link href="/" onClick={() => emptyUser()}className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos<br></br> <p className="mb-1 text-center">({user})</p></Nav.Link>):(
+                <Nav.Link href="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
+              </NavDropdown>
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>
