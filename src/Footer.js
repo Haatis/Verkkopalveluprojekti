@@ -2,6 +2,7 @@ import React from 'react'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import {Link} from 'react-router-dom'
 
 export default function Footer() {
     return (
@@ -15,7 +16,7 @@ export default function Footer() {
                     <hr></hr>
                     <p> <a className="txtwhite" href="tel: +358451374061">+358 45 1374061</a></p>
                     <p> <a className="txtwhite" href="mailto:asiakaspalvelu@comms.fi">asiakaspalvelu@comms.fi</a></p>
-                    <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
+                    <Link className="mx-1 text-white" to="/ContactUs">Ota yhteyttä</Link>
 
                     
                 </div>

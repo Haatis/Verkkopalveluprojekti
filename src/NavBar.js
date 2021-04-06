@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-import {Button} from "react-bootstrap";
 
 export default function NavBar() {
   const URL = "HTTP://localhost/verkkokauppa/";
@@ -193,10 +192,8 @@ alert("Olet nyt kirjautunut ulos")
               <div className="border border-dark my-0 py-0"></div>
               <Nav.Link className="mx-1" href="#">Tili</Nav.Link>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link as={Link} to="/Class/ContactUs" className="mx-1">
-                Ota yhteyttä
-                </Nav.Link>
-              <div className="border border-dark my-0 py-0"></div>
+
+              <div className="my-0 py-0"></div>
               <form className="d-flex float-end">
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
                 
