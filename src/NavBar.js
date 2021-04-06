@@ -230,7 +230,7 @@ alert("Olet nyt kirjautunut ulos")
                 </Link>
               </NavDropdown>
 
-              {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()}className="mx-1 ms-3"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos<br></br> <p className="mb-1 text-center">({user})</p></Nav.Link>):(
+              {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()}className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user})</p></Nav.Link>):(
               <Nav.Link href="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
            
             </Nav>
