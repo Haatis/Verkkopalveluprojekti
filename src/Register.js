@@ -26,24 +26,24 @@ export default function Register() {
 
   return (
     <div>
-      <form className="bg-light">
+      <form className="bg-light" onSubmit={register}>
         <div className="row">
           <label for="exampleEmail" sm={2}>Username</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setUsernameReg(e.target.value)} type="text" />
+            <input onChange={(e) => setUsernameReg(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="row">
           <label for="examplePassword" sm={2}>Password</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setPasswordReg(e.target.value)} type="text"/>
+            <input onChange={(e) => setPasswordReg(e.target.value)} type="password" required/>
           </div>
         </div>
 
         <div className="row">
         <div className="col-sm-10" >
-            <button onClick={register}>rekisteröidy</button>
+            <button type="submit" value="Submit">rekisteröidy</button>
           </div>
         </div>
       </form>

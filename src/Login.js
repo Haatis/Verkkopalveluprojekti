@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <>
     
-    <form className="bg-light">
+    <form className="bg-light" onSubmit={login}>
           <div className="row">
           <label for="exampleEmail" sm={2}>Username</label>
           <div className="col-sm-10" >
@@ -83,7 +83,7 @@ export default function Login() {
         </div>
         <div className="row">
         <div className="col-sm-10" >
-            <button type="submit" value="Submit" onClick={login}>kirjaudu</button>
+            <button type="submit" value="Submit" >kirjaudu</button>
              <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
              <h1>{loginStatus}</h1>
           </div>
