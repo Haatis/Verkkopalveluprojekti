@@ -78,7 +78,7 @@ export default function Login() {
         <div className="row">
           <label for="examplePassword" sm={2}>Password</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setPassword(e.target.value)} type="text" required/>
+            <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
           </div>
         </div>
         <div className="row">
