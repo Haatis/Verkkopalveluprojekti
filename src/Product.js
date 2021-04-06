@@ -219,8 +219,8 @@ export default function Product() {
         <div className="" key={keskiarvo.id}>
                     
 
-                        <div className="bg-white p-2 m-2 border border-dark">
-                           <div>keskiarvo {tähti(Math.round(keskiarvo.keskiarvo*10)/10)}</div>
+                        <div className=" p-2 m-2 ">
+                           <h3>{tähti(Math.round(keskiarvo.keskiarvo*10)/10)}</h3>
                         </div>
                 </div>
                 </div>
@@ -249,7 +249,7 @@ export default function Product() {
                 
                  <div className="row bg-white">
                  {("user" in localStorage) && <div className="row">
-                   
+                   <h4>Jätä tuotteelle arvostelu</h4>
            <label for="examplePassword" sm={2}>Otsikko</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setOtsikko(e.target.value)} type="text"/>
