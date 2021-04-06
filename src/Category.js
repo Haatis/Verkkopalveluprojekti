@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {Link} from 'react-router-dom'
+
 
 
 export default function Category() {
@@ -13,7 +15,6 @@ export default function Category() {
   const { it } = useParams();
   const [sortSql, setSortSql] = useState("")
   const [cart, setCart] = useState([])
-
 
   useEffect(() => {
     let status = 0;
@@ -44,7 +45,7 @@ export default function Category() {
           alert(error);
         }
       );
-  }, [sortSql]);
+  }, [sortSql, it]);
 
   useEffect(() =>{
     if("cart" in localStorage){
@@ -104,14 +105,14 @@ function addToCart(item){
           key={item.id}>
           
             <div className="yläosa">
-            <a  href={"/Product/" + item.id} >
+            <Link to={"/Product/" + item.id}>
               <img src="" className="card-img-top" alt=""></img>
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
                 <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                 </div>
-                </a>
+                </Link>
                 </div>
                 <div className="row align-bottom">
                 <div className="vasen-pohja col-6 align-bottom">
