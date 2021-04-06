@@ -165,6 +165,9 @@ a{
 .grey {
   background-color: grey;
 }
+.txtwhite {
+  color: white;
+}
 
 .right {
   float: right;

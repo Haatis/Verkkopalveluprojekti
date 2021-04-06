@@ -1,5 +1,7 @@
 import React from 'react'
-
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 export default function Footer() {
     return (
@@ -10,8 +12,12 @@ export default function Footer() {
                 <div className="col-4">
                     <p>Asiakaspalvelu</p>
                     <p>Ma-Su &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24/7</p>
-                    <p>+358 45 1374061</p>
-                    <p>asiakaspalvelu@comms.fi</p>
+                    <hr></hr>
+                    <p> <a className="txtwhite" href="tel: +358451374061">+358 45 1374061</a></p>
+                    <p> <a className="txtwhite" href="mailto:asiakaspalvelu@comms.fi">asiakaspalvelu@comms.fi</a></p>
+                    <Nav.Link className="mx-1" href="/ContactUs.js">Ota yhteyttä</Nav.Link>
+
+                    
                 </div>
                 <div className="col-4">
                     <p>Ryhmä 7</p>
