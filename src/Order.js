@@ -12,6 +12,7 @@ export default function Order() {
     const [posti, setPosti] = useState('');
     const [kuljetus, setKuljetus] = useState('');
     const [maksu, setMaksu] = useState('');
+    const [id, setId] = useState('');
     const [tuotenro, setTuotenro] = useState([]);
     const [kpl, setKpl] = useState([]);
 
@@ -90,22 +91,34 @@ export default function Order() {
 
 
     const tilaa = (e) => {
-       for (let i = 0; i < items.length; i++) {
-        axios.post('http://localhost/verkkokauppa/order.php', {
-         nimi:nimi,
-         puhelin:puhelin,
-         osoite:osoite,
-         sahkoposti:sähköposti,
-         posti:posti,
-         kuljetus:kuljetus,
-         maksu:maksu,
-         tuotenro:tuotenro[i],
-         kpl:kpl[i],
-       
-        }).then((response) => {
-            console.log(response);
+            e.preventDefault();
+         axios.post('http://localhost/verkkokauppa/order.php', {
+          nimi:nimi,
+          puhelin:puhelin,
+          osoite:osoite,
+          sahkoposti:sähköposti,
+          posti:posti,
+          kuljetus:kuljetus,
+          maksu:maksu,
+        }
+
+        ).then((response) => {
+             console.log(response.data)
+             for (let i = 0; i < items.length; i++) {
+                e.preventDefault();
+             axios.post('http://localhost/verkkokauppa/orderinfo.php', {
+              id:(response.data),
+              tuotenro:tuotenro[i],
+              kpl:kpl[i],
+            }
            
-        });}
+           
+           ).then((response) => {
+                console.log(response);
+            });}
+             
+         })
+         
     };
 
     return (
