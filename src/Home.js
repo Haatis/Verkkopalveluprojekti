@@ -128,7 +128,7 @@ export default function Home() {
                 <h1>Comm's Suosittelee</h1>
             </div>
             <div className="row">
-            {items.splice(4, 8).map((item) => (
+            {items.slice(4, 12).map((item) => (
         <div
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>

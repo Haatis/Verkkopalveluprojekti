@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { useState, useEffect } from "react";
+import {Link} from 'react-router-dom'
 
 export default function Cart() {
     const [items, setItems] = useState([]);
@@ -159,7 +160,9 @@ export default function Cart() {
             </div>
 
             <h2 className="text">
-                <button className="btn btn-own right">Checkout</button>{" "}
+                <Link to="/order" className="btn btn-own right">
+                Siirry tilaamaan
+                </Link>
             </h2>
         </div>
     );
