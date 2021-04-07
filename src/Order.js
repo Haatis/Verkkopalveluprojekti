@@ -90,7 +90,7 @@ export default function Order() {
 
 
     const tilaa = (e) => {
-       
+       for (let i = 0; i < items.length; i++) {
         axios.post('http://localhost/verkkokauppa/order.php', {
          nimi:nimi,
          puhelin:puhelin,
@@ -99,13 +99,13 @@ export default function Order() {
          posti:posti,
          kuljetus:kuljetus,
          maksu:maksu,
-         tuotenro:tuotenro,
-         kpl:kpl,
-        
+         tuotenro:tuotenro[i],
+         kpl:kpl[i],
+       
         }).then((response) => {
             console.log(response);
            
-        });
+        });}
     };
 
     return (
