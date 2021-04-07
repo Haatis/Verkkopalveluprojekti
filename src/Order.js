@@ -91,7 +91,7 @@ export default function Order() {
 
 
     const tilaa = (e) => {
-            e.preventDefault();
+        e.preventDefault();
          axios.post('http://localhost/verkkokauppa/order.php', {
           nimi:nimi,
           puhelin:puhelin,
@@ -105,7 +105,6 @@ export default function Order() {
         ).then((response) => {
              console.log(response.data)
              for (let i = 0; i < items.length; i++) {
-                e.preventDefault();
              axios.post('http://localhost/verkkokauppa/orderinfo.php', {
               id:(response.data),
               tuotenro:tuotenro[i],
@@ -115,6 +114,10 @@ export default function Order() {
            
            ).then((response) => {
                 console.log(response);
+                localStorage.removeItem("cart")
+                alert("Tilaus onnistui")
+                window.location.href = "http://localhost:3000"
+                
             });}
              
          })
