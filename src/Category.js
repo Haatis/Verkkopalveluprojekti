@@ -112,8 +112,10 @@ export default function Category({URL, addToCart}) {
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
-                :<h5>{item.hinta + "€"}</h5>}
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>             
+                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                :<h5 className="price">{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             

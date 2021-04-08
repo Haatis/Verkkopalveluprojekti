@@ -101,8 +101,8 @@ console.log(URL)
                 </div>
                 </Link>
                 </div>
-                <div className="row align-bottom">
-                <div className="vasen-pohja col-6 align-bottom">
+                <div className="row align-bottom cardpricebackground">
+                <div className="vasen-pohja col-6 align-bottom ">
                   <button type="button"
                     onClick={e => addToCart(item.id)}
                     className="btn btn-primary mb-2"
@@ -111,7 +111,9 @@ console.log(URL)
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
+                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
                 :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>
@@ -149,9 +151,11 @@ console.log(URL)
                     <i className="fa fa-shopping-cart"></i>
                   </button>
                 </div>
-                <div className="oikea-pohja col-6 mt-2 align-bottom">
-                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
-                :<h5>{item.hinta + "€"}</h5>}
+                <div className="oikea-pohja col-6 mt-2 align-bottom ">
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>                
+                <h5 className="">{item.alennettuhinta + "€"}</h5>
+                <h6 className="">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                :<h5 className="price">{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             

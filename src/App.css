@@ -242,7 +242,7 @@ background-color: #cecece;
 .tuotekuva {
   width: 100px;
   height: 90px;
-}
+} */
 
 .productdestext {
   font-size: 12px;
@@ -251,6 +251,27 @@ background-color: #cecece;
 .productpriceinfo {
   border-radius: 4px;
   padding-top: 5px;
+  border: 1px solid #ccc;
+  background: #f6f6f6;
+}
+.discount {
+  color: red;
+  font-weight: 700;
+}
+
+.percent {
+  font-weight: 700;
+  background-color: rgb(255, 194, 81);
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.price {
+  font-weight: 700;
+}
+
+/* .cardpricebackground {
+  border-radius: 5px;
   border: 1px solid #ccc;
   background: #f6f6f6;
 } */
