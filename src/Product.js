@@ -201,24 +201,17 @@ export default function Product() {
                             </div>
                             {/* <div className="vr"></div> */}
                             <div className="col-md-6 col-sm-12"> 
-<<<<<<< HEAD
-                            <h3 className="titlecolor">Tuotekuvaus</h3>
-                            <h5 className="me-5 col-sm-12 col-md-12 ">{item.tuotekuvaus}</h5>
-                            <h4 className="priceinfo col-lg-3 col-sm-4"><span className="pricebackground">{item.hinta + "€"}</span><p className="lisäinfo">sisältää alv. 24%</p></h4>
-                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2 mb-4">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
-=======
                             <h3>Tuotekuvaus</h3>
                             <h5 className="me-5">{item.tuotekuvaus}</h5>
                             { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
                 :<h5>{item.hinta + "€"}</h5>}
                             <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
->>>>>>> 5896b996ac3fe08e2d05128fb0b2c49014839013
                             </div>
                                 </div>
                             </div>
                         </div>
                 </div>
-                
+
                  ))}
                  </div>
         </div>    
