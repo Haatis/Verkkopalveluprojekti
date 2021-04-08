@@ -202,7 +202,8 @@ export default function Product() {
                             <div className="col-md-6 col-sm-12"> 
                             <h3>Tuotekuvaus</h3>
                             <h5 className="me-5">{item.tuotekuvaus}</h5>
-                            <h4>{item.hinta + "€"}</h4>
+                            { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                             <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
                             </div>
                                 </div>
