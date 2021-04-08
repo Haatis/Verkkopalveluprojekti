@@ -207,11 +207,15 @@ export default function NavBar({URL, myCart, emptyCart}) {
                       {item.tuotenimi}
                     </div>
                     <div className="float-end text-danger">
-                      {(counts[item.id] * item.hinta).toLocaleString("fi-FI")} €
+                    { item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
+                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             } €
                     </div>
                     <div className="">
                       <p><small>
-                        {counts[item.id]} X {(item.hinta).toLocaleString("fi-FI")}€
+                      {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
+                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                :<h5>{item.hinta + "€"}</h5>}
                       </small></p>
                     </div>
                   </NavDropdown.Item>
