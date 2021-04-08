@@ -80,14 +80,13 @@ export default function Order() {
 
     //laskee kokonaishinnan
 
-    const numbers = items.map((item) => Number(item.hinta))
+    const numbers = items.map((item) => Number(item.alennettuhinta ? item.alennettuhinta : item.hinta))
     const amounts = Object.values(counts)
     let arr2 = []
     for (let i = 0; i < amounts.length; i++) {
         arr2[i] = numbers[i] * amounts[i]
     }
     let sum = arr2.reduce((a, b) => a + b, 0)
-    console.log(sum)
 
 
     const tilaa = (e) => {
@@ -193,12 +192,15 @@ export default function Order() {
                             <h2 className="float-start">{item.tuotenimi}</h2>
                         </div>
                         <h2 className="text-danger float-end">
-                            {(counts[item.id] * item.hinta).toLocaleString("fi-FI")} €
+                        { item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
+                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }
                         </h2>
                         <h3 className="float-end">
-                            {counts[item.id]} X {item.hinta.toLocaleString("fi-FI")}€           
+                            {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
+                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                :<h5>{item.hinta + "€"}</h5>}
                         </h3>
-                        
 
                     </li>
                 ))}
