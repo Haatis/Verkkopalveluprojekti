@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
+import {Link} from 'react-router-dom'
 
 export default function Product({URL, addToCart}) {
   console.log(URL)
@@ -198,8 +199,10 @@ export default function Product({URL, addToCart}) {
                             <h4 className="priceinfo col-lg-3 col-sm-4 
                             ">{ item.alennettuhinta ? <><del className="pricebackground">{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
                             :<h5 className="pricebackground">{item.hinta + "€"}</h5>}<p className="lisäinfo">sisältää alv. 24%</p></h4>
-                            
-                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2 mb-4">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2 mb-3">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+                            <div className="row">
+                            <Link to={"/Ask/" + item.id}>Kysy tuotteesta</Link>
+                            </div>
                             </div>
                                 </div>
                             </div>
