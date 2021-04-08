@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-export default function NavBar({URL, myCart}) {
+export default function NavBar({URL, myCart, emptyCart}) {
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
   const [user, setUser] = useState([]);
@@ -38,10 +38,6 @@ export default function NavBar({URL, myCart}) {
   let arr = JSON.parse(cart)
   let counts = {};
 
-  function emptyCart() {
-    localStorage.removeItem("cart")
-    window.location.reload(false);
-  }
 
 
   //laskee uniikkien arvojen määrän 

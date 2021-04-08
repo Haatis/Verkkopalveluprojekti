@@ -5,15 +5,11 @@ import { useState, useEffect } from "react";
 import {Link} from 'react-router-dom'
 
 export default function Home({URL, addToCart}) {
-
-console.log(URL)
-
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [items, setItems] = useState([]);
     const [kuva, setTuotekuva] = useState("");
-    //const [cart, setCart] = useState([])
 
     useEffect(() => {
         let status = 0;
