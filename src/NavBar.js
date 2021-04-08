@@ -128,7 +128,6 @@ export default function NavBar({URL, myCart, emptyCart}) {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto d-flex">
               {/* <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link> */}
-              <div className="border border-dark my-0 py-0"></div>
               <Nav.Link as={Link} to="/Class/komponentit" className="ms-1">
                 komponentit
               </Nav.Link>
