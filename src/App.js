@@ -23,8 +23,7 @@ const URL = "http://localhost/verkkokauppa/";
 
 function App() {
   const [cart, setCart] = useState([])
-
-  const [newCart, setNewCart] = useState([])
+  const [newCartArr, setNewCartArr] = useState([])
 
   //hakee ostoskorin tiedot localsoragesta
   const localCart = localStorage.getItem("cart");
@@ -58,7 +57,7 @@ function App() {
     localStorage.removeItem("cart")
     arr.push(item)
     localStorage.setItem("cart", JSON.stringify(arr))
-    setNewCart(arr);
+    setNewCartArr(arr);
   }
 
   //poistaa yhden valitut tuotteen ostoskorista
@@ -71,31 +70,35 @@ function App() {
       }
     }
     localStorage.setItem("cart", JSON.stringify(arr))
-    setNewCart(arr);
+    setNewCartArr(arr);
   }
 
-
+//tyhjentää ostoskorin
+  function emptyCart(e) {
+    setCart([])
+    localStorage.removeItem("cart")
+  }
 
 
   //poistaa kaikki valitut tuotteet ostoskorista
   function clearItem(item) {
     localStorage.removeItem("cart")
     for (let i = 0; i < arr.length; i++) {
-      console.log(arr[i])
+      //console.log(arr[i])
       if (arr[i] === item) {
         arr.splice(i, 1)
         i--
       }
     }
     localStorage.setItem("cart", JSON.stringify(arr))
-    setNewCart(arr);
+    setNewCartArr(arr);
   }
 
   return (
 
     <>
       <div className="container">
-        <NavBar URL={URL} arr={cart} />
+        <NavBar URL={URL} myCart={cart} emptyCart={emptyCart} setCart={setCart}/>
         <Switch>
           <Route path="/"
             render={() => <Home

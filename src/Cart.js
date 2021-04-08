@@ -6,12 +6,11 @@ import {Link} from 'react-router-dom'
 export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
     const [items, setItems] = useState([]);
 
-
   //hakee ostoskorin tiedot localsoragesta
   const localCart = localStorage.getItem("cart");
   let arr = JSON.parse(localCart);
 
-  //laskee uniikkien arvojen määrän
+  //laskee uniikkien arvojen määrän => näyttää kuinka monta mitäkin tuotetta on
   var counts = {};
   if ("cart" in localStorage) {
     for (var i = 0; i < arr.length; i++) {
@@ -19,9 +18,10 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
     }
   }
 
+
+//hakee ostoskorissa olevat tuotteet tietokannasta
     useEffect(() => {
         if ("cart" in localStorage) {
-            //hakee ostoskori tuotteet tietokannasta
             let status = 0;
             fetch(URL + "cart.php", {
                 method: "POST",
@@ -56,7 +56,6 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
 
 
     //laskee kokonaishinnan
-
     const numbers = items.map((item) => Number(item.hinta))
     const amounts = Object.values(counts)
     let arr2 = []
@@ -64,9 +63,18 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
         arr2[i] = numbers[i] * amounts[i]
     }
     let sum = arr2.reduce((a, b) => a + b, 0)
-    console.log(sum)
+    //console.log(sum)
 
 
+
+    //jos tuotteiden määrä on 0, poistetaan se näkyvistä
+    const id = items.map((item) => Number(item.id))
+    for(var i = 0; i < id.length; i++){
+          if(typeof counts[id[i]] === "undefined")
+          {
+              console.log(Number([i]) + 1 +  " on tyhjä")
+            }
+    }
 
     return (
         <div className="row bg-secondary">
