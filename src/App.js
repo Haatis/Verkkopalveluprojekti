@@ -17,6 +17,7 @@ import Register from "./Register";
 import Add from "./Add";
 import Cart from "./Cart";
 import Edit from "./Edit";
+import Ask from "./Ask";
 
 const URL = "http://localhost/verkkokauppa/";
 
@@ -137,6 +138,9 @@ function App() {
               URL={URL} />} exact />
           <Route path="/edit/:it"
             render={() => <Edit
+              URL={URL} />} exact />
+              <Route path="/ask/:it"
+            render={() => <Ask
               URL={URL} />} exact />
           <Route component={NotFound} />
         </Switch>
