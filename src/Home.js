@@ -116,7 +116,8 @@ export default function Home() {
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                  <h5>{item.hinta + "€"}</h5>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             
@@ -128,7 +129,7 @@ export default function Home() {
                 <h1>Comm's Suosittelee</h1>
             </div>
             <div className="row">
-            {items.splice(4, 8).map((item) => (
+            {items.slice(4, 12).map((item) => (
         <div
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>
@@ -154,7 +155,8 @@ export default function Home() {
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                  <h5>{item.hinta + "€"}</h5>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             
