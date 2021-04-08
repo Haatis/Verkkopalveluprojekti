@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 
-export default function Category() {
-  const URL = "HTTP://localhost/verkkokauppa/";
+export default function Category({URL, addToCart}) {
   const [search, setSearch] = useState("");
   const [tuotenimi, setTuotenimi] = useState("");
   const [hinta, setHinta] = useState("");
@@ -47,18 +46,6 @@ export default function Category() {
       );
   }, [sortSql, it]);
 
-  useEffect(() =>{
-    if("cart" in localStorage){
-        setCart(JSON.parse(localStorage.getItem("cart")))
-    }
-}, [])
-
-function addToCart(item){
-    const newCart = [...cart, item];
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    window.location.reload(false);
-}
 
 
   function sort(e) {

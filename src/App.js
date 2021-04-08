@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
@@ -18,38 +18,128 @@ import Add from "./Add";
 import Cart from "./Cart";
 import Edit from "./Edit";
 
-
-
-
-
+const URL = "http://localhost/verkkokauppa/";
 
 function App() {
+  const [cart, setCart] = useState([])
 
- 
+  const [newCart, setNewCart] = useState([])
+
+  //hakee ostoskorin tiedot localsoragesta
+  const localCart = localStorage.getItem("cart");
+  let arr = JSON.parse(localCart);
+
+  //poistaa cartin localstoragesta jos se on tyhjä, muuten näyttää virhettä fetchissä
+  if ("cart" in localStorage) {
+    if (arr.length === 0) {
+      localStorage.removeItem("cart");
+    }
+  }
+
+  //lisää uusi tuote ostoskoriin
+  function addToCart(item) {
+    const newCart = [...cart, item];
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  }
+
+  //lataa ostoskorin localstoragesta sivun uudelleen lataamisen jälkeen
+  useEffect(() => {
+    if ("cart" in localStorage) {
+      setCart(JSON.parse(localStorage.getItem("cart")))
+    }
+  }, [])
+
+
+
+  //lisää yhden valitut tuotteen ostoskorista
+  function addItem(item) {
+    localStorage.removeItem("cart")
+    arr.push(item)
+    localStorage.setItem("cart", JSON.stringify(arr))
+    setNewCart(arr);
+  }
+
+  //poistaa yhden valitut tuotteen ostoskorista
+  function removeItem(item) {
+    localStorage.removeItem("cart")
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === item) {
+        arr.splice(i, 1)
+        break;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(arr))
+    setNewCart(arr);
+  }
+
+
+
+
+  //poistaa kaikki valitut tuotteet ostoskorista
+  function clearItem(item) {
+    localStorage.removeItem("cart")
+    for (let i = 0; i < arr.length; i++) {
+      console.log(arr[i])
+      if (arr[i] === item) {
+        arr.splice(i, 1)
+        i--
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(arr))
+    setNewCart(arr);
+  }
 
   return (
+
     <>
-    <div className="container">
-   <NavBar />
-     <Switch>
-       <Route path="/" component={Home} exact />
-       <Route path="/search" component={Search} exact />
-       <Route path="/category/:it" component={Category} exact />
-       <Route path="/Cart" component={Cart} />
-       <Route path="/about" component={About} />
-       <Route path="/contactus" component={ContactUs} />
-       <Route path="/product/:it" component={Product} />
-       <Route path="/order" component={Order} />
-       <Route path="/class/:it" component={Class} />
-       <Route path="/login" component={Login} />
-       <Route path="/register" component={Register} />
-       <Route path="/add" component={Add} />
-       <Route path="/edit/:it" component={Edit} />
-       <Route component={NotFound} />
-     </Switch>
-   <Footer />
-   </div>
-   </>
+      <div className="container">
+        <NavBar URL={URL} arr={cart} />
+        <Switch>
+          <Route path="/"
+            render={() => <Home
+              URL={URL}
+              addToCart={addToCart} />}
+            exact />
+          <Route path="/search"
+            render={() => <Search
+              URL={URL}
+              addToCart={addToCart} />} exact />
+          <Route path="/category/:it"
+            render={() => <Category
+              URL={URL}
+              addToCart={addToCart} />} exact />
+          <Route path="/Cart"
+            render={() => <Cart
+              URL={URL}
+              clearItem={clearItem}
+              addItem={addItem}
+              removeItem={removeItem}
+              myCart={cart} />} />
+          <Route path="/about" component={About} />
+          <Route path="/contactus" component={ContactUs} />
+          <Route path="/product/:it"
+            render={() => <Product
+              URL={URL}
+              addToCart={addToCart} />} />
+          <Route path="/order" component={Order} />
+          <Route path="/class/:it"
+            render={() => <Class
+              URL={URL}
+              addToCart={addToCart} />} exact />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/add"
+            render={() => <Add
+              URL={URL} />} exact />
+          <Route path="/edit/:it"
+            render={() => <Edit
+              URL={URL} />} exact />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </div>
+    </>
   );
 }
 

@@ -2,67 +2,21 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function Cart() {
+export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
     const [items, setItems] = useState([]);
-    const URL = "HTTP://localhost/verkkokauppa/";
 
-    //window.location.reload(false) näyttää välillä fetch virhettä
 
-    //hakee ostoskorin tiedot localsoragesta
-    const cart = localStorage.getItem("cart");
-    let arr = JSON.parse(cart);
+  //hakee ostoskorin tiedot localsoragesta
+  const localCart = localStorage.getItem("cart");
+  let arr = JSON.parse(localCart);
 
-    //poistaa cartin localstoragesta jos se on tyhjä, muuten näyttää virhettä fetchissä
-    if ("cart" in localStorage) {
-        if (arr.length === 0) {
-            localStorage.removeItem("cart");
-        }
+  //laskee uniikkien arvojen määrän
+  var counts = {};
+  if ("cart" in localStorage) {
+    for (var i = 0; i < arr.length; i++) {
+      counts[arr[i]] = 1 + (counts[arr[i]] || 0);
     }
-
-    //poistaa kaikki valitut tuotteet ostoskorista
-    function clearItem(item) {
-        localStorage.removeItem("cart")
-        for (let i = 0; i < arr.length; i++) {
-            console.log(arr[i])
-            if (arr[i] === item) {
-                arr.splice(i, 1)
-                i--
-            }
-        }
-        localStorage.setItem("cart", JSON.stringify(arr))
-        window.location.reload(false);
-    }
-
-    function addItem(item) {
-        localStorage.removeItem("cart")
-        arr.push(item)
-        localStorage.setItem("cart", JSON.stringify(arr))
-        window.location.reload(false);
-    }
-
-    //poistaa yhden valitut tuotteen ostoskorista
-    function removeItem(item) {
-        localStorage.removeItem("cart")
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] === item) {
-                arr.splice(i, 1)
-                break;
-            }
-        }
-        localStorage.setItem("cart", JSON.stringify(arr))
-        window.location.reload(false);
-    }
-
-
-    //laskee uniikkien arvojen määrän
-    var counts = {};
-    if ("cart" in localStorage) {
-        for (var i = 0; i < arr.length; i++) {
-            counts[arr[i]] = 1 + (counts[arr[i]] || 0);
-        }
-    }
-
-
+  }
 
     useEffect(() => {
         if ("cart" in localStorage) {
@@ -95,7 +49,9 @@ export default function Cart() {
                     }
                 );
         }
-    }, []);
+    }, [cart]);
+
+
 
 
     //laskee kokonaishinnan

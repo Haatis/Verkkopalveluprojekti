@@ -6,10 +6,10 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-export default function NavBar() {
-  const URL = "HTTP://localhost/verkkokauppa/";
+
+export default function NavBar({URL, myCart}) {
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
   const [user, setUser] = useState([]);
@@ -34,9 +34,9 @@ export default function NavBar() {
   }
 
   //hakee ostoskorin tiedot localsoragesta
-  const cart = localStorage.getItem("cart")
-  const arr = JSON.parse(cart)
-  var counts = {};
+  let cart = localStorage.getItem("cart")
+  let arr = JSON.parse(cart)
+  let counts = {};
 
   function emptyCart() {
     localStorage.removeItem("cart")
@@ -82,51 +82,51 @@ export default function NavBar() {
           }
         );
     }
-  }, [])
+  }, [myCart])
 
   const login = (e) => {
     e.preventDefault();
     axios.post('http://localhost/verkkokauppa/login.php', {
-        username: username,
-        password: password,
+      username: username,
+      password: password,
     }).then((response) => {
 
-      if ((response.data.id)>0) {
+      if ((response.data.id) > 0) {
         addToUser(response.data.username)
       } else {
         setLoginStatus("hommat kusi")
-        
-        
+
+
       }
-         console.log(response.data);
-         });
-};
+      console.log(response.data);
+    });
+  };
 
-useEffect(() =>{
-  if("user" in localStorage){
+  useEffect(() => {
+    if ("user" in localStorage) {
       setUser(JSON.parse(localStorage.getItem("user")))
+    }
+  }, [])
+
+  function addToUser(item) {
+    const newUser = [...user, item];
+    setUser(newUser);
+    localStorage.setItem("user", JSON.stringify(newUser));
+    window.location.reload(false);
   }
-}, [])
 
-function addToUser(item){
-  const newUser = [...user, item];
-  setUser(newUser);
-  localStorage.setItem("user", JSON.stringify(newUser));
-  window.location.reload(false);
-}
-
-function emptyUser() {
-localStorage.clear("user")
-window.location.reload(false);
-alert("Olet nyt kirjautunut ulos")
-}
+  function emptyUser() {
+    localStorage.clear("user")
+    window.location.reload(false);
+    alert("Olet nyt kirjautunut ulos")
+  }
 
   return (
     <>
 
       <div className="row">
-      <Link to="/"><img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" /></Link>
-      
+        <Link to="/"><img src={logo} className="comms col-12 commslogo img-fluid" alt="Logo" /></Link>
+
         <Navbar collapseOnSelect expand="lg" className="color-nav py-0 px-0" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="ms-auto" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -141,28 +141,28 @@ alert("Olet nyt kirjautunut ulos")
                 onMouseEnter={showKompDropdown}
                 onMouseLeave={hideKompDropdown}>
                 <NavDropdown.Item>
-                <Link to="/Category/Prosessorit">Prosessorit</Link>
+                  <Link to="/Category/Prosessorit">Prosessorit</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Emolevyt">Emolevyt</Link>
+                  <Link to="/Category/Emolevyt">Emolevyt</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Näytönohjaimet">Näytönohjaimet</Link>
+                  <Link to="/Category/Näytönohjaimet">Näytönohjaimet</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Asemat">Asemat</Link>
+                  <Link to="/Category/Asemat">Asemat</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Muistit">Muistit</Link>
+                  <Link to="/Category/Muistit">Muistit</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Kovalevyt">Kovalevyt</Link>
+                  <Link to="/Category/Kovalevyt">Kovalevyt</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Jäähdytys">Jäähdytys</Link>
+                  <Link to="/Category/Jäähdytys">Jäähdytys</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                <Link to="/Category/Kotelot">Kotelot</Link>
+                  <Link to="/Category/Kotelot">Kotelot</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
@@ -175,18 +175,18 @@ alert("Olet nyt kirjautunut ulos")
                 onMouseLeave={hideOheisDropdown}>
 
                 <NavDropdown.Item>
-                <Link to="/Category/Näppäimistöt">Näppäimistöt</Link>
-                  </NavDropdown.Item>
+                  <Link to="/Category/Näppäimistöt">Näppäimistöt</Link>
+                </NavDropdown.Item>
 
 
                 <NavDropdown.Item>
-                <Link to="/Category/Hiiret">Hiiret</Link>
-                  </NavDropdown.Item>
+                  <Link to="/Category/Hiiret">Hiiret</Link>
+                </NavDropdown.Item>
 
 
                 <NavDropdown.Item>
-                <Link to="/Category/Näytöt">Näytöt</Link>
-                  </NavDropdown.Item>
+                  <Link to="/Category/Näytöt">Näytöt</Link>
+                </NavDropdown.Item>
 
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
@@ -196,18 +196,18 @@ alert("Olet nyt kirjautunut ulos")
               <div className="my-0 py-0"></div>
               <form className="d-flex float-end">
                 <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
-                
+
                 <Link to={"/search?query=" + search}>
-              <button className="btn bt btn-primary my-2 py-2 text-light">
-                Search
+                  <button className="btn bt btn-primary my-2 py-2 text-light">
+                    Search
               </button>
-            </Link>
-                
+                </Link>
+
               </form>
-              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1"> 
+              <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1">
 
                 {items.map((item) => (
-                  <NavDropdown.Item key={item.id} className="border" href={"/Product/" + item.id}>
+                  <NavDropdown.Item key={item.id} className="border" as={Link} to={"/Product/" + item.id}>
                     <div>
                       {item.tuotenimi}
                     </div>
@@ -223,13 +223,13 @@ alert("Olet nyt kirjautunut ulos")
                 ))}
                 <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
                 <Link to="/cart" className="btn btn-primary float-end col-6">
-                Kassalle
+                  Kassalle
                 </Link>
               </NavDropdown>
 
-              {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()}className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user})</p></Nav.Link>):(
-              <Nav.Link href="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
-           
+              {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user})</p></Nav.Link>) : (
+                <Nav.Link as={Link} to="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>
