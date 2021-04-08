@@ -100,10 +100,10 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                             <h1 className="float-start carttext">{item.tuotenimi}</h1>
                         </div>
                        
-                        <h1 className="text-danger float-end">
+                        <h2 className="text-danger float-end">
                         { item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
                         :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }
-                        </h1>
+                        </h2>
                         <h3 className="float-end">
                             {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
                 <h5 className="discount">{item.alennettuhinta + "€"}</h5>
