@@ -64,7 +64,7 @@ export default function Home() {
                     </div>
                     <div className="carousel-inner ">
                         <div className="carousel-item active ">
-                            <img src={geforce} className="d-block w-100" alt="geforce"></img>
+                            <a href="/Product/4"><img src={geforce} className="d-block w-100" alt="geforce"></img></a>
 
                         </div>
                         <div className="carousel-item">
@@ -87,7 +87,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="row">
-                <h1>Päivän tarjoukset</h1>
+                <h1>Viikon tarjoukset</h1>
             </div>
             <div className="row">
             {items.slice(0, 4).map((item) => (
@@ -101,7 +101,7 @@ export default function Home() {
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
-                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
+                <p className="card-text text-left productdestext">{item.tuotetiivistelmä}</p>
                 </div>
                 </Link>
                 </div>
@@ -140,7 +140,7 @@ export default function Home() {
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
-                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
+                <p className="card-text text-left productdestext">{item.tuotetiivistelmä}</p>
                 </div>
                 </Link>
                 </div>

@@ -8,7 +8,7 @@ export default function Footer() {
     return (
         <div className="row">
         <footer>
-            <h5 className="col-12 mb-4">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
+            <h5 className="col-12 mb-4 mt-2">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
             <div className="row">
                 <div className="col-4">
                     <p>Asiakaspalvelu</p>

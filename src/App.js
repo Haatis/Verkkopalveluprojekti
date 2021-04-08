@@ -17,6 +17,7 @@ import Register from "./Register";
 import Add from "./Add";
 import Cart from "./Cart";
 import Edit from "./Edit";
+import Ask from "./Ask";
 
 
 
@@ -45,6 +46,7 @@ function App() {
        <Route path="/register" component={Register} />
        <Route path="/add" component={Add} />
        <Route path="/edit/:it" component={Edit} />
+       <Route path="/ask/:it" component={Ask} />
        <Route component={NotFound} />
      </Switch>
    <Footer />
