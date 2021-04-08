@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
 
-export default function Product() {
-    const URL = "HTTP://localhost/verkkokauppa/"
+export default function Product({URL, addToCart}) {
+  console.log(URL)
+
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [hinta, setHinta] = useState("");
@@ -50,7 +51,7 @@ export default function Product() {
               alert(error);
             }
           );
-      }, []);
+      }, [it]);
 
       useEffect(() => {
         let status = 0;
@@ -141,11 +142,7 @@ export default function Product() {
     }, [])
 
 
-      useEffect(() => {
-        if ("cart" in localStorage) {
-          setCart(JSON.parse(localStorage.getItem("cart")));
-        }
-      }, []);
+
 
       useEffect(() =>{
         if("admin" in localStorage) {
@@ -153,12 +150,7 @@ export default function Product() {
         } 
       }, [])
     
-      function addToCart(item) {
-        const newCart = [...cart, item];
-        setCart(newCart);
-        localStorage.setItem("cart", JSON.stringify(newCart));
-        window.location.reload(false);
-      }
+
 
       function tähti (e) {
         if (e > 4.5) {
