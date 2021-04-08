@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
+import {Link} from 'react-router-dom'
 
 export default function Product() {
     const URL = "HTTP://localhost/verkkokauppa/"
@@ -21,6 +22,7 @@ export default function Product() {
     const [kayttaja, setKayttaja] = useState('');
     const [user, setUser] = useState([]);
     const [admin, setAdmin] = useState([]);
+   
 
     useEffect(() => {
         let status = 0;
@@ -205,6 +207,7 @@ export default function Product() {
                             { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
                 :<h5>{item.hinta + "€"}</h5>}
                             <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+                            <div className="row mt-2"><Link to={"/ask/" + item.id} className=""> Kysy tuotteesta</Link></div>
                             </div>
                                 </div>
                             </div>
