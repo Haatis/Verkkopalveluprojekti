@@ -3,8 +3,7 @@ import { useParams, Link} from "react-router-dom";
 
 
 
-export default function Class() {
-  const URL = "HTTP://localhost/verkkokauppa/";
+export default function Class({URL, addToCart}) {
   const [search, setSearch] = useState("");
   const [tuotenimi, setTuotenimi] = useState("");
   const [hinta, setHinta] = useState("");
@@ -47,18 +46,7 @@ export default function Class() {
       );
   }, [sortSql, it]);
 
-  useEffect(() =>{
-    if("cart" in localStorage){
-        setCart(JSON.parse(localStorage.getItem("cart")))
-    }
-}, [])
 
-function addToCart(item){
-    const newCart = [...cart, item];
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    window.location.reload(false);
-}
 
   function sort(e) {
     if (e == 1) {

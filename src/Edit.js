@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
 
-export default function Edit() {
-    const URL = "HTTP://localhost/verkkokauppa/"
+export default function Edit({URL}) {
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [tuotetiivistelma, setTuotetiivistelma] = useState("");

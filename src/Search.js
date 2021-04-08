@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Search() {
-  const URL = "HTTP://localhost/verkkokauppa/";
+export default function Search({URL, addToCart}) {
   const [search, setSearch] = useState("");
   const [tuotenimi, setTuotenimi] = useState("");
   const [hinta, setHinta] = useState("");
@@ -36,18 +35,7 @@ export default function Search() {
   }, []);
 */
 
-  useEffect(() => {
-    if ("cart" in localStorage) {
-      setCart(JSON.parse(localStorage.getItem("cart")));
-    }
-  }, []);
 
-  function addToCart(item) {
-    const newCart = [...cart, item];
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    window.location.reload(false);
-  }
 
 
   const queryString = require("query-string");
