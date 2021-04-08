@@ -60,7 +60,7 @@ console.log(URL)
                     </div>
                     <div className="carousel-inner ">
                         <div className="carousel-item active ">
-                            <img src={geforce} className="d-block w-100" alt="geforce"></img>
+                            <a href="/Product/4"><img src={geforce} className="d-block w-100" alt="geforce"></img></a>
 
                         </div>
                         <div className="carousel-item">
@@ -83,7 +83,7 @@ console.log(URL)
                 </div>
             </div>
             <div className="row">
-                <h1>Päivän tarjoukset</h1>
+                <h1>Viikon tarjoukset</h1>
             </div>
             <div className="row">
             {items.slice(0, 4).map((item) => (
@@ -97,7 +97,7 @@ console.log(URL)
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
-                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
+                <p className="card-text text-left productdestext">{item.tuotetiivistelmä}</p>
                 </div>
                 </Link>
                 </div>
@@ -111,7 +111,8 @@ console.log(URL)
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                  <h5>{item.hinta + "€"}</h5>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             
@@ -123,7 +124,7 @@ console.log(URL)
                 <h1>Comm's Suosittelee</h1>
             </div>
             <div className="row">
-            {items.splice(4, 8).map((item) => (
+            {items.slice(4, 12).map((item) => (
         <div
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>
@@ -134,7 +135,7 @@ console.log(URL)
               <div className="card-body">
                 <img src={item.kuva} className="tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
-                <p className="card-text text-left">{item.tuotetiivistelmä}</p>
+                <p className="card-text text-left productdestext">{item.tuotetiivistelmä}</p>
                 </div>
                 </Link>
                 </div>
@@ -149,7 +150,8 @@ console.log(URL)
                   </button>
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                  <h5>{item.hinta + "€"}</h5>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>
             

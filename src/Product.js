@@ -185,17 +185,26 @@ export default function Product({URL, addToCart}) {
         <div className="" key={item.id}>
                     
                         <div >
-                            <div className="">
-                            <h2 className="ms-4">{item.tuotenimi}</h2>
+                            <div className="priceinfo mt-2 mb-2">
+                            <h2 className="ms-4 title">{item.tuotenimi}</h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
-                            <img src={item.kuva} className="tuotesivukuva" alt="Logo" />
+                            <img src={item.kuva} className="tuotesivukuva col-sm-12 col-md-12" alt="Logo" />
                             </div>
+                            {/* <div className="vr"></div> */}
                             <div className="col-md-6 col-sm-12"> 
+<<<<<<< HEAD
+                            <h3 className="titlecolor">Tuotekuvaus</h3>
+                            <h5 className="me-5 col-sm-12 col-md-12 ">{item.tuotekuvaus}</h5>
+                            <h4 className="priceinfo col-lg-3 col-sm-4"><span className="pricebackground">{item.hinta + "€"}</span><p className="lisäinfo">sisältää alv. 24%</p></h4>
+                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2 mb-4">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+=======
                             <h3>Tuotekuvaus</h3>
                             <h5 className="me-5">{item.tuotekuvaus}</h5>
-                            <h4>{item.hinta + "€"}</h4>
+                            { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                             <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+>>>>>>> 5896b996ac3fe08e2d05128fb0b2c49014839013
                             </div>
                                 </div>
                             </div>
@@ -264,7 +273,7 @@ export default function Product({URL, addToCart}) {
         {("user" in localStorage) &&<div className="row">
         <div className="col-sm-10" >
         
-            <button onClick={comment}>Lisää arvostelu</button>
+            <button className="mb-3" onClick={comment}>Lisää arvostelu</button>
           </div>
         </div>}
 

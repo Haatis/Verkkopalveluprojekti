@@ -184,7 +184,8 @@ alert("Olet nyt kirjautunut ulos")
                 <div className="vasen-pohja col-6 align-bottom">
                 </div>
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
-                  <h5>{item.hinta + "€"}</h5>
+                { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                :<h5>{item.hinta + "€"}</h5>}
                   <button className="delete" onClick={() => remove(item.id)} href="#">Delete</button>
                     <a  href={"/Edit/" + item.id} ><button className="edit" >Edit</button></a>
                 </div>
