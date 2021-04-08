@@ -107,11 +107,6 @@ a{
   margin-top: 1em;
 }
 
-.tuotekuva {
-  width: 250px;
-  height: 240px;
-}
-
 .tuotesivukuva {
   max-width: 350px;
   display: inline-block;
@@ -228,3 +223,34 @@ background-color: #cecece;
   /*display: inline-block;*/    
   /*margin: 0 auto;*/
 }
+
+.tuotekuva {
+  width: 250px;
+  height: 240px;
+}
+
+
+
+/* UUSIA KORTTEJA */
+
+/* .card {
+  width: 13.75rem !important;
+  width: 14rem !important;
+  height: 24rem !important;
+}
+
+.tuotekuva {
+  width: 100px;
+  height: 90px;
+}
+
+.productdestext {
+  font-size: 12px;
+}
+
+.productpriceinfo {
+  border-radius: 4px;
+  padding-top: 5px;
+  border: 1px solid #ccc;
+  background: #f6f6f6;
+} */
