@@ -82,7 +82,7 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
             <h5 className="text">Products:</h5>
             <p className="text">
             </p>
-            <ul className="text-center d-flex flex-column">
+            <ul className="text-center d-flex flex-column cartbackground">
                 {items.map((item) => (
                     <li key={item.id} className="border-top border-5" href={"/Product/" + item.id}>
                         <button className="btn-sm btn-warning float-start" onClick={() => clearItem(item.id)} value={item.id}>
@@ -94,9 +94,9 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                         <button className="btn-sm btn-warning float-start" onClick={() => removeItem(item.id)} value={item.id}>
                             <i class="fa fa-minus-square"></i>
                         </button>
-                        <div>
+                        <div className="cartbackground">
                             <img src={item.kuva} className="img-fluid col-1 float-start" alt="Logo" />
-                            <h1 className="float-start">{item.tuotenimi}</h1>
+                            <h1 className="float-start carttext">{item.tuotenimi}</h1>
                         </div>
                         <h1 className="text-danger float-end">
                             {(counts[item.id] * item.hinta).toLocaleString("fi-FI")} €

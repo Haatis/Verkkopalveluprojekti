@@ -229,7 +229,20 @@ background-color: #cecece;
   height: 240px;
 }
 
+.cartbackground {
+  background-color: #f6f6f6;
+}
+.cartbackground:nth-child(even) {
+  background-color: #adadad;
 
+}
+.carttext {
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
 
 /* UUSIA KORTTEJA */
 
