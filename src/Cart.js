@@ -100,22 +100,22 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                             <h1 className="float-start carttext">{item.tuotenimi}</h1>
                         </div>
                        
-                        <h2 className="text-danger float-end">
-                        { item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
-                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }
+                        <h2 className="ms-4 txtwhite float-end">
+                        ={ item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
+                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }€
                         </h2>
                         <h3 className="float-end">
                             {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
-                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h4 className="discount">{item.alennettuhinta + "€"}</h4>
                 <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
-                :<h5>{item.hinta + "€"}</h5>}
+                :<h3>{item.hinta + "€"}</h3>}
                         </h3>
                     </li>
                 ))}
             </ul>
             <div className="text-end d-flex flex-column">
                 <h3 className="">Yhteensä: </h3>
-                <h1 className="text-danger">{sum.toLocaleString("fi-FI")} €</h1>
+                <h1 className="">{sum.toLocaleString("fi-FI")} €</h1>
             </div>
 
             <div style={{ padding: 0 }}>

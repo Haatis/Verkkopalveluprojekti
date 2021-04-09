@@ -213,8 +213,8 @@ export default function NavBar({URL, myCart, emptyCart}) {
                     <div className="">
                       <p><small>
                       {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
-                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
-                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                <h6 className="discount">{item.alennettuhinta + "€"}</h6>
+                </>
                 :<h5>{item.hinta + "€"}</h5>}
                       </small></p>
                     </div>

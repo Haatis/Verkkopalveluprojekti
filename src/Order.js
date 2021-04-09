@@ -188,20 +188,20 @@ export default function Order() {
                     <li key={item.id} className="border-top border-3 mt-2" href={"/Product/" + item.id}>
                         
                         <div>
-                            <img src={item.kuva} className="img-fluid col-1 float-start" alt="Logo" />
-                            <h2 className="float-start">{item.tuotenimi}</h2>
+                            <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                            <h2 className="">{item.tuotenimi}</h2>
                         </div>
-                        <h2 className="text-danger float-end">
-                        { item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
-                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }
-                        </h2>
-                        <h3 className="float-end">
+                        
+                        <h3 className="">
                             {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
-                <h5 className="discount">{item.alennettuhinta + "€"}</h5>
+                <h4 className="discount">{item.alennettuhinta + "€"}</h4>
                 <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
-                :<h5>{item.hinta + "€"}</h5>}
+                :<h3>{item.hinta + "€"}</h3>}
                         </h3>
-
+                        <h2 className="">
+                        ={ item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
+                        :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }€
+                        </h2>
                     </li>
                 ))}
                          <h2 className="">
