@@ -215,7 +215,7 @@ export default function NavBar({URL, myCart, emptyCart}) {
                       {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
                 <h6 className="discount">{item.alennettuhinta + "€"}</h6>
                 </>
-                :<h5>{item.hinta + "€"}</h5>}
+                :<h6 className="inline">{item.hinta + "€"}</h6>}
                       </small></p>
                     </div>
                   </NavDropdown.Item>

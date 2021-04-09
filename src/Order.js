@@ -196,7 +196,7 @@ export default function Order() {
                             {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
                 <h4 className="discount">{item.alennettuhinta + "€"}</h4>
                 <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
-                :<h3>{item.hinta + "€"}</h3>}
+                :<h3 className="inline">{item.hinta + "€"}</h3>}
                         </h3>
                         <h2 className="">
                         ={ item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
