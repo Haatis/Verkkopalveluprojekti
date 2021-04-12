@@ -7,6 +7,11 @@ export default function Ask() {
     const URL = "HTTP://localhost/verkkokauppa/"
     const [items, setItems] = useState([]);
     const { it } = useParams();
+    const [nimi, setNimi] = useState('');
+    const [puhelin, setPuhelin] = useState('');
+    const [sahkoposti, setSahkoposti] = useState('');
+    const [aihe, setAihe] = useState('');
+    const [viesti, setViesti] = useState('');
 
     useEffect(() => {
       let status = 0;
@@ -38,6 +43,23 @@ export default function Ask() {
         );
     }, [it]);
    
+    const lähetä = (e) => {
+      e.preventDefault();
+       axios.post('http://localhost/verkkokauppa/ask.php', {
+        nimi:nimi,
+        tuoteid:it,
+        puhelin:puhelin,
+        sahkoposti:sahkoposti,
+        aihe:aihe,
+        viesti:viesti,
+      }
+       ).then((response) => {
+         console.log(response)
+        alert("Kysymys lähetetty")
+        window.location.href = "http://localhost:3000/product/" + it
+        
+      })}
+
     return (
       
 <div className="row">
@@ -60,27 +82,28 @@ export default function Ask() {
                                 <div className="row">
                         <div class="mb-3 col-5">
                           <label for="nimi" class="form-label">Etu- ja sukunimi</label>
-                        <input  type="text" placeholder="Etu ja sukunimi" class="form-control col-2" id="nimi"/>
+                        <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" class="form-control col-2" id="nimi"/>
                     </div>
 
                    <div class="mb-3 col-5">
                     <label for="puhelin" class="form-label ">Puhelin</label>
-                   <input type="text" placeholder="Puhelin" class="form-control" id="puhelin"/>
+                   <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" class="form-control" id="puhelin"/>
                   </div>
 
                   <div class="mb-3 col-10">
                    <label for="exampleInputEmail1" class="form-label">Sähköpostiosoite</label>
-                     <input type="email" placeholder="Sähköpostiosoite" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                     <input onChange={(e) => setSahkoposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                   </div>
 
                   <div class="mb-3 col-10">
                    <label for="aihe" class="form-label">Aihe</label>
-                     <input type="text" placeholder="Aihe" class="form-control" id="aihe"/>
+                     <input onChange={(e) => setAihe(e.target.value)} type="text" placeholder="Aihe" class="form-control" id="aihe"/>
                   </div>
 
                   <div class="mb-3 col-10">
                    <label for="viesti" class="form-label">Viesti</label>
-                     <textarea placeholder="Viesti" class="form-control" id="viesti"/>
+                     <textarea onChange={(e) => setViesti(e.target.value)} placeholder="Viesti" class="form-control" id="viesti"/>
+                     <button type="submit" onClick={lähetä} class="btn btn-primary my-4">Submit</button>
                   </div>
                   </div>
        
