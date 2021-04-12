@@ -83,31 +83,32 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
             <h5 className="text">Products:</h5>
             <p className="text">
             </p>
-            <ul className="text-center d-flex flex-column cartbackground">
+            <ul className="text-center d-flex flex-column ">
                 {items.map((item) => (
-                    <li key={item.id} className="border-top border-5" href={"/Product/" + item.id}>
-                        <button className="btn-sm btn-warning float-start" onClick={() => clearItem(item.id)} value={item.id}>
+                    <li key={item.id} className=" border-5 cartbackground" href={"/Product/" + item.id}>
+                        <button className="btn-sm btn-warning float-start mt-2" onClick={() => clearItem(item.id)} value={item.id}>
                             <i class="fa fa-trash-alt"></i>
                         </button>
-                        <button className="btn-sm btn-warning float-start" onClick={() => addItem(item.id)} value={item.id}>
+                        <button className="btn-sm btn-warning float-start mt-2" onClick={() => addItem(item.id)} value={item.id}>
                             <i class="fa fa-plus-square"></i>
                         </button>
-                        <button className="btn-sm btn-warning float-start" onClick={() => removeItem(item.id)} value={item.id}>
+                        <button className="btn-sm btn-warning float-start mt-2" onClick={() => removeItem(item.id)} value={item.id}>
                             <i class="fa fa-minus-square"></i>
                         </button>
-                        <div className="cartbackground">
-                            <img src={item.kuva} className="img-fluid col-1 float-start" alt="Logo" />
-                            <h1 className="float-start carttext">{item.tuotenimi}</h1>
+                        <div className="cartbackground mt-2">
+                            <img src={item.kuva} className="img-fluid col-1 float-start imgborder mb-2" alt="Logo" />
+                            <h1 className="float-start carttext cartproductinfo" >{item.tuotenimi}</h1>
                         </div>
                        
-                        <h2 className="ms-4 txtwhite float-end">
+                        <h2 className="ms-4 float-end">
                         ={ item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
                         :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }€
                         </h2>
                         <h3 className="float-end">
                             {counts[item.id]} X  { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
-                <h4 className="discount">{item.alennettuhinta + "€"}</h4>
-                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                <h4 className="discount" style={{marginLeft:"2em"}}>{item.alennettuhinta + "€"}</h4>
+                {/* <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6> */}
+                </>
                 :<h3 className="inline">{item.hinta + "€"}</h3>}
                         </h3>
                     </li>

@@ -10,7 +10,7 @@ export default function Footer() {
         <footer>
             <h5 className="col-12 mb-4 mt-2">Comm's Tietokoneen komponentteja ja oheislaitteita vuodesta 2021.</h5>
             <div className="row">
-                <div className="col-4">
+                <div className="col-4 mb-4">
                     <p>Asiakaspalvelu</p>
                     <p>Ma-Su &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24/7</p>
                     <hr></hr>
@@ -25,8 +25,7 @@ export default function Footer() {
                     <p>Joona Haataja</p>
                     <p>Joona Lappalainen</p>
                     <p>Joni Karvonen</p>
-                    <p>Roope Puhakka</p>
-                    <p>Waltteri Ylisirniö</p>
+
                 </div>
                 <div className="col-4">
                     <p>Sosiaalinen media</p>

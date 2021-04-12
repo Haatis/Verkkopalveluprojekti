@@ -232,7 +232,11 @@ background-color: #cecece;
 .cartbackground {
   background-color: #f6f6f6;
 }
-.cartbackground:nth-child(even) {
+/* .cartbackground:nth-child(even) {
+  background-color: #f6f6f6;
+
+} */
+.cartbackground:nth-child(odd) {
   background-color: #adadad;
 
 }
@@ -243,6 +247,20 @@ background-color: #cecece;
 ul {
   list-style: none;
 }
+
+ul div h1 {
+  background-color: initial;
+  border-top: 0px ;
+}
+
+.imgborder {
+  border: 0.5px solid black;
+}
+
+/* ul li div img {
+  border: 2px solid black;
+} */
+
 
 /* UUSIA KORTTEJA */
 
@@ -259,6 +277,10 @@ ul {
 
 .productdestext {
   font-size: 12px;
+}
+
+.cartproductinfo {
+  font-size: 24px;
 }
 
 .productpriceinfo {
