@@ -12,6 +12,7 @@ export default function Order() {
     const [posti, setPosti] = useState('');
     const [kuljetus, setKuljetus] = useState('');
     const [maksu, setMaksu] = useState('');
+    const [hinta, setHinta] = useState('');
     const [id, setId] = useState('');
     const [tuotenro, setTuotenro] = useState([]);
     const [kpl, setKpl] = useState([]);
@@ -86,8 +87,7 @@ export default function Order() {
     for (let i = 0; i < amounts.length; i++) {
         arr2[i] = numbers[i] * amounts[i]
     }
-    let sum = arr2.reduce((a, b) => a + b, 0)
-
+    let sum = arr2.reduce((a, b) => a + b, 0) + "€"
 
     const tilaa = (e) => {
         e.preventDefault();
@@ -99,6 +99,7 @@ export default function Order() {
           posti:posti,
           kuljetus:kuljetus,
           maksu:maksu,
+          hinta:sum,
         }
 
         ).then((response) => {
@@ -208,7 +209,8 @@ export default function Order() {
                             Yhteensä:
                         </h2>
                         <h2 className="text-primary">
-                           {sum}€
+
+                           {sum}
                         </h2>
             </ul></div>
   </div>
