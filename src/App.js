@@ -18,6 +18,7 @@ import Add from "./Add";
 import Cart from "./Cart";
 import Edit from "./Edit";
 import Ask from "./Ask";
+import Account from "./Account";
 
 const URL = "http://localhost/verkkokauppa/";
 
@@ -141,6 +142,9 @@ function App() {
               URL={URL} />} exact />
               <Route path="/ask/:it"
             render={() => <Ask
+              URL={URL} />} exact />
+               <Route path="/Account/:it"
+            render={() => <Account
               URL={URL} />} exact />
           <Route component={NotFound} />
         </Switch>
