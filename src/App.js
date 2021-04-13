@@ -121,7 +121,9 @@ function App() {
               removeItem={removeItem}
               myCart={cart} />} />
           <Route path="/about" component={About} />
-          <Route path="/contactus" component={ContactUs} />
+          <Route path="/contactus"
+            render={() => <ContactUs
+              URL={URL}/>} />
           <Route path="/product/:it"
             render={() => <Product
               URL={URL}
