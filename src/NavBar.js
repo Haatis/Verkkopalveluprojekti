@@ -189,16 +189,6 @@ export default function NavBar({URL, myCart, emptyCart}) {
               <div className="border border-dark my-0 py-0"></div>
 
               <div className="my-0 py-0"></div>
-              <form className="d-flex float-end">
-                <input className="form-control mx-2 my-2" type="search" placeholder="Search" value={search} onChange={e => setSearch(e.target.value)} />
-
-                <Link to={"/search?query=" + search}>
-                  <button className="btn bt btn-primary my-2 py-2 text-light">
-                    Search
-              </button>
-                </Link>
-
-              </form>
               <NavDropdown title="Ostoskori" id="collasible-nav-dropdown" className="mx-1">
 
                 {items.map((item) => (
@@ -231,7 +221,26 @@ export default function NavBar({URL, myCart, emptyCart}) {
 
             </Nav>
           </Navbar.Collapse>
+          <form className="float-end me-2 col-md-3 col-xl-4 col-xxl-5 d-none d-lg-flex">
+                <input className="form-control my-2" type="search" placeholder="Haku" value={search} onChange={e => setSearch(e.target.value)} />
+
+                <Link to={"/search?query=" + search}>
+                  <button className="btn bt btn-primary my-2 py-2 text-light">
+                  <i class="fas fa-search"></i>
+              </button>
+                </Link>
+
+              </form>
         </Navbar>
+        <form className="d-lg-none d-flex my-2">
+                <input className="form-control " type="search" placeholder="Haku" value={search} onChange={e => setSearch(e.target.value)} />
+                <Link to={"/search?query=" + search}>
+                  <button className="btn bt btn-primary text-light">
+                  <i class="fas fa-search"></i>
+              </button>
+                </Link>
+
+              </form>
       </div>
     </>
   )

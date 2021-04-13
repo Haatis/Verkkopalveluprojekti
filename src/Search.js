@@ -91,7 +91,7 @@ export default function Search({URL, addToCart}) {
   return (
     <>
       <div className="row">
-        <div className="col-3 bg-secondary border-top border-bottom border-end  border-dark">
+        <div className="col-lg-3 bg-secondary border-top border-bottom border-end  border-dark">
           <h1>Haku</h1>
           <form className="d-flex">
             <input
@@ -123,7 +123,7 @@ export default function Search({URL, addToCart}) {
             </select>
           </div>
         </div>
-        <div className="col-9 bg-secondary border-top border-bottom border-start  border-dark">
+        <div className="col-lg-9 bg-secondary border-top border-bottom border-start  border-dark">
           <h1>content</h1>
 
           <div className="row">
