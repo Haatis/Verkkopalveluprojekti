@@ -82,7 +82,7 @@ export default function Class({URL, addToCart}) {
           </div>
         </div>
         <div className="col-9 bg-secondary border-top border-bottom border-start border-dark">
-          <h1>content</h1>
+          <h1>Tuotteet</h1>
 
           <ul className="row">
           {items.map((item) => (
@@ -113,7 +113,7 @@ export default function Class({URL, addToCart}) {
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
                 { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>                
                 <h5 className="discount">{item.alennettuhinta + "€"}</h5>
-                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                <h6><span className="percent"> {"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</span></h6></>
                 :<h5 className="price">{item.hinta + "€"}</h5>}
                 </div>
                 </div>
