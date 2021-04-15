@@ -68,27 +68,28 @@ export default function Login() {
   return (
     <>
     
-    <form className="bg-light" onSubmit={login}>
+    <form className="bg-light row" onSubmit={login}>
+      <div className="ms-lg-5 mt-lg-3 ms-sm-2 mt-sm-1">
           <div className="row">
-          <label for="exampleEmail" sm={2}>Username</label>
-          <div className="col-sm-10" >
-          <input onChange={(e) => setUsername(e.target.value)} type="text" required/>
+          <label for="exampleEmail" sm={2}>Käyttäjänimi</label>
+          <div className="col-sm-5 col-md-5 col-lg-3" >
+          <input className="form-control" onChange={(e) => setUsername(e.target.value)} type="text" required/>
           </div>
         </div>
         <div className="row">
-          <label for="examplePassword" sm={2}>Password</label>
-          <div className="col-sm-10" >
-            <input onChange={(e) => setPassword(e.target.value)} type="password" required/>
+          <label for="examplePassword" sm={2}>Salasana</label>
+          <div className="col-sm-5 col-md-5 col-lg-3" >
+            <input className="form-control" onChange={(e) => setPassword(e.target.value)} type="password" required/>
           </div>
         </div>
         <div className="row">
-        <div className="col-sm-10" >
-            <button type="submit" value="Submit" >kirjaudu</button>
+        <div className="col-sm-10 mt-2" >
+            <button type="submit" value="Submit" className="mb-3 btn btn-warning">Kirjaudu</button>
              <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
              <h1>{loginStatus}</h1>
           </div>
         </div>
-     
+        </div>
       </form>
    </>
 

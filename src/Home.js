@@ -109,7 +109,7 @@ export default function Home({URL, addToCart}) {
                 <div className="oikea-pohja col-6 mt-2 align-bottom">
                 { item.alennettuhinta ? <><del>{item.hinta + "€"}</del>
                 <h5 className="discount">{item.alennettuhinta + "€"}</h5>
-                <h6 className="percent">{"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h6></>
+                <h6><span className="percent"> {"-"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</span></h6></>
                 :<h5>{item.hinta + "€"}</h5>}
                 </div>
                 </div>

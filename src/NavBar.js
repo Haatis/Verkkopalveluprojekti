@@ -129,7 +129,7 @@ export default function NavBar({URL, myCart, emptyCart}) {
             <Nav className="mr-auto d-flex">
               {/* <Nav.Link href="/" className="mx-1">Etusivu</Nav.Link> */}
               <Nav.Link as={Link} to="/Class/komponentit" className="ms-1">
-                komponentit
+                Komponentit
               </Nav.Link>
               <NavDropdown title="" id="collasible-nav-dropdown" className=""
                 show={showKomp}
