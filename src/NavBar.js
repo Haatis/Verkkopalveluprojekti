@@ -185,7 +185,8 @@ export default function NavBar({URL, myCart, emptyCart}) {
 
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
-              <Nav.Link as={Link} to={"/Account/" + user} className="mx-1" href="#">Tili</Nav.Link>
+              {("user" in localStorage) ? ( <Nav.Link as={Link} to={"/Account/" + user} className="mx-1" href="#">Tili</Nav.Link> ) : (
+                <Nav.Link as={Link} to="/login" className="mx-1">Tili</Nav.Link>)}
               <div className="border border-dark my-0 py-0"></div>
 
               <div className="my-0 py-0"></div>

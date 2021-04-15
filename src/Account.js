@@ -11,14 +11,20 @@ export default function Account(){
     const { it } = useParams();
     const URL = "HTTP://localhost/verkkokauppa/"
 
+
     useEffect(() => {
         if ("user" in localStorage) {
           setUser(JSON.parse(localStorage.getItem("user")))
           lähetä();
           tilaus();
           
-        }
+        } else {
+            alert("Et ole kirjautunut sisään")
+            window.location.href = "http://localhost:3000/"
+        } 
       }, [])
+
+      
 
       const lähetä = (e) => {
          axios.post('http://localhost/verkkokauppa/account.php', {
