@@ -6,11 +6,15 @@ import {Link} from 'react-router-dom'
 export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
     const [items, setItems] = useState([]);
 
-  //hakee ostoskorin tiedot localsoragesta
+      //hakee ostoskorin tiedot localsoragesta
+      
   const localCart = localStorage.getItem("cart");
   let arr = JSON.parse(localCart);
 
-  //laskee uniikkien arvojen määrän => näyttää kuinka monta mitäkin tuotetta on
+
+
+
+      //laskee uniikkien arvojen määrän => näyttää kuinka monta mitäkin tuotetta on
   var counts = {};
   if ("cart" in localStorage) {
     for (var i = 0; i < arr.length; i++) {
@@ -18,39 +22,51 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
     }
   }
 
+    //jos tuotteiden määrä on 0, poistetaan se näkyvistä
+    const id = items.map((item) => Number(item.id))
+    for(var i = 0; i < id.length; i++){
+          if(typeof counts[id[i]] === "undefined")
+          {
+              console.log(Number([i]) + 1 +  " on tyhjä")
+              console.log(localCart);
+            }
+    }
+
 
 //hakee ostoskorissa olevat tuotteet tietokannasta
     useEffect(() => {
-        if ("cart" in localStorage) {
-            let status = 0;
-            fetch(URL + "cart.php", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-type": "application/json",
-                },
-                body: JSON.stringify({
-                    search: arr,
-                }),
-            })
-                .then((response) => {
-                    status = parseInt(response.status);
-                    return response.json();
-                })
-                .then(
-                    (response) => {
-                        if (status === 200) {
-                            setItems(response);
-                        } else {
-                            alert(response.error);
-                        }
+            if (localStorage.getItem("cart") != null && arr.length != 0) {
+                let status = 0;
+                fetch(URL + "cart.php", {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-type": "application/json",
                     },
-                    (error) => {
-                        alert(error);
-                    }
-                );
-        }
-    }, [cart]);
+                    body: JSON.stringify({
+                        search: arr,
+                    }),
+                })
+                    .then((response) => {
+                        status = parseInt(response.status);
+                        return response.json();
+                    })
+                    .then(
+                        (response) => {
+                            if (status === 200) {
+                                setItems(response);
+                            } else {
+                                alert(response.error);
+                            }
+                        },
+                        (error) => {
+                            alert(error);
+                        }
+                    );
+            }else{
+                setItems([])
+            }
+    }, [cart, localCart]);
 
 
 
@@ -68,14 +84,10 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
    // :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }
 
 
-    //jos tuotteiden määrä on 0, poistetaan se näkyvistä
-    const id = items.map((item) => Number(item.id))
-    for(var i = 0; i < id.length; i++){
-          if(typeof counts[id[i]] === "undefined")
-          {
-              console.log(Number([i]) + 1 +  " on tyhjä")
-            }
-    }
+
+    // if(localCart.length === 0){
+    //     console.log("tyhjä")
+    // }
 
     return (
         <div className="row bg-secondary">

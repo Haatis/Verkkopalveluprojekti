@@ -34,10 +34,9 @@ export default function NavBar({URL, myCart, emptyCart}) {
   }
 
   //hakee ostoskorin tiedot localsoragesta
-  let cart = localStorage.getItem("cart")
+  const cart = localStorage.getItem("cart")
   let arr = JSON.parse(cart)
   let counts = {};
-
 
 
   //laskee uniikkien arvojen määrän 
@@ -47,9 +46,9 @@ export default function NavBar({URL, myCart, emptyCart}) {
     }
   }
 
+        //hakee ostoskorissa olevat tuotteet tietokannasta
   useEffect(() => {
     if ("cart" in localStorage) {
-      //hakee ostoskori tuotteet tietokannasta
       let status = 0;
       fetch(URL + "cart.php", {
         method: "POST",
@@ -77,8 +76,10 @@ export default function NavBar({URL, myCart, emptyCart}) {
             alert(error);
           }
         );
-    }
-  }, [myCart])
+    }else{
+      setItems([])
+  }
+  }, [myCart, cart])
 
   const login = (e) => {
     e.preventDefault();

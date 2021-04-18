@@ -72,6 +72,7 @@ function App() {
     }
     localStorage.setItem("cart", JSON.stringify(arr))
     setNewCartArr(arr);
+    setCart(arr)
   }
 
 //tyhjentää ostoskorin
@@ -93,6 +94,7 @@ function App() {
     }
     localStorage.setItem("cart", JSON.stringify(arr))
     setNewCartArr(arr);
+    setCart(arr)
   }
 
   return (
