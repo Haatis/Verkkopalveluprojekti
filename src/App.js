@@ -59,6 +59,7 @@ function App() {
     arr.push(item)
     localStorage.setItem("cart", JSON.stringify(arr))
     setNewCartArr(arr);
+    setCart(arr)
   }
 
   //poistaa yhden valitut tuotteen ostoskorista
