@@ -7,16 +7,24 @@ export default function Account(){
     const [user, setUser] = useState([]);
     const [account, setAccount] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
+    const [tuote, setTuote] = useState([]);
     const { it } = useParams();
     const URL = "HTTP://localhost/verkkokauppa/"
+
 
     useEffect(() => {
         if ("user" in localStorage) {
           setUser(JSON.parse(localStorage.getItem("user")))
           lähetä();
           tilaus();
-        }
+          
+        } else {
+            alert("Et ole kirjautunut sisään")
+            window.location.href = "http://localhost:3000/"
+        } 
       }, [])
+
+      
 
       const lähetä = (e) => {
          axios.post('http://localhost/verkkokauppa/account.php', {
@@ -39,15 +47,27 @@ export default function Account(){
              
              
            })}
-   
 
+
+           const tilaustuote = (tuote) => {
+            axios.post('http://localhost/verkkokauppa/orderedproducts.php', {
+             search:tuote,
+           }
+            ).then((response) => {
+              console.log(response.data)
+             setTuote(response.data)
+             
+           })}
+
+          
     
 
     return (
         <div className="row bg-light">
-            <h2>Käyttäjän {user} tilisivu</h2>
+            <h2>Käyttäjän <span className="text-primary">{user}</span> tilisivu</h2>
             <h5 className="mb-4">käyttäjä luotu: {account.added}</h5>
-            <h4>Tilaukset -</h4>
+            <h4 >Tilaukset ({tilaukset.length}) -</h4>
+           <div className="col-6">
             {tilaukset.map((tilaus) => (
                     <div key={tilaus.id} >
                         
@@ -65,13 +85,31 @@ export default function Account(){
                         <div>
                             <h5 className="">Hinta :{tilaus.hinta}</h5>
                         </div>
-                        <div>
-                            <h5 className="">Tilauspvm : {tilaus.pvm}</h5>
+                        <div className="mb-4 border-bottom">
+                             
+                            <h5 className="inline">Tilauspvm : {tilaus.pvm}</h5>
+                            <button className="btn-primary inline mb-1 ms-4" onClick={() => tilaustuote(tilaus.id)}>Näytä tuotteet</button>
                         </div>
                     </div>
                 ))}
-        
-            
+        </div>
+
+        <div className="col-6">
+            {tuote.map((tilaus) => (
+                    <div key={tilaus.id} >
+
+                        <div>
+                            <img src={tilaus.kuva} className="tuotekuva" alt="Logo" />
+                        </div>
+                    
+                        <div className="mb-4 border-bottom">
+                            <h5 className="">Kpl: {tilaus.kpl}</h5>
+                        </div>
+                    </div>
+                ))}
+        </div>
+       
+
         </div>
     )
 }
