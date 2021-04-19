@@ -21,14 +21,14 @@ export default function Footer() {
                     
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-6">
-                    <p style={{color:"black", fontSize:"20px"}}>Ryhmä 7</p>
+                    <p className="footer-text">Ryhmä 7</p>
                     <p>Joona Haataja</p>
                     <p>Joona Lappalainen</p>
                     <p>Joni Karvonen</p>
 
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-6">
-                    <p style={{color:"black", fontSize:"20px"}}>Sosiaalinen media</p>
+                    <p className="footer-text">Sosiaalinen media</p>
                     <a className="footerlink" href="https://www.facebook.com"> <i className="fab fa-facebook-square">&nbsp;</i>Facebook</a>
                     <a className="footerlink lightblue" href="https://www.twitter.com"><i className="fab fa-twitter-square">&nbsp;</i>Twitter</a>
                     <a className="footerlink red" href="https://www.youtube.com"> <i className="fab fa-youtube-square ">&nbsp;</i>Youtube</a>

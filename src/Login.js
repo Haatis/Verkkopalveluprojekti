@@ -58,7 +58,7 @@ export default function Login({URL, setUser}) {
         <div className="col-sm-10 mt-2" >
             <button type="submit" value="Submit" className="mb-3 btn btn-warning">Kirjaudu</button>
              <a className="ms-5" href="./register">Luo uusi käyttäjä</a>
-             <h1>{loginStatus}</h1>
+             <h3 className="error-in-register col-lg-6">{loginStatus}</h3>
           </div>
         </div>
         </div>
