@@ -64,10 +64,11 @@ export default function Account(){
 
     return (
         <div className="row bg-light">
-            <h2>Käyttäjän <span className="text-primary">{user}</span> tilisivu</h2>
+            <h2 className="text-lg-center text-sm-start">Käyttäjän <span className="text-primary">{user}</span> tilisivu</h2>
             <h5 className="mb-4">käyttäjä luotu: {account.added}</h5>
-            <h4 >Tilaukset ({tilaukset.length}) -</h4>
-           <div className="col-6">
+            <h4 ><i class="fa fa-list"></i> Tilaukset ({tilaukset.length}) -</h4>
+            <hr></hr>
+           <div className="col-lg-6 col-lg-12">
             {tilaukset.map((tilaus) => (
                     <div key={tilaus.id} >
                         
@@ -88,18 +89,18 @@ export default function Account(){
                         <div className="mb-4 border-bottom">
                              
                             <h5 className="inline">Tilauspvm : {tilaus.pvm}</h5>
-                            <button className="btn-primary inline mb-1 ms-4" onClick={() => tilaustuote(tilaus.id)}>Näytä tuotteet</button>
+                            <button className="btn-primary inline mt-3 mb-1 ms-lg-4 ms-md-2 ms-sm-0" onClick={() => tilaustuote(tilaus.id)}>Näytä tuotteet</button>
                         </div>
                     </div>
                 ))}
         </div>
 
-        <div className="col-6">
+        <div className="col-lg-12">
             {tuote.map((tilaus) => (
                     <div key={tilaus.id} >
 
-                        <div>
-                            <img src={tilaus.kuva} className="tuotekuva" alt="Logo" />
+                        <div className="col-lg-4">
+                            <img src={tilaus.kuva} className="tuotekuva-tili imgborder img-fluid" alt="Logo" />
                         </div>
                     
                         <div className="mb-4 border-bottom">

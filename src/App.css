@@ -71,7 +71,7 @@ footer {
   border-top: 2px solid gray;
   text-align: center;
   color:  rgb(186, 186, 186);
-  background-color: #353535;
+  background-color: #474747;
 }
 
 #header {
@@ -229,6 +229,11 @@ background-color: #cecece;
   height: 240px;
 }
 
+.tuotekuva-tili {
+  width:150px;
+  height: 140px;
+}
+
 .cartbackground {
   background-color: #f6f6f6;
 }
@@ -314,6 +319,11 @@ ul div h1 {
   font-weight: 700;
 }
 
+.footer-text {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
 /* .cardpricebackground {
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -322,4 +332,11 @@ ul div h1 {
 
 .inline {
   display: inline;
+}
+
+.error-in-register {
+  background-color: rgb(255, 155, 155);
+  border: red;
+  border-radius: 5px;
+  padding-left: 10px;
 }
