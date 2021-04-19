@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
+import { useHistory } from "react-router-dom";
 
-export default function Edit({URL}) {
+export default function Edit({URL, admin}) {
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [tuotetiivistelma, setTuotetiivistelma] = useState("");
@@ -13,6 +14,7 @@ export default function Edit({URL}) {
     const [kuva, setKuva] = useState("");
     const [items, setItems] = useState([]);
     const { it } = useParams();
+    let history = useHistory();
     useEffect(() => {
         let status = 0;
         fetch(URL + "retrieve.php", {
@@ -60,6 +62,14 @@ export default function Edit({URL}) {
         });
     };
   
+    useEffect(() => {
+      if (admin===null) {
+          alert("Et ole kirjautunut ylläpitäjänä")
+          history.push('/')
+    
+      } 
+    }, [])
+    
 
     return (
 <>

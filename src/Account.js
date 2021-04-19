@@ -2,28 +2,29 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
+import { Redirect } from 'react-router';
+import { useHistory } from "react-router-dom";
 
-export default function Account(){
-    const [user, setUser] = useState([]);
+export default function Account({URL, user}){
     const [account, setAccount] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
+    const [kayttaja, setKayttaja] = useState([]);
     const [tuote, setTuote] = useState([]);
     const { it } = useParams();
-    const URL = "HTTP://localhost/verkkokauppa/"
+    let history = useHistory();
 
 
     useEffect(() => {
-        if ("user" in localStorage) {
-          setUser(JSON.parse(localStorage.getItem("user")))
-          lähetä();
-          tilaus();
-          
-        } else {
+        if (user===null) {
             alert("Et ole kirjautunut sisään")
-            window.location.href = "http://localhost:3000/"
+            history.push('/')
+         
+        } else {
+            lähetä();
+            tilaus();
         } 
       }, [])
-
+      
       
 
       const lähetä = (e) => {
@@ -64,8 +65,8 @@ export default function Account(){
 
     return (
         <div className="row bg-light">
-            <h2 className="text-lg-center text-sm-start">Käyttäjän <span className="text-primary">{user}</span> tilisivu</h2>
-            <h5 className="mb-4">käyttäjä luotu: {account.added}</h5>
+            <h2 className="text-lg-center text-sm-start">Käyttäjän <span className="text-primary">{it}</span> tilisivu</h2>
+            <h5 className="mb-4">käyttäjä luotu:  {account.added}</h5>
             <h4 ><i class="fa fa-list"></i> Tilaukset ({tilaukset.length}) -</h4>
             <hr></hr>
            <div className="col-lg-6 col-lg-12">

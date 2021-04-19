@@ -9,17 +9,20 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-export default function NavBar({URL, myCart, emptyCart}) {
+export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, setAdmin}) {
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
-  const [user, setUser] = useState([]);
+
   const [username, setUsername] = useState('');
+ 
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
 
 
   const [showOheis, setshowOheis] = useState(false);
   const [showKomp, setshowKomp] = useState(false);
+  
+
   const showOheisDropdown = (e) => {
     setshowOheis(!showOheis);
   }
@@ -37,7 +40,6 @@ export default function NavBar({URL, myCart, emptyCart}) {
   const cart = localStorage.getItem("cart")
   let arr = JSON.parse(cart)
   let counts = {};
-
 
   //laskee uniikkien arvojen määrän 
   if ("cart" in localStorage) {
@@ -81,41 +83,10 @@ export default function NavBar({URL, myCart, emptyCart}) {
   }
   }, [myCart, cart])
 
-  const login = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost/verkkokauppa/login.php', {
-      username: username,
-      password: password,
-    }).then((response) => {
-
-      if ((response.data.id) > 0) {
-        addToUser(response.data.username)
-      } else {
-        setLoginStatus("hommat kusi")
-
-
-      }
-      console.log(response.data);
-    });
-  };
-
-  useEffect(() => {
-    if ("user" in localStorage) {
-      setUser(JSON.parse(localStorage.getItem("user")))
-    }
-  }, [])
-
-  function addToUser(item) {
-    const newUser = [...user, item];
-    setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
-    window.location.reload(false);
-  }
-
+ 
   function emptyUser() {
-    localStorage.clear("user")
-    window.location.reload(false);
-    alert("Olet nyt kirjautunut ulos")
+    setUser(null)
+    setAdmin(null)
   }
 
   return (
@@ -186,7 +157,7 @@ export default function NavBar({URL, myCart, emptyCart}) {
 
               </NavDropdown>
               <div className="border border-dark my-0 py-0"></div>
-              {("user" in localStorage) ? ( <Nav.Link as={Link} to={"/Account/" + user} className="mx-1" href="#">Tili</Nav.Link> ) : (
+              {(user) ? ( <Nav.Link as={Link} to={"/Account/" + user.username} className="mx-1" href="#">Tili</Nav.Link> ) : (
                 <Nav.Link as={Link} to="/login" className="mx-1">Tili</Nav.Link>)}
               <div className="border border-dark my-0 py-0"></div>
 
@@ -228,9 +199,11 @@ export default function NavBar({URL, myCart, emptyCart}) {
 
               </NavDropdown>
 
-              {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user})</p></Nav.Link>) : (
+              {(user) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user.username})</p></Nav.Link>) : (
                 <Nav.Link as={Link} to="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
 
+              {(admin) ? (<Nav.Link as={Link} to="/add"  className="m-1">YP</Nav.Link>) : (
+                      <Nav.Link  className="hidden">YP</Nav.Link>)}
             </Nav>
           </Navbar.Collapse>
           <form className="float-end me-2 col-md-3 col-xl-4 col-xxl-5 d-none d-lg-flex">
@@ -243,6 +216,10 @@ export default function NavBar({URL, myCart, emptyCart}) {
                 </Link>
 
               </form>
+
+              
+            
+
         </Navbar>
         <form className="d-lg-none d-flex my-2">
                 <input className="form-control " type="search" placeholder="Haku" value={search} onChange={e => setSearch(e.target.value)} />

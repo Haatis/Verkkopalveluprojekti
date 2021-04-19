@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';  
 import userEvent from '@testing-library/user-event';
 
-export default function Order() {
+export default function Order({user}) {
     const [show, setShow]=useState(false)
     const [items, setItems] = useState([]);
     const [nimi, setNimi] = useState('');
@@ -17,7 +17,7 @@ export default function Order() {
     const [id, setId] = useState('');
     const [tuotenro, setTuotenro] = useState([]);
     const [kpl, setKpl] = useState([]);
-    const [user, setUser] = useState([]);
+    
 
     const URL = "HTTP://localhost/verkkokauppa/";
 
@@ -25,11 +25,7 @@ export default function Order() {
     const cart = localStorage.getItem("cart");
     let arr = JSON.parse(cart);
 
-    useEffect(() => {
-        if ("user" in localStorage) {
-          setUser(JSON.parse(localStorage.getItem("user")))
-        }
-      }, [])
+   
     //poistaa cartin localstoragesta jos se on tyhjä, muuten näyttää virhettä fetchissä
     if ("cart" in localStorage) {
         if (arr.length === 0) {
@@ -98,7 +94,10 @@ export default function Order() {
 
     const tilaa = (e) => {
         e.preventDefault();
-        let kayttaja = user[0]
+        let kayttaja = null;
+        if (user) {
+        kayttaja = user.username
+        }
          axios.post('http://localhost/verkkokauppa/order.php', {
           nimi:nimi,
           puhelin:puhelin,
