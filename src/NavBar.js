@@ -212,10 +212,20 @@ export default function NavBar({URL, myCart, emptyCart}) {
                     </div>
                   </NavDropdown.Item>
                 ))}
+                
                 <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
                 <Link to="/cart" className="btn btn-primary float-end col-6">
                   Kassalle
                 </Link>
+                
+
+
+                <Link to="/order" className="btn btn-own col-12">
+                Siirry tilaamaan
+                </Link>
+
+
+
               </NavDropdown>
 
               {("user" in localStorage) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user})</p></Nav.Link>) : (

@@ -101,11 +101,11 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                         <button className="btn-sm btn-warning float-start mt-2" onClick={() => clearItem(item.id)} value={item.id}>
                             <i class="fa fa-trash-alt"></i>
                         </button>
-                        <button className="btn-sm btn-warning float-start mt-2" onClick={() => addItem(item.id)} value={item.id}>
-                            <i class="fa fa-plus-square"></i>
-                        </button>
                         <button className="btn-sm btn-warning float-start mt-2" onClick={() => removeItem(item.id)} value={item.id}>
                             <i class="fa fa-minus-square"></i>
+                        </button>
+                        <button className="btn-sm btn-warning float-start mt-2" onClick={() => addItem(item.id)} value={item.id}>
+                            <i class="fa fa-plus-square"></i>
                         </button>
                         <div className="cartbackground mt-2">
                             <img src={item.kuva} className="img-fluid col-1 float-start imgborder mb-2" alt="Logo" />

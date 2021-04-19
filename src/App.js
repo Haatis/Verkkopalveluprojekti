@@ -25,6 +25,7 @@ const URL = "http://localhost/verkkokauppa/";
 function App() {
   const [cart, setCart] = useState([])
   const [newCartArr, setNewCartArr] = useState([])
+  const [user, setUser] = useState("")
 
   //hakee ostoskorin tiedot localsoragesta
   const localCart = localStorage.getItem("cart");
@@ -98,6 +99,10 @@ function App() {
     setCart(arr)
   }
 
+  useEffect(() => {
+    console.log(user)
+  }, [user])
+
   return (
 
     <>
@@ -137,7 +142,11 @@ function App() {
             render={() => <Class
               URL={URL}
               addToCart={addToCart} />} exact />
-          <Route path="/login" component={Login} />
+          <Route path="/login" 
+          render={() => <Login
+            URL={URL}
+            setUser={setUser}
+            />}  />
           <Route path="/register" component={Register} />
           <Route path="/add"
             render={() => <Add
