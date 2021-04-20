@@ -166,7 +166,8 @@ a{
 
 .priceinfo {
   border-radius: 5px;
-  padding-left: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
   padding-right: 20px;
   padding-bottom: 2px;
   border: 1px solid #ccc;
@@ -213,6 +214,7 @@ background-color: #cecece;
   border-radius: 5px;
   padding-left: 4px;
   background-color: rgb(57, 197, 132);
+  margin-right: 6em;
 }
 
 /* Pystysuora viiva */
@@ -330,6 +332,13 @@ ul div h1 {
   margin-left: 30px;
 }
 
+/* tuotekuvauksen alemerkintä */
+.percent-prodcut {
+  font-weight: 700;
+  background-color: rgb(255, 194, 81);
+  margin-right: 30px;
+}
+
 .price {
   font-weight: 700;
 }
@@ -357,4 +366,11 @@ ul div h1 {
   border: red;
   border-radius: 5px;
   padding-left: 10px;
+}
+
+
+.btn-sm {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.675rem;
+  border-radius: 0.2rem;
 }

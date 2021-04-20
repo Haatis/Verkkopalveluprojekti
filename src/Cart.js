@@ -91,7 +91,7 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
 
     return (
         <div className="row bg-secondary">
-            <h1>Ostoskori</h1>
+            <h2>OSTOSKORI</h2>
             {/* <div className="col-lg-12 col-md-12 col-sm-12"> */}
             <h5 className="text col-lg-6 col-md-6 col-sm-6 col-6">Tuotteet:</h5>
             <h5 className="text col-lg-6 col-md-6 col-sm-6 col-6 text-end carttext pe-lg-4 position-sticky">Yhteensä</h5>
@@ -117,6 +117,7 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                         </div>
 
                        <div className="col-lg-6 col-md-4 float-lg-end float-sm-end mt-lg-0 mt-md-0 mt-sm-0 mt-5">
+                       <hr className="d-lg-none d-md-none d-sm-none d-block"></hr>
                             <h2 className="ms-4 float-end cartprodcutprice">
                             ={ item.alennettuhinta ? (counts[item.id] *  item.alennettuhinta).toLocaleString("fi-FI")
                             :    (counts[item.id] *  item.hinta).toLocaleString("fi-FI")             }€
@@ -137,14 +138,14 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                 <h1 className="">{sum.toLocaleString("fi-FI")} €</h1>
             </div>
 
-            <div style={{ padding: 0 }}>
+            <div style={{ padding: 0 }} className="input-groub">
                 <p className="text ms-2">Kuponki:</p>
                 <p className="text">
                     <input
                         id="coupon"
                         type="text"
                         className="form-label col-4 ms-2"
-                    ></input>
+                    ></input> <button className="btn-warning" id="coupon" type="submit">Lisää</button>
                 </p>
             </div>
 

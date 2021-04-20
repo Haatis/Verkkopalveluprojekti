@@ -186,7 +186,7 @@ export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, se
                 
                 <button className="btn btn-danger float-start col-6" type="button" onClick={() => emptyCart()}>Tyhjennä</button>
                 <Link to="/cart" className="btn btn-primary float-end col-6">
-                  Kassalle
+                  Ostoskoriin
                 </Link>
                 
 
