@@ -80,7 +80,7 @@ export default function Ask () {
 
                   <div className='col-lg-8 col-md-8'>
                     <h3>Kysy tuotteesta</h3>
-                    <form>
+                    <form onSubmit={lähetä}>
                       <div className='row'>
                         <div class='mb-3 col-5'>
                           <label for='nimi' class='form-label'>
@@ -92,6 +92,7 @@ export default function Ask () {
                             placeholder='Etu ja sukunimi'
                             class='form-control col-2'
                             id='nimi'
+                            required
                           />
                         </div>
 
@@ -105,6 +106,7 @@ export default function Ask () {
                             placeholder='Puhelin'
                             class='form-control'
                             id='puhelin'
+                            required
                           />
                         </div>
 
@@ -119,6 +121,7 @@ export default function Ask () {
                             class='form-control'
                             id='exampleInputEmail1'
                             aria-describedby='emailHelp'
+                            required
                           />
                         </div>
 
@@ -132,6 +135,7 @@ export default function Ask () {
                             placeholder='Aihe'
                             class='form-control'
                             id='aihe'
+                            required
                           />
                         </div>
 
@@ -144,10 +148,10 @@ export default function Ask () {
                             placeholder='Viesti'
                             class='form-control'
                             id='viesti'
+                            required
                           />
                           <button
                             type='submit'
-                            onClick={lähetä}
                             class='btn btn-primary my-4'
                           >
                             Lähetä
