@@ -25,7 +25,8 @@ const URL = "http://localhost/verkkokauppa/";
 function App() {
   const [cart, setCart] = useState([])
   const [newCartArr, setNewCartArr] = useState([])
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState(null)
+  const [admin, setAdmin] = useState(null)
 
   //hakee ostoskorin tiedot localsoragesta
   const localCart = localStorage.getItem("cart");
@@ -101,13 +102,16 @@ function App() {
 
   useEffect(() => {
     console.log(user)
+    if (user!=null){
+      setAdmin(user.oikeudet)
+    }
   }, [user])
 
   return (
 
     <>
       <div className="container">
-        <NavBar URL={URL} myCart={cart} emptyCart={emptyCart} setCart={setCart}/>
+        <NavBar URL={URL} myCart={cart} emptyCart={emptyCart} setCart={setCart} user={user} setUser={setUser} admin={admin} setAdmin={setAdmin}/>
         <Switch>
           <Route path="/"
             render={() => <Home
@@ -137,7 +141,11 @@ function App() {
             render={() => <Product
               URL={URL}
               addToCart={addToCart} />} />
-          <Route path="/order" component={Order} />
+          <Route path="/order"
+          render={() => <Order
+            URL={URL}
+            user={user}
+            />}  />
           <Route path="/class/:it"
             render={() => <Class
               URL={URL}
@@ -150,16 +158,20 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/add"
             render={() => <Add
-              URL={URL} />} exact />
+              URL={URL}
+              admin={admin} />} exact />
           <Route path="/edit/:it"
             render={() => <Edit
-              URL={URL} />} exact />
+              URL={URL} 
+              admin={admin} />} exact />
               <Route path="/ask/:it"
             render={() => <Ask
               URL={URL} />} exact />
                <Route path="/Account/:it"
             render={() => <Account
-              URL={URL} />} exact />
+              URL={URL}
+              user={user}
+              />} exact />
           <Route component={NotFound} />
         </Switch>
         <Footer />

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';  
+import { useHistory } from "react-router-dom";
 
-
-export default function Add({URL}) {
+export default function Add({URL, admin}) {
   const [tuotenimi, setTuotenimi] = useState('');
   const [hinta, setHinta] = useState('');
   const [tuotetiivistelma, setTuotetiivistelma] = useState('');
@@ -17,8 +17,8 @@ export default function Add({URL}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
-  const [admin, setAdmin] = useState([]);
-
+  
+  let history = useHistory();
   useEffect(() => {
     let status = 0;
     fetch(URL + "index.php")
@@ -41,35 +41,15 @@ export default function Add({URL}) {
 }, []);
 
 
+useEffect(() => {
+  if (admin===null) {
+      alert("Et ole kirjautunut ylläpitäjänä")
+      history.push('/')
 
-useEffect(() =>{
-  if("admin" in localStorage) {
-    
-  } else {
-    alert("Et ole kirjautunut ylläpitäjänä")
-    window.location.href = "http://localhost:3000/"
-} 
+  } 
 }, [])
 
-function addToUser(item){
-const newUser = [...user, item];
-setUser(newUser);
-localStorage.setItem("user", JSON.stringify(newUser));
-window.location.reload(false);
-}
 
-function addToAdmin(item){
-  const newAdmin = [...admin, item];
-  setAdmin(newAdmin);
-  localStorage.setItem("admin", JSON.stringify(newAdmin));
-  window.location.reload(false);
-}
-
-function emptyUser() {
-localStorage.clear("user")
-window.location.reload(false);
-alert("Olet nyt kirjautunut ulos")
-}
 
   const add = (e) => {
         axios.post('http://localhost/verkkokauppa/add.php', {

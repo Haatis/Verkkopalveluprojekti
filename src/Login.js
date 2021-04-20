@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useHistory } from "react-router-dom";
 
 export default function Login({URL, setUser}) {
 
@@ -8,7 +8,7 @@ export default function Login({URL, setUser}) {
   const [admin, setAdmin] = useState([]);
   const [viesti, setViesti] = useState([]);
   const [loginStatus, setLoginStatus] = useState('');
-    
+  let history = useHistory();
   async function login(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -30,12 +30,13 @@ export default function Login({URL, setUser}) {
 
     if (response.ok) {
       setUser(json);
+      alert("kirjautuminen onnistui")
+      history.push('/')
     } else {
       alert("Error logging in.");
     }
 
   }
-
 
   return (
     <>

@@ -333,6 +333,9 @@ ul div h1 {
 .price {
   font-weight: 700;
 }
+.hidden {
+  display: none;
+}
 
 .footer-text {
   color: rgb(0, 0, 0);
