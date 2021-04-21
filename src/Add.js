@@ -49,7 +49,7 @@ useEffect(() => {
           headers: {
         'Accept' : 'application/json'
       }}
-  fetch(URL + "getUser.php", config)
+  fetch(URL + "secret.php", config)
       .then((response) => {
         console.log(response)
           if (response.status === 401) {
