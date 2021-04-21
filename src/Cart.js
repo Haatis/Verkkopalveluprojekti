@@ -91,6 +91,7 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
 
     return (
         <div className="row bg-secondary">
+            <hr className="d-lg-block d-md-block d-sm-none d-none"></hr>
             <h2>OSTOSKORI</h2>
             {/* <div className="col-lg-12 col-md-12 col-sm-12"> */}
             <h5 className="text col-lg-6 col-md-6 col-sm-6 col-6">Tuotteet:</h5>

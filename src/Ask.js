@@ -84,7 +84,7 @@ export default function Ask () {
                       <div className='row'>
                         <div class='mb-3 col-5'>
                           <label for='nimi' class='form-label'>
-                            Kokonimi
+                            Nimi
                           </label>
                           <input
                             onChange={e => setNimi(e.target.value)}
