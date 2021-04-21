@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, setAdmin}) {
+export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, setAdmin, Logout}) {
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
 
@@ -85,8 +85,25 @@ export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, se
 
  
   function emptyUser() {
-    setUser(null)
-    setAdmin(null)
+
+   
+      async function logout() {
+        const config = {
+          method: 'GET',
+          credentials: 'include'
+        }
+    
+        const url = 'http://localhost/verkkokauppa/logout.php';
+        try {
+          await fetch(url,config);
+          setUser(null);
+          setAdmin(null);
+        } catch (error) {
+          alert(error);
+        }
+      }
+      logout();
+  
   }
 
   return (
