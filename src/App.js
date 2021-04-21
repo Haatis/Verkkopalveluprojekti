@@ -167,6 +167,7 @@ useEffect(() => {
           render={() => <Order
             URL={URL}
             user={user}
+            emptyCart={emptyCart}
             />}  />
           <Route path="/class/:it"
             render={() => <Class

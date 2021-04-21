@@ -90,21 +90,21 @@ export default function Account({URL, user}){
                         <div className="mb-4 border-bottom">
                              
                             <h5 className="inline">Tilauspvm : {tilaus.pvm}</h5>
-                            <button className="btn-primary inline mt-3 mb-1 ms-lg-4 ms-md-2 ms-sm-0" onClick={() => tilaustuote(tilaus.id)}>Näytä tuotteet</button>
+                            <button className="btn-primary inline mt-3 mb-1 ms-lg-4 ms-md-2 ms-sm-2" onClick={() => tilaustuote(tilaus.id)}>Näytä tuotteet</button>
                         </div>
                     </div>
                 ))}
         </div>
 
-        <div className="col-lg-12">
+        <div className="row">
             {tuote.map((tilaus) => (
-                    <div key={tilaus.id} >
+                    <div className="col-lg-12" key={tilaus.id} >
 
                         <div className="col-lg-4">
                             <img src={tilaus.kuva} className="tuotekuva-tili imgborder img-fluid" alt="Logo" />
                         </div>
                     
-                        <div className="mb-4 border-bottom">
+                        <div className="col-lg-4 mb-4 border-bottom">
                             <h5 className="">Kpl: {tilaus.kpl}</h5>
                         </div>
                     </div>

@@ -166,7 +166,8 @@ a{
 
 .priceinfo {
   border-radius: 5px;
-  padding-left: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
   padding-right: 20px;
   padding-bottom: 2px;
   border: 1px solid #ccc;
@@ -213,6 +214,7 @@ background-color: #cecece;
   border-radius: 5px;
   padding-left: 4px;
   background-color: rgb(57, 197, 132);
+  margin-right: 6em;
 }
 
 /* Pystysuora viiva */
@@ -236,6 +238,8 @@ background-color: #cecece;
 
 .cartbackground {
   background-color: #f6f6f6;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 /* .cartbackground:nth-child(even) {
   background-color: #f6f6f6;
@@ -243,6 +247,8 @@ background-color: #cecece;
 } */
 .cartbackground:nth-child(odd) {
   background-color: #adadad;
+  padding-right: 5px;
+  padding-left: 5px;
 
 }
 .carttext {
@@ -294,7 +300,18 @@ ul div h1 {
 }
 
 .cartproductinfo {
-  font-size: 24px;
+  font-size: 0.9em;
+}
+.cartprodcutprice {
+  font-size: 1.2em;
+}
+.cartimage {
+  width: 60px;
+  height: 60px;
+}
+
+.flowright{
+  float: right;
 }
 
 .productpriceinfo {
@@ -313,6 +330,13 @@ ul div h1 {
   background-color: rgb(255, 194, 81);
   margin-right: 30px;
   margin-left: 30px;
+}
+
+/* tuotekuvauksen alemerkintä */
+.percent-prodcut {
+  font-weight: 700;
+  background-color: rgb(255, 194, 81);
+  margin-right: 30px;
 }
 
 .price {
@@ -342,4 +366,11 @@ ul div h1 {
   border: red;
   border-radius: 5px;
   padding-left: 10px;
+}
+
+
+.btn-sm {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.675rem;
+  border-radius: 0.2rem;
 }

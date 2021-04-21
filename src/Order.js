@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from 'axios';  
 import userEvent from '@testing-library/user-event';
+import { useHistory } from "react-router-dom";
 
-export default function Order({user}) {
+export default function Order({user, emptyCart}) {
     const [show, setShow]=useState(false)
     const [items, setItems] = useState([]);
     const [nimi, setNimi] = useState('');
@@ -17,7 +18,7 @@ export default function Order({user}) {
     const [id, setId] = useState('');
     const [tuotenro, setTuotenro] = useState([]);
     const [kpl, setKpl] = useState([]);
-    
+    let history = useHistory();
 
     const URL = "HTTP://localhost/verkkokauppa/";
 
@@ -31,6 +32,13 @@ export default function Order({user}) {
         if (arr.length === 0) {
             localStorage.removeItem("cart");
         }
+    }
+
+    if ("cart" in localStorage) {
+
+    } else {
+        alert("ostoskorisi on tyhjä, lisää ostoskoriin tuote päästäksesi tilaukseen")
+        history.push('/')
     }
 
 
@@ -124,7 +132,8 @@ export default function Order({user}) {
                 console.log(response);
                 localStorage.removeItem("cart")
                 alert("Tilaus onnistui")
-                window.location.href = "http://localhost:3000"
+                history.push('/')
+                emptyCart();
                 
             });}
              
@@ -136,35 +145,35 @@ export default function Order({user}) {
         <>
        <div className="row bg-light">
             <div className="col-6">
-        <form>
+        <form onSubmit={tilaa}>
         
   
       <h4 className="m-3">Toimitusosoite</h4>
       <div className="row">
 <div class="mb-3 col-5">
     <label for="nimi" class="form-label">Etu- ja sukunimi</label>
-    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" class="form-control col-2" id="nimi"/>
+    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" class="form-control col-2" id="nimi" required/>
     
   </div>
   <div class="mb-3 col-5">
     <label for="puhelin" class="form-label ">Puhelin</label>
-    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" class="form-control" id="puhelin"/>
+    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" class="form-control" id="puhelin" required/>
   </div>
   </div>
   <div className="row">
   <div class="mb-3 col-5">
     <label for="osoite" class="form-label">Katuosoite</label>
-    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" class="form-control" id="osoite"/>
+    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" class="form-control" id="osoite" required/>
   </div>
   <div class="mb-3 col-5">
     <label for="posti" class="form-label">Postinumero</label>
-    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" class="form-control" id="posti"/>
+    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" class="form-control" id="posti" required/>
   </div>
   </div>
 
    <div class="mb-3 col-10">
     <label for="exampleInputEmail1" class="form-label">Sähköpostiosoite</label>
-    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
   </div>
   <h4>Toimitustapa</h4>
     <input onChange={(e) => setKuljetus(e.target.value)} type="radio" class="btn-check" value="kotiinkuljetus" name="kuljetus" id="kotiin" autocomplete="off"/>
@@ -182,7 +191,7 @@ export default function Order({user}) {
     <label class="btn btn-outline-secondary ms-2" for="kortti">Korttimaksu</label><br></br>
         
         
-  <button type="submit" onClick={tilaa} class="btn btn-primary my-4">Submit</button>
+  <button type="submit"  class="btn btn-primary my-4">Submit</button>
   
   
   

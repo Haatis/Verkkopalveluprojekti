@@ -190,16 +190,19 @@ export default function Product({URL, addToCart}) {
                             <h2 className="ms-4 title">{item.tuotenimi}</h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
-                            <img src={item.kuva} className="tuotesivukuva col-sm-12 col-md-12" alt="Logo" />
+                            <img src={item.kuva} className="tuotesivukuva col-sm-12 col-md-12 col-10 img-fluid" alt="Logo" />
                             </div>
                             {/* <div className="vr"></div> */}
                             <div className="col-md-6 col-sm-12"> 
                             <h3 className="titlecolor">Tuotekuvaus</h3>
-                            <h5 className="me-5 col-sm-12 col-md-12 ">{item.tuotekuvaus}</h5>
-                            <h4 className="priceinfo col-lg-3 col-sm-4 
-                            ">{ item.alennettuhinta ? <><del className="pricebackground">{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
+                            <h5 className="me-5 col-sm-10 col-md-10 ">{item.tuotekuvaus}</h5>
+                            <div className="col-lg-12 col-md-12 col-sm-12 col-8">
+                            <h4 className="priceinfo col-lg-3 col-sm-4">
+                              { item.alennettuhinta ? <><del className="pricebackground">{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€"}</h5>
+                              <h6><span className="percent-prodcut">{" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</span></h6></>
                             :<h5 className="pricebackground">{item.hinta + "€"}</h5>}<p className="lisäinfo">sisältää alv. 24%</p></h4>
-                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-5 p-2 mb-3">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
+                            </div>
+                            <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-lg-5 col-md-5 col-8 p-2 mb-3">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
                             <div className="row">
                             <Link to={"/Ask/" + item.id}>Kysy tuotteesta</Link>
                             </div>
