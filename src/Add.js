@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';  
 import { useHistory } from "react-router-dom";
+import { Redirect } from 'react-router';
 
-export default function Add({URL, admin}) {
+export default function Add({URL, admin, user, setUser}) {
   const [tuotenimi, setTuotenimi] = useState('');
   const [hinta, setHinta] = useState('');
   const [tuotetiivistelma, setTuotetiivistelma] = useState('');
@@ -13,7 +14,7 @@ export default function Add({URL, admin}) {
   const [luokka, setLuokka] = useState('');
   const [viesti, setViesti] = useState('');
   const [items, setItems] = useState([]);
-   const [user, setUser] = useState([]);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
@@ -40,14 +41,49 @@ export default function Add({URL, admin}) {
         );
 }, []);
 
-
 useEffect(() => {
-  if (admin===null) {
-      alert("Et ole kirjautunut ylläpitäjänä")
-      history.push('/')
+  let status = 0;
+      const config = {
+      method: 'POST',
+      credentials: 'include',
+          headers: {
+        'Accept' : 'application/json'
+      }}
+  fetch(URL + "getUser.php", config)
+      .then((response) => {
+        console.log(response)
+          if (response.status === 401) {
+            alert("et ole kirjautunut sisään")
+            history.push('/')
+            
+          }
+          status = parseInt(response.status);
+          return response.json();
+         
+      })
+      .then(
+        
+          (response) => {
+            
+              if (status === 200) {
+                setUser(response);
+              
+              
+                if(response.oikeudet === "admin"){
+                  alert("moro")
+                  
+                  
+                }else {
+                  alert("et ole kirjautunut ylläpitäjänä")
+                  history.push('/')
+                  
+                  
+                } 
+              } 
+              
+          });  ;
+} , []);
 
-  } 
-}, [])
 
 
 
@@ -71,7 +107,7 @@ useEffect(() => {
         id:id,
       }).then((response) => {
           console.log(response);
-          window.location.href = "http://localhost:3000/add"
+          history.push('/add')
       });
   };
 
@@ -137,7 +173,7 @@ useEffect(() => {
         </div>
         <div className="row">
         <div className="col-sm-10 m-2" >
-            <button onClick={add}>Lisää tuote</button>
+            <button onClick={add}>Lisää tuote </button>
           </div>
         </div>
 

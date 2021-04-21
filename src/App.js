@@ -19,6 +19,7 @@ import Cart from "./Cart";
 import Edit from "./Edit";
 import Ask from "./Ask";
 import Account from "./Account";
+import { useHistory } from "react-router-dom";
 
 const URL = "http://localhost/verkkokauppa/";
 
@@ -27,7 +28,7 @@ function App() {
   const [newCartArr, setNewCartArr] = useState([])
   const [user, setUser] = useState(null)
   const [admin, setAdmin] = useState(null)
-
+  let history = useHistory();
   //hakee ostoskorin tiedot localsoragesta
   const localCart = localStorage.getItem("cart");
   let arr = JSON.parse(localCart);
@@ -104,7 +105,7 @@ function App() {
     console.log(user)
     if (user!=null){
       setAdmin(user.oikeudet)
-    }
+    } 
   }, [user])
 
 useEffect(() => {
@@ -124,11 +125,14 @@ useEffect(() => {
           (response) => {
               if (status === 200) {
                 setUser(response);
+                setAdmin(response.oikeudet)
               }
           }
       );
 }, []);
 
+
+  
   return (
 
     <>
@@ -162,7 +166,9 @@ useEffect(() => {
           <Route path="/product/:it"
             render={() => <Product
               URL={URL}
-              addToCart={addToCart} />} />
+              addToCart={addToCart}
+              user={user}
+              admin={admin} />} />
           <Route path="/order"
           render={() => <Order
             URL={URL}
@@ -182,7 +188,11 @@ useEffect(() => {
           <Route path="/add"
             render={() => <Add
               URL={URL}
-              admin={admin} />} exact />
+              admin={admin} 
+              user={user}
+              setUser={setUser}
+              setAdmin={setAdmin}
+              />} exact />
           <Route path="/edit/:it"
             render={() => <Edit
               URL={URL} 

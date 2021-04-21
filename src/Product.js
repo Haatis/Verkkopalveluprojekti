@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';  
 import {Link} from 'react-router-dom'
 
-export default function Product({URL, addToCart}) {
+export default function Product({URL, addToCart, user, admin}) {
   console.log(URL)
 
     const [search, setSearch] = useState("")
@@ -21,8 +21,8 @@ export default function Product({URL, addToCart}) {
     const [arvosana, setArvosana] = useState('');
     const [id, setId] = useState('');
     const [kayttaja, setKayttaja] = useState('');
-    const [user, setUser] = useState([]);
-    const [admin, setAdmin] = useState([]);
+
+
 
     useEffect(() => {
         let status = 0;
@@ -136,21 +136,6 @@ export default function Product({URL, addToCart}) {
         });
     };
 
-    useEffect(() =>{
-      if("user" in localStorage){
-          setUser(JSON.parse(localStorage.getItem("user")))
-      }
-    }, [])
-
-
-
-
-      useEffect(() =>{
-        if("admin" in localStorage) {
-          setAdmin(JSON.parse(localStorage.getItem("admin")));
-        } 
-      }, [])
-    
 
 
       function tähti (e) {
@@ -239,7 +224,7 @@ export default function Product({URL, addToCart}) {
                             <h3 className="ms-4">{kommentti.otsikko} {tähti(kommentti.arvosana)} </h3>
                             <h4 className="ms-4">{kommentti.kommentti}</h4>
                             <h5 className="ms-4">{kommentti.käyttäjä}</h5>
-                            {("admin" in localStorage) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
+                            {(admin) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
                             
                           
                             </div>
@@ -250,28 +235,28 @@ export default function Product({URL, addToCart}) {
                  ))}
                 
                  <div className="row bg-white">
-                 {("user" in localStorage) && <div className="row">
+                 {(user) && <div className="row">
                    <h4>Jätä tuotteelle arvostelu</h4>
            <label for="examplePassword" sm={2}>Otsikko</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setOtsikko(e.target.value)} type="text"/>
           </div>
         </div>}
-        {("user" in localStorage) &&<div className="row">
+        {(user) &&<div className="row">
           <label for="examplePassword" sm={2}>Kommentti</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setKommentti(e.target.value)} type="text"/>
           </div>
         </div>}
 
-        {("user" in localStorage) && <div className="row">
+        {(user) && <div className="row">
           <label for="examplePassword" sm={2}>Arvosana</label>
           <div className="col-sm-10" >
             <input onChange={(e) => setArvosana(e.target.value)} type="text"/>
           </div>
         </div>}
 
-        {("user" in localStorage) &&<div className="row">
+        {(user) &&<div className="row">
         <div className="col-sm-10" >
         
             <button className="mb-3" onClick={comment}>Lisää arvostelu</button>

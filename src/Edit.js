@@ -62,6 +62,7 @@ export default function Edit({URL, admin}) {
         });
     };
   
+    
     useEffect(() => {
       if (admin===null) {
           alert("Et ole kirjautunut ylläpitäjänä")
