@@ -107,6 +107,28 @@ function App() {
     }
   }, [user])
 
+useEffect(() => {
+  let status = 0;
+      const config = {
+      method: 'POST',
+      credentials: 'include',
+          headers: {
+        'Accept' : 'application/json'
+      }}
+  fetch(URL + "getUser.php", config)
+      .then((response) => {
+          status = parseInt(response.status);
+          return response.json();
+      })
+      .then(
+          (response) => {
+              if (status === 200) {
+                setUser(response);
+              }
+          }
+      );
+}, []);
+
   return (
 
     <>
