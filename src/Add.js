@@ -86,7 +86,6 @@ useEffect(() => {
 
 
   function add(e) {
-    e.preventDefault();
         axios.post('http://localhost/verkkokauppa/add.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
@@ -100,6 +99,7 @@ useEffect(() => {
             console.log(response);
             alert("tuote lisätty")
             history.push('/add')
+            
         });
     };
 

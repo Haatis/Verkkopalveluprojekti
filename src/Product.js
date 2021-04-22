@@ -122,7 +122,6 @@ export default function Product({URL, addToCart, user, admin}) {
     };
 
       const comment = (e) => {
-        e.preventDefault();
         if (arvosana>5) {
           alert("arvosanan tulee olla 0-5 väliltä")
           return
@@ -138,7 +137,6 @@ export default function Product({URL, addToCart, user, admin}) {
           tuoteid:it,
         }).then((response) => {
             console.log(response);
-           
             
         });}
     };

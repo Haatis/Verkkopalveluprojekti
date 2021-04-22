@@ -207,7 +207,6 @@ useEffect(() => {
             render={() => <Account
               URL={URL}
               user={user}
-              setUser={setUser}
               />} exact />
           <Route component={NotFound} />
         </Switch>
