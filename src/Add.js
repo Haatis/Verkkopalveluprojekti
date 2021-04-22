@@ -120,7 +120,7 @@ useEffect(() => {
 
   return (
     <div>
-      <form id="myform" className="bg-light row" onSubmit={add}>
+      <form className="bg-light row" onSubmit={add}>
         <div className="row">
         <div className="col-2">
           <label for="exampleEmail" sm={2}>Tuotenimi</label>
