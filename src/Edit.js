@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';  
 import { useHistory } from "react-router-dom";
 
-export default function Edit({URL, admin}) {
+export default function Edit({URL, setUser}) {
     const [search, setSearch] = useState("")
     const [tuotenimi, setTuotenimi] = useState("");
     const [tuotetiivistelma, setTuotetiivistelma] = useState("");
@@ -58,18 +58,53 @@ export default function Edit({URL, admin}) {
           luokka:luokka,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/add"
+            history.push('/add')
         });
     };
   
+    
     useEffect(() => {
-      if (admin===null) {
-          alert("Et ole kirjautunut ylläpitäjänä")
-          history.push('/')
-    
-      } 
-    }, [])
-    
+      let status = 0;
+          const config = {
+          method: 'POST',
+          credentials: 'include',
+              headers: {
+            'Accept' : 'application/json'
+          }}
+      fetch(URL + "secret.php", config)
+          .then((response) => {
+            console.log(response)
+              if (response.status === 401) {
+                alert("et ole kirjautunut sisään")
+                history.push('/')
+                
+              }
+              status = parseInt(response.status);
+              return response.json();
+             
+          })
+          .then(
+            
+              (response) => {
+                
+                  if (status === 200) {
+                    setUser(response);
+                  
+                  
+                    if(response.oikeudet === "admin"){
+                     
+                      
+                      
+                    }else {
+                      alert("et ole kirjautunut ylläpitäjänä")
+                      history.push('/')
+                      
+                      
+                    } 
+                  } 
+                  
+              });  ;
+    } , []);
 
     return (
 <>
@@ -83,13 +118,13 @@ export default function Edit({URL, admin}) {
                     
                         <div >
                             <div className="">
-                            <h2 className="ms-4">Tuotenimi - {item.tuotenimi}</h2>
+                            <h2 className="ms-4"><span className="fw-bold">Tuotenimi</span> - {item.tuotenimi}</h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
                             <img src={item.kuva} className="tuotesivukuva" alt="Logo" />
-                            <h4 className="me-5">tuotekuvaus - {item.tuotekuvaus}</h4>
-                            <h4 className="me-5">tuotetiivistelmä - {item.tuotetiivistelmä}</h4>
-                            <h4>tuotehinta - {item.hinta + "€"}</h4>
+                            <h4 className="me-5"><span className="fw-bold">Tuotekuvaus</span> - {item.tuotekuvaus}</h4>
+                            <h4 className="me-5"><span className="fw-bold">Tuotetiivistelmä</span> - {item.tuotetiivistelmä}</h4>
+                            <h4><span className="fw-bold">Tuotehinta</span> - {item.hinta + "€"}</h4>
                             </div>
                                 </div>
                             </div>
@@ -100,65 +135,66 @@ export default function Edit({URL, admin}) {
                  
 
 <div>
-      <form className="bg-light">
+<form className="bg-light row" onSubmit={edit}>
         <div className="row">
+        <div className="col-2">
           <label for="exampleEmail" sm={2}>Tuotenimi</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" />
+            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" required/>
           </div>
         </div>
-
-        <div className="row">
+        <div className="col-2">
           <label for="examplePassword" sm={2}>Hinta</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setHinta(e.target.value)} type="text"/>
+            <input onChange={(e) => setHinta(e.target.value)} type="text" required />
           </div>
         </div>
 
-        <div className="row">
+        <div className="col-2">
           <label for="examplePassword" sm={2}>tuotetiivistelmä</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text" required/>
           </div>
         </div>
 
-        <div className="row">
+        <div className="col-2">
           <label for="examplePassword" sm={2}>tuotekuvaus</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text" required/>
           </div>
         </div>
-
+        </div>
         <div className="row">
-          <label for="examplePassword" sm={2}>tuotekuva (url)</label>
+        <div className="col-2">
+          <label for="examplePassword" sm={2}>Kuva (url)</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKuva(e.target.value)} type="text"/>
+            <input onChange={(e) => setKuva(e.target.value)} type="text" required/>
           </div>
         </div>
 
-        <div className="row">
-          <label for="examplePassword" sm={2}>kategoria</label>
+        <div className="col-2">
+          <label for="examplePassword" sm={2}>Kategoria</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKategoria(e.target.value)} type="text"/>
+            <input onChange={(e) => setKategoria(e.target.value)} type="text" required/>
           </div>
         </div>
 
-        <div className="row">
-          <label for="examplePassword" sm={2}>luokka</label>
+
+        <div className="col-2">
+          <label for="examplePassword" sm={2}>Luokka</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setLuokka(e.target.value)} type="text"/>
+            <input onChange={(e) => setLuokka(e.target.value)} type="text" required/>
           </div>
         </div>
-
-
-        
+        </div>
         <div className="row">
-        <div className="col-sm-10" >
-            <button onClick={edit}>Muokkaa tietoja</button>
+        <div className="col-sm-10 m-2" >
+            <button >Muokkaa tuotetta </button>
           </div>
         </div>
 
-        </form>
+    
+      </form>
         </div>
                  </div>
         </div>     

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';  
 import { useHistory } from "react-router-dom";
-
-export default function Add({URL, admin}) {
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom'
+export default function Add({URL, admin, user, setUser}) {
   const [tuotenimi, setTuotenimi] = useState('');
   const [hinta, setHinta] = useState('');
   const [tuotetiivistelma, setTuotetiivistelma] = useState('');
@@ -13,7 +14,7 @@ export default function Add({URL, admin}) {
   const [luokka, setLuokka] = useState('');
   const [viesti, setViesti] = useState('');
   const [items, setItems] = useState([]);
-   const [user, setUser] = useState([]);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
@@ -34,24 +35,57 @@ export default function Add({URL, admin}) {
                     alert(response.error);
                 }
             },
-            (error) => {
-                alert(error);
-            }
+            
         );
-}, []);
-
+}, [items]);
 
 useEffect(() => {
-  if (admin===null) {
-      alert("Et ole kirjautunut ylläpitäjänä")
-      history.push('/')
+  let status = 0;
+      const config = {
+      method: 'POST',
+      credentials: 'include',
+          headers: {
+        'Accept' : 'application/json'
+      }}
+  fetch(URL + "secret.php", config)
+      .then((response) => {
+        console.log(response)
+          if (response.status === 401) {
+            alert("et ole kirjautunut sisään")
+            history.push('/')
+            
+          }
+          status = parseInt(response.status);
+          return response.json();
+         
+      })
+      .then(
+        
+          (response) => {
+            
+              if (status === 200) {
+                setUser(response);
+              
+              
+                if(response.oikeudet === "admin"){
+                 
+                  
+                  
+                }else {
+                  alert("et ole kirjautunut ylläpitäjänä")
+                  history.push('/')
+                  
+                  
+                } 
+              } 
+              
+          });  ;
+} , []);
 
-  } 
-}, [])
 
 
 
-  const add = (e) => {
+  function add(e) {
         axios.post('http://localhost/verkkokauppa/add.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
@@ -60,9 +94,12 @@ useEffect(() => {
           kuva:kuva,
           kategoria:kategoria,
           luokka:luokka,
+          id:id,
         }).then((response) => {
             console.log(response);
-           window.location.href = "http://localhost:3000/add"
+            alert("tuote lisätty")
+            history.push('/add')
+            
         });
     };
 
@@ -71,7 +108,7 @@ useEffect(() => {
         id:id,
       }).then((response) => {
           console.log(response);
-          window.location.href = "http://localhost:3000/add"
+          history.push('/add')
       });
   };
 
@@ -83,32 +120,32 @@ useEffect(() => {
 
   return (
     <div>
-      <form className="bg-light row">
+      <form className="bg-light row" onSubmit={add}>
         <div className="row">
         <div className="col-2">
           <label for="exampleEmail" sm={2}>Tuotenimi</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" />
+            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" required/>
           </div>
         </div>
         <div className="col-2">
           <label for="examplePassword" sm={2}>Hinta</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setHinta(e.target.value)} type="text"/>
+            <input onChange={(e) => setHinta(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>tuotetiivistelmä</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>tuotekuvaus</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text" required/>
           </div>
         </div>
         </div>
@@ -116,14 +153,14 @@ useEffect(() => {
         <div className="col-2">
           <label for="examplePassword" sm={2}>Kuva (url)</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKuva(e.target.value)} type="text"/>
+            <input onChange={(e) => setKuva(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>Kategoria</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKategoria(e.target.value)} type="text"/>
+            <input onChange={(e) => setKategoria(e.target.value)} type="text" required/>
           </div>
         </div>
 
@@ -131,13 +168,13 @@ useEffect(() => {
         <div className="col-2">
           <label for="examplePassword" sm={2}>Luokka</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setLuokka(e.target.value)} type="text"/>
+            <input onChange={(e) => setLuokka(e.target.value)} type="text" required/>
           </div>
         </div>
         </div>
         <div className="row">
         <div className="col-sm-10 m-2" >
-            <button onClick={add}>Lisää tuote</button>
+            <button type="submit">Lisää tuote </button>
           </div>
         </div>
 
@@ -166,7 +203,7 @@ useEffect(() => {
                   { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
                 :<h5>{item.hinta + "€"}</h5>}
                   <button className="delete" onClick={() => remove(item.id)} href="#">Delete</button>
-                    <a  href={"/Edit/" + item.id} ><button className="edit" >Edit</button></a>
+                    <Link  to={"/Edit/" + item.id} ><button className="edit" >Edit</button></Link>
                 </div>
                 </div>
                     

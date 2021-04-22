@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
 import {Link} from 'react-router-dom'
-
-export default function Product({URL, addToCart}) {
+import { useHistory } from "react-router-dom";
+export default function Product({URL, addToCart, user, admin}) {
   console.log(URL)
 
     const [search, setSearch] = useState("")
@@ -21,8 +21,8 @@ export default function Product({URL, addToCart}) {
     const [arvosana, setArvosana] = useState('');
     const [id, setId] = useState('');
     const [kayttaja, setKayttaja] = useState('');
-    const [user, setUser] = useState([]);
-    const [admin, setAdmin] = useState([]);
+
+    let history = useHistory();
 
     useEffect(() => {
         let status = 0;
@@ -108,22 +108,27 @@ export default function Product({URL, addToCart}) {
                 alert(response.error);
               }
             },
-            (error) => {
-              alert(error);
-            }
+            
           );
-      }, []);
+      }, [kommentit]);
 
       function remove(id) {
         axios.post('http://localhost/verkkokauppa/deletecomment.php', {
           id:id,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/product/" + it
+            history.push('/product/' + it)
         });
     };
 
       const comment = (e) => {
+        if (arvosana>5) {
+          alert("arvosanan tulee olla 0-5 väliltä")
+          return
+        } else if (arvosana<0) {
+          alert("arvosanan tulee olla 0-5 väliltä")
+          return
+        } else {
         axios.post('http://localhost/verkkokauppa/postcomment.php', {
           otsikko:otsikko,
           kommentti:kommentti,
@@ -132,28 +137,14 @@ export default function Product({URL, addToCart}) {
           tuoteid:it,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/product/" + it
-        });
+            
+        });}
     };
 
-    useEffect(() =>{
-      if("user" in localStorage){
-          setUser(JSON.parse(localStorage.getItem("user")))
-      }
-    }, [])
-
-
-
-
-      useEffect(() =>{
-        if("admin" in localStorage) {
-          setAdmin(JSON.parse(localStorage.getItem("admin")));
-        } 
-      }, [])
-    
 
 
       function tähti (e) {
+      
         if (e > 4.5) {
           return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
         } else if(e > 4.0) {
@@ -239,7 +230,7 @@ export default function Product({URL, addToCart}) {
                             <h3 className="ms-4">{kommentti.otsikko} {tähti(kommentti.arvosana)} </h3>
                             <h4 className="ms-4">{kommentti.kommentti}</h4>
                             <h5 className="ms-4">{kommentti.käyttäjä}</h5>
-                            {("admin" in localStorage) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
+                            {(admin) && <button className="delete" onClick={() => remove(kommentti.id)} href="#">Delete</button>}
                             
                           
                             </div>
@@ -248,38 +239,39 @@ export default function Product({URL, addToCart}) {
                 </div>
                 
                  ))}
-                
+                <form onSubmit={comment}>
                  <div className="row bg-white">
-                 {("user" in localStorage) && <div className="row">
+                 {(user) && <div className="row">
                    <h4>Jätä tuotteelle arvostelu</h4>
+                   
            <label for="examplePassword" sm={2}>Otsikko</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setOtsikko(e.target.value)} type="text"/>
+            <input onChange={(e) => setOtsikko(e.target.value)} type="text" required/>
           </div>
         </div>}
-        {("user" in localStorage) &&<div className="row">
+        {(user) &&<div className="row">
           <label for="examplePassword" sm={2}>Kommentti</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKommentti(e.target.value)} type="text"/>
+            <input onChange={(e) => setKommentti(e.target.value)} type="text" required/>
           </div>
         </div>}
 
-        {("user" in localStorage) && <div className="row">
-          <label for="examplePassword" sm={2}>Arvosana</label>
+        {(user) && <div className="row">
+          <label for="examplePassword" sm={2}>Arvosana (0-5)</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setArvosana(e.target.value)} type="text"/>
+            <input onChange={(e) => setArvosana(e.target.value)} type="text" required/>
           </div>
         </div>}
 
-        {("user" in localStorage) &&<div className="row">
+        {(user) &&<div className="row">
         <div className="col-sm-10" >
         
-            <button className="mb-3" onClick={comment}>Lisää arvostelu</button>
+            <button className="mb-3" type="submit" >Lisää arvostelu</button>
           </div>
         </div>}
 
         </div>
-        
+        </form>
         
     </>
 
