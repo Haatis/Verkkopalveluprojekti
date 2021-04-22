@@ -82,77 +82,77 @@ export default function Ask () {
                     <h3>Kysy tuotteesta</h3>
                     <form onSubmit={lähetä}>
                       <div className='row'>
-                        <div class='mb-3 col-5'>
-                          <label for='nimi' class='form-label'>
+                        <div className='mb-3 col-5'>
+                          <label for='nimi' className='form-label'>
                             Nimi
                           </label>
                           <input
                             onChange={e => setNimi(e.target.value)}
                             type='text'
                             placeholder='Etu ja sukunimi'
-                            class='form-control col-2'
+                            className='form-control col-2'
                             id='nimi'
                             required
                           />
                         </div>
 
-                        <div class='mb-3 col-5'>
-                          <label for='puhelin' class='form-label '>
+                        <div className='mb-3 col-5'>
+                          <label for='puhelin' className='form-label '>
                             Puhelin
                           </label>
                           <input
                             onChange={e => setPuhelin(e.target.value)}
                             type='text'
                             placeholder='Puhelin'
-                            class='form-control'
+                            className='form-control'
                             id='puhelin'
                             required
                           />
                         </div>
 
-                        <div class='mb-3 col-10'>
-                          <label for='exampleInputEmail1' class='form-label'>
+                        <div className='mb-3 col-10'>
+                          <label for='exampleInputEmail1' className='form-label'>
                             Sähköpostiosoite
                           </label>
                           <input
                             onChange={e => setSahkoposti(e.target.value)}
                             type='email'
                             placeholder='Sähköpostiosoite'
-                            class='form-control'
+                            className='form-control'
                             id='exampleInputEmail1'
                             aria-describedby='emailHelp'
                             required
                           />
                         </div>
 
-                        <div class='mb-3 col-10'>
-                          <label for='aihe' class='form-label'>
+                        <div className='mb-3 col-10'>
+                          <label for='aihe' className='form-label'>
                             Aihe
                           </label>
                           <input
                             onChange={e => setAihe(e.target.value)}
                             type='text'
                             placeholder='Aihe'
-                            class='form-control'
+                            className='form-control'
                             id='aihe'
                             required
                           />
                         </div>
 
-                        <div class='mb-3 col-10'>
-                          <label for='viesti' class='form-label'>
+                        <div className='mb-3 col-10'>
+                          <label for='viesti' className='form-label'>
                             Viesti
                           </label>
                           <textarea
                             onChange={e => setViesti(e.target.value)}
                             placeholder='Viesti'
-                            class='form-control'
+                            className='form-control'
                             id='viesti'
                             required
                           />
                           <button
                             type='submit'
-                            class='btn btn-primary my-4'
+                            className='btn btn-primary my-4'
                           >
                             Lähetä
                           </button>

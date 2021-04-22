@@ -148,25 +148,25 @@ export default function Product({URL, addToCart, user, admin}) {
       function tähti (e) {
       
         if (e > 4.5) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></>)
         } else if(e > 4.0) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half"></i></>)
         } else if(e > 3.5) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></>)
         }else if(e > 3.0) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half"></i></>)
         }else if(e > 2.5) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></>)
         }else if(e > 2.0) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half"></i></>)
         } else if(e > 1.5) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star"></i></>)
         } else if(e > 1.0) {
-          return(<><i class="fa fa-star"></i><i class="fa fa-star-half"></i></>)
+          return(<><i className="fa fa-star"></i><i className="fa fa-star-half"></i></>)
         } else if(e > 0.5) {
-          return(<><i class="fa fa-star"></i></>)
+          return(<><i className="fa fa-star"></i></>)
         }  else if(e > 0.0) {
-          return(<><i class="fa fa-star-half"></i></>)
+          return(<><i className="fa fa-star-half"></i></>)
         } 
       }
 

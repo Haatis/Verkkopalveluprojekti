@@ -374,3 +374,7 @@ ul div h1 {
   font-size: 0.675rem;
   border-radius: 0.2rem;
 }
+
+#requiredForm{
+  color: red;
+}
