@@ -86,6 +86,7 @@ useEffect(() => {
 
 
   function add(e) {
+    e.preventDefault();
         axios.post('http://localhost/verkkokauppa/add.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
@@ -99,7 +100,6 @@ useEffect(() => {
             console.log(response);
             alert("tuote lisätty")
             history.push('/add')
-            
         });
     };
 
@@ -120,7 +120,7 @@ useEffect(() => {
 
   return (
     <div>
-      <form className="bg-light row" onSubmit={add}>
+      <form id="myform" className="bg-light row" onSubmit={add}>
         <div className="row">
         <div className="col-2">
           <label for="exampleEmail" sm={2}>Tuotenimi</label>
