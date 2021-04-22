@@ -35,11 +35,9 @@ export default function Add({URL, admin, user, setUser}) {
                     alert(response.error);
                 }
             },
-            (error) => {
-                alert(error);
-            }
+            
         );
-}, []);
+}, [items]);
 
 useEffect(() => {
   let status = 0;
@@ -87,7 +85,7 @@ useEffect(() => {
 
 
 
-  const add = (e) => {
+  function add(e) {
         axios.post('http://localhost/verkkokauppa/add.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
@@ -96,9 +94,12 @@ useEffect(() => {
           kuva:kuva,
           kategoria:kategoria,
           luokka:luokka,
+          id:id,
         }).then((response) => {
             console.log(response);
-           window.location.href = "http://localhost:3000/add"
+            alert("tuote lisätty")
+            history.push('/add')
+            
         });
     };
 
@@ -173,7 +174,7 @@ useEffect(() => {
         </div>
         <div className="row">
         <div className="col-sm-10 m-2" >
-            <button >Lisää tuote </button>
+            <button type="submit">Lisää tuote </button>
           </div>
         </div>
 

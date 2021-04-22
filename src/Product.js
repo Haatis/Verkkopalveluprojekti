@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';  
 import {Link} from 'react-router-dom'
-
+import { useHistory } from "react-router-dom";
 export default function Product({URL, addToCart, user, admin}) {
   console.log(URL)
 
@@ -22,7 +22,7 @@ export default function Product({URL, addToCart, user, admin}) {
     const [id, setId] = useState('');
     const [kayttaja, setKayttaja] = useState('');
 
-
+    let history = useHistory();
 
     useEffect(() => {
         let status = 0;
@@ -108,18 +108,16 @@ export default function Product({URL, addToCart, user, admin}) {
                 alert(response.error);
               }
             },
-            (error) => {
-              alert(error);
-            }
+            
           );
-      }, []);
+      }, [kommentit]);
 
       function remove(id) {
         axios.post('http://localhost/verkkokauppa/deletecomment.php', {
           id:id,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/product/" + it
+            history.push('/product/' + it)
         });
     };
 
@@ -139,7 +137,7 @@ export default function Product({URL, addToCart, user, admin}) {
           tuoteid:it,
         }).then((response) => {
             console.log(response);
-            window.location.href = "http://localhost:3000/product/" + it
+            
         });}
     };
 
@@ -268,7 +266,7 @@ export default function Product({URL, addToCart, user, admin}) {
         {(user) &&<div className="row">
         <div className="col-sm-10" >
         
-            <button className="mb-3" >Lisää arvostelu</button>
+            <button className="mb-3" type="submit" >Lisää arvostelu</button>
           </div>
         </div>}
 
