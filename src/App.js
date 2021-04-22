@@ -101,7 +101,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(user)
     if (user!=null){
       setAdmin(user.oikeudet)
     }
@@ -178,7 +177,10 @@ useEffect(() => {
             URL={URL}
             setUser={setUser}
             />}  />
-          <Route path="/register" component={Register} />
+          <Route path="/register"
+                    render={() => <Register
+                      URL={URL}
+                      />}  />
           <Route path="/add"
             render={() => <Add
               URL={URL}

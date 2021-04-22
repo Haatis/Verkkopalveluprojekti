@@ -104,7 +104,7 @@ export default function Order({user, emptyCart}) {
         e.preventDefault();
         let kayttaja = null;
         if (user) {
-        kayttaja = user.username
+        kayttaja = user.email
         }
          axios.post('http://localhost/verkkokauppa/order.php', {
           nimi:nimi,
