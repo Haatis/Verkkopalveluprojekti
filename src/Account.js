@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router-dom";
 
-export default function Account({URL, user}){
+export default function Account({URL, user, setUser}){
     const [account, setAccount] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
     const [kayttaja, setKayttaja] = useState([]);
@@ -14,17 +14,40 @@ export default function Account({URL, user}){
     let history = useHistory();
 
 
-    useEffect(() => {
-        if (user===null) {
-            alert("Et ole kirjautunut sisään")
-            history.push('/')
-         
-        } else {
-            lähetä();
-            tilaus();
-        } 
-      }, [])
-      
+    
+      useEffect(() => {
+        let status = 0;
+            const config = {
+            method: 'POST',
+            credentials: 'include',
+                headers: {
+              'Accept' : 'application/json'
+            }}
+        fetch(URL + "secret.php", config)
+            .then((response) => {
+              console.log(response)
+                if (response.status === 401) {
+                  alert("et ole kirjautunut sisään")
+                  history.push('/')
+                  
+                }
+                status = parseInt(response.status);
+                return response.json();
+               
+            })
+            .then(
+              
+                (response) => {
+                  
+                    if (status === 200) {
+                      setUser(response);
+                    
+                    
+                     
+                    } 
+                    
+                });  ;
+      } , []);
       
 
       const lähetä = (e) => {
