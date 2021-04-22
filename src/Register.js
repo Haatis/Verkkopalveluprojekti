@@ -50,22 +50,6 @@ export default function Register({ URL }) {
             if(status === 200){
               if (response.message === "success") {
                 alert("Tilin luonti onnistui")
-
-/* kirjautuu sisään automaattisesti
-                formData.append('username',email);
-                formData.append('password',password);
-            
-                const config = {
-                  method: 'POST',
-                  credentials: 'include',
-                  headers: {
-                    'Accept' : 'application/json',
-                  },
-                  body: formData
-                }
-                fetch(URL + 'login.php',config);
-                */
-
                 history.push("/")
               } else{
                 alert("Tämä sähköpostiosoite on jo käytössä toisella tilillä")
