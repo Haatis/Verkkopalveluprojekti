@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';  
 import { useHistory } from "react-router-dom";
 import { Redirect } from 'react-router';
-
+import { Link } from 'react-router-dom'
 export default function Add({URL, admin, user, setUser}) {
   const [tuotenimi, setTuotenimi] = useState('');
   const [hinta, setHinta] = useState('');
@@ -70,7 +70,7 @@ useEffect(() => {
               
               
                 if(response.oikeudet === "admin"){
-                  alert("moro")
+                 
                   
                   
                 }else {
@@ -119,32 +119,32 @@ useEffect(() => {
 
   return (
     <div>
-      <form className="bg-light row">
+      <form className="bg-light row" onSubmit={add}>
         <div className="row">
         <div className="col-2">
           <label for="exampleEmail" sm={2}>Tuotenimi</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" />
+            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" required/>
           </div>
         </div>
         <div className="col-2">
           <label for="examplePassword" sm={2}>Hinta</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setHinta(e.target.value)} type="text"/>
+            <input onChange={(e) => setHinta(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>tuotetiivistelmä</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>tuotekuvaus</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text"/>
+            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text" required/>
           </div>
         </div>
         </div>
@@ -152,14 +152,14 @@ useEffect(() => {
         <div className="col-2">
           <label for="examplePassword" sm={2}>Kuva (url)</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKuva(e.target.value)} type="text"/>
+            <input onChange={(e) => setKuva(e.target.value)} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
           <label for="examplePassword" sm={2}>Kategoria</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKategoria(e.target.value)} type="text"/>
+            <input onChange={(e) => setKategoria(e.target.value)} type="text" required/>
           </div>
         </div>
 
@@ -167,13 +167,13 @@ useEffect(() => {
         <div className="col-2">
           <label for="examplePassword" sm={2}>Luokka</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setLuokka(e.target.value)} type="text"/>
+            <input onChange={(e) => setLuokka(e.target.value)} type="text" required/>
           </div>
         </div>
         </div>
         <div className="row">
         <div className="col-sm-10 m-2" >
-            <button onClick={add}>Lisää tuote </button>
+            <button >Lisää tuote </button>
           </div>
         </div>
 
@@ -202,7 +202,7 @@ useEffect(() => {
                   { item.alennettuhinta ? <><del>{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€" +" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</h5></>
                 :<h5>{item.hinta + "€"}</h5>}
                   <button className="delete" onClick={() => remove(item.id)} href="#">Delete</button>
-                    <a  href={"/Edit/" + item.id} ><button className="edit" >Edit</button></a>
+                    <Link  to={"/Edit/" + item.id} ><button className="edit" >Edit</button></Link>
                 </div>
                 </div>
                     

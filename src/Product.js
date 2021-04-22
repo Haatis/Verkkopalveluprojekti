@@ -124,6 +124,13 @@ export default function Product({URL, addToCart, user, admin}) {
     };
 
       const comment = (e) => {
+        if (arvosana>5) {
+          alert("arvosanan tulee olla 0-5 väliltä")
+          return
+        } else if (arvosana<0) {
+          alert("arvosanan tulee olla 0-5 väliltä")
+          return
+        } else {
         axios.post('http://localhost/verkkokauppa/postcomment.php', {
           otsikko:otsikko,
           kommentti:kommentti,
@@ -133,12 +140,13 @@ export default function Product({URL, addToCart, user, admin}) {
         }).then((response) => {
             console.log(response);
             window.location.href = "http://localhost:3000/product/" + it
-        });
+        });}
     };
 
 
 
       function tähti (e) {
+      
         if (e > 4.5) {
           return(<><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></>)
         } else if(e > 4.0) {
@@ -233,38 +241,39 @@ export default function Product({URL, addToCart, user, admin}) {
                 </div>
                 
                  ))}
-                
+                <form onSubmit={comment}>
                  <div className="row bg-white">
                  {(user) && <div className="row">
                    <h4>Jätä tuotteelle arvostelu</h4>
+                   
            <label for="examplePassword" sm={2}>Otsikko</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setOtsikko(e.target.value)} type="text"/>
+            <input onChange={(e) => setOtsikko(e.target.value)} type="text" required/>
           </div>
         </div>}
         {(user) &&<div className="row">
           <label for="examplePassword" sm={2}>Kommentti</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKommentti(e.target.value)} type="text"/>
+            <input onChange={(e) => setKommentti(e.target.value)} type="text" required/>
           </div>
         </div>}
 
         {(user) && <div className="row">
-          <label for="examplePassword" sm={2}>Arvosana</label>
+          <label for="examplePassword" sm={2}>Arvosana (0-5)</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setArvosana(e.target.value)} type="text"/>
+            <input onChange={(e) => setArvosana(e.target.value)} type="text" required/>
           </div>
         </div>}
 
         {(user) &&<div className="row">
         <div className="col-sm-10" >
         
-            <button className="mb-3" onClick={comment}>Lisää arvostelu</button>
+            <button className="mb-3" >Lisää arvostelu</button>
           </div>
         </div>}
 
         </div>
-        
+        </form>
         
     </>
 

@@ -196,7 +196,8 @@ useEffect(() => {
           <Route path="/edit/:it"
             render={() => <Edit
               URL={URL} 
-              admin={admin} />} exact />
+              admin={admin}
+              setUser={setUser} />} exact />
               <Route path="/ask/:it"
             render={() => <Ask
               URL={URL} />} exact />
