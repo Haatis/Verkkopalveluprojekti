@@ -228,7 +228,7 @@ export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, se
 
                 <Link to={"/search?query=" + search}>
                   <button className="btn bt btn-primary my-2 py-2 text-light">
-                  <i class="fas fa-search"></i>
+                  <i className="fas fa-search"></i>
               </button>
                 </Link>
 
@@ -242,7 +242,7 @@ export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, se
                 <input className="form-control " type="search" placeholder="Haku" value={search} onChange={e => setSearch(e.target.value)} />
                 <Link to={"/search?query=" + search}>
                   <button className="btn bt btn-primary text-light">
-                  <i class="fas fa-search"></i>
+                  <i className="fas fa-search"></i>
               </button>
                 </Link>
 

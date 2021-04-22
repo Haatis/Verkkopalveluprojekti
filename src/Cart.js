@@ -103,13 +103,13 @@ export default function Cart({URL, clearItem, removeItem, addItem, cart}) {
                 {items.map((item) => (
                     <li key={item.id} className=" border-5 cartbackground" href={"/Product/" + item.id}>
                         <button className="btn-sm btn-warning float-start mt-2 " onClick={() => clearItem(item.id)} value={item.id}>
-                            <i class="fa fa-trash-alt"></i>
+                            <i className="fa fa-trash-alt"></i>
                         </button>
                         <button className="btn-sm btn-warning float-start mt-2" onClick={() => removeItem(item.id)} value={item.id}>
-                            <i class="fa fa-minus-square"></i>
+                            <i className="fa fa-minus-square"></i>
                         </button>
                         <button className="btn-sm btn-warning float-start mt-2 me-2" onClick={() => addItem(item.id)} value={item.id}>
-                            <i class="fa fa-plus-square"></i>
+                            <i className="fa fa-plus-square"></i>
                         </button>
 
                         <div className="cartbackground mt-2 col-lg-8 col-md-8">

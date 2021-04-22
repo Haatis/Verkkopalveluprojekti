@@ -150,48 +150,48 @@ export default function Order({user, emptyCart}) {
   
       <h4 className="m-3">Toimitusosoite</h4>
       <div className="row">
-<div class="mb-3 col-5">
-    <label for="nimi" class="form-label">Etu- ja sukunimi</label>
-    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" class="form-control col-2" id="nimi" required/>
+<div className="mb-3 col-5">
+    <label for="nimi" className="form-label">Etu- ja sukunimi</label>
+    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" className="form-control col-2" id="nimi" required/>
     
   </div>
-  <div class="mb-3 col-5">
-    <label for="puhelin" class="form-label ">Puhelin</label>
-    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" class="form-control" id="puhelin" required/>
+  <div className="mb-3 col-5">
+    <label for="puhelin" className="form-label ">Puhelin</label>
+    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" className="form-control" id="puhelin" required/>
   </div>
   </div>
   <div className="row">
-  <div class="mb-3 col-5">
-    <label for="osoite" class="form-label">Katuosoite</label>
-    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" class="form-control" id="osoite" required/>
+  <div className="mb-3 col-5">
+    <label for="osoite" className="form-label">Katuosoite</label>
+    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" className="form-control" id="osoite" required/>
   </div>
-  <div class="mb-3 col-5">
-    <label for="posti" class="form-label">Postinumero</label>
-    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" class="form-control" id="posti" required/>
+  <div className="mb-3 col-5">
+    <label for="posti" className="form-label">Postinumero</label>
+    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" className="form-control" id="posti" required/>
   </div>
   </div>
 
-   <div class="mb-3 col-10">
-    <label for="exampleInputEmail1" class="form-label">Sähköpostiosoite</label>
-    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
+   <div className="mb-3 col-10">
+    <label for="exampleInputEmail1" className="form-label">Sähköpostiosoite</label>
+    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
   </div>
   <h4>Toimitustapa</h4>
-    <input onChange={(e) => setKuljetus(e.target.value)} type="radio" class="btn-check" value="kotiinkuljetus" name="kuljetus" id="kotiin" autocomplete="off"/>
-    <label  class="btn btn-outline-secondary" for="kotiin">Kotiinkuljetus</label>
+    <input onChange={(e) => setKuljetus(e.target.value)} type="radio" className="btn-check" value="kotiinkuljetus" name="kuljetus" id="kotiin" autocomplete="off"/>
+    <label  className="btn btn-outline-secondary" for="kotiin">Kotiinkuljetus</label>
 
-    <input onChange={(e) => setKuljetus(e.target.value)} type="radio" class="btn-check" value="myymäläänkuljetus" name="kuljetus" id="myymälään" autocomplete="off"/>
-    <label class="btn btn-outline-secondary ms-2" for="myymälään">Nouto lähimmästä myymälästä</label><br></br>
+    <input onChange={(e) => setKuljetus(e.target.value)} type="radio" className="btn-check" value="myymäläänkuljetus" name="kuljetus" id="myymälään" autocomplete="off"/>
+    <label className="btn btn-outline-secondary ms-2" for="myymälään">Nouto lähimmästä myymälästä</label><br></br>
 
     <h4 className="mt-4">Maksutapa</h4>
 
-  <input onChange={(e) => setMaksu(e.target.value)} type="radio" class="btn-check" name="maksu" value="verkkopankki" id="pankki" autocomplete="off"/>
-    <label class="btn btn-outline-secondary" for="pankki">Verkkopankki</label>
+  <input onChange={(e) => setMaksu(e.target.value)} type="radio" className="btn-check" name="maksu" value="verkkopankki" id="pankki" autocomplete="off"/>
+    <label className="btn btn-outline-secondary" for="pankki">Verkkopankki</label>
 
-    <input onChange={(e) => setMaksu(e.target.value)} type="radio" class="btn-check" name="maksu" value="korttimaksu" id="kortti" autocomplete="off"/>
-    <label class="btn btn-outline-secondary ms-2" for="kortti">Korttimaksu</label><br></br>
+    <input onChange={(e) => setMaksu(e.target.value)} type="radio" className="btn-check" name="maksu" value="korttimaksu" id="kortti" autocomplete="off"/>
+    <label className="btn btn-outline-secondary ms-2" for="kortti">Korttimaksu</label><br></br>
         
         
-  <button type="submit"  class="btn btn-primary my-4">Submit</button>
+  <button type="submit"  className="btn btn-primary my-4">Submit</button>
   
   
   

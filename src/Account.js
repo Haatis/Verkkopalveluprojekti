@@ -67,7 +67,7 @@ export default function Account({URL, user}){
         <div className="row bg-light">
             <h2 className="text-lg-center text-sm-start">Käyttäjän <span className="text-primary">{it}</span> tilisivu</h2>
             <h5 className="mb-4">käyttäjä luotu:  {account.added}</h5>
-            <h4 ><i class="fa fa-list"></i> Tilaukset ({tilaukset.length}) -</h4>
+            <h4 ><i className="fa fa-list"></i> Tilaukset ({tilaukset.length}) -</h4>
             <hr></hr>
            <div className="col-lg-6 col-lg-12">
             {tilaukset.map((tilaus) => (
