@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import { useHistory } from "react-router-dom";
 
-export default function Account({URL, user}){
+export default function Account({URL, user, setUser}){
     const [account, setAccount] = useState([]);
     const [tilaukset, setTilaukset] = useState([]);
     const [kayttaja, setKayttaja] = useState([]);
@@ -14,7 +14,7 @@ export default function Account({URL, user}){
     let history = useHistory();
 
 
-    useEffect(() => {
+ /*   useEffect(() => {
         if (user===null) {
             alert("Et ole kirjautunut sisään")
             history.push('/')
@@ -24,7 +24,44 @@ export default function Account({URL, user}){
             tilaus();
         } 
       }, [])
+   
+      */
       
+      useEffect(() => {
+        let status = 0;
+            const config = {
+            method: 'POST',
+            credentials: 'include',
+                headers: {
+              'Accept' : 'application/json'
+            }}
+        fetch(URL + "secret.php", config)
+            .then((response) => {
+              console.log(response)
+                if (response.status === 401) {
+                  alert("et ole kirjautunut sisään")
+                  history.push('/')
+                  
+                }
+                status = parseInt(response.status);
+                return response.json();
+               
+            })
+            .then(
+              
+                (response) => {
+                    if (status === 200) {
+                        if (response.email!=it) {
+                            alert("Tämä ei ole käyttäjäsi sivu")
+                            history.push('/')
+                        }
+                      setUser(response);
+                      lähetä();
+                        tilaus();
+                    } 
+                    
+                });  ;
+      } , []);
       
 
       const lähetä = (e) => {

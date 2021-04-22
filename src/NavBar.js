@@ -216,7 +216,7 @@ export default function NavBar({URL, myCart, emptyCart, user, setUser, admin, se
 
               </NavDropdown>
 
-              {(user) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user.username})</p></Nav.Link>) : (
+              {(user) ? (<Nav.Link onClick={() => emptyUser()} className="mx-1 ms-3 p-2"><i className="fa fa-user-alt me-2 "></i>Kirjaudu ulos <p className="käyttäjä">({user.email})</p></Nav.Link>) : (
                 <Nav.Link as={Link} to="/login" className="mx-1"><i className="fa fa-user-alt me-2 "></i> Kirjaudu sisään</Nav.Link>)}
 
               {(admin) ? (<Nav.Link as={Link} to="/add"  className="m-1">YP</Nav.Link>) : (
