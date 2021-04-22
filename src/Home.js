@@ -122,7 +122,7 @@ export default function Home({URL, addToCart}) {
                 <h1>Comm's Suosittelee</h1>
             </div>
             <div className="row">
-            {items.slice(4, 12).map((item) => (
+            {items.slice(4, 16).map((item) => (
         <div
           className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
           key={item.id}>
@@ -131,7 +131,7 @@ export default function Home({URL, addToCart}) {
             <Link to={"/Product/" + item.id}>
               <img src="" className="card-img-top" alt=""></img>
               <div className="card-body">
-                <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                <img src={item.kuva} className="img-fluid tuotekuva" alt="Logo" />
                 <h5 className="card-title">{item.tuotenimi}</h5>
                 <p className="card-text text-left productdestext">{item.tuotetiivistelmä}</p>
                 </div>

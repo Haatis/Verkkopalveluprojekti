@@ -193,7 +193,7 @@ export default function Product({URL, addToCart, user, admin}) {
                             <h4 className="priceinfo col-lg-3 col-sm-4">
                               { item.alennettuhinta ? <><del className="pricebackground">{item.hinta + "€"}</del><h5>{item.alennettuhinta + "€"}</h5>
                               <h6><span className="percent-prodcut">{" -"+ Number((item.hinta - item.alennettuhinta)/item.hinta * 100).toFixed(0) + "%"}</span></h6></>
-                            :<h5 className="pricebackground">{item.hinta + "€"}</h5>}<p className="lisäinfo">sisältää alv. 24%</p></h4>
+                            :<h5><span className="pricebackground">{item.hinta + "€"}</span></h5>}<p className="lisäinfo">sisältää alv. 24%</p></h4>
                             </div>
                             <button  onClick={() => addToCart(item.id)} className="btn btn-primary col-lg-5 col-md-5 col-8 p-2 mb-3">Lisää ostoskoriin<i className="fa fa-shopping-cart"></i></button>
                             <div className="row">
