@@ -4,7 +4,7 @@ import axios from 'axios';
 import userEvent from '@testing-library/user-event';
 import { useHistory } from "react-router-dom";
 
-export default function Order({user, emptyCart}) {
+export default function Order({setUser ,user, emptyCart}) {
     const [show, setShow]=useState(false)
     const [items, setItems] = useState([]);
     const [nimi, setNimi] = useState('');
@@ -78,6 +78,10 @@ export default function Order({user, emptyCart}) {
                                 tuotenro.push(response[i].id)
                                 kpl.push(counts[response[i].id])
                                 }
+                                if (user) {
+                                console.log(user)
+                                
+                            }
                         } else {
                             alert(response);
                         }
@@ -89,6 +93,45 @@ export default function Order({user, emptyCart}) {
         }
     }, []);
 
+
+    useEffect(() => {
+        let status = 0;
+            const config = {
+            method: 'POST',
+            credentials: 'include',
+                headers: {
+              'Accept' : 'application/json'
+            }}
+        fetch(URL + "secret.php", config)
+            .then((response) => {
+                if (response.status === 401) {
+                          
+                }
+                status = parseInt(response.status);
+                return response.json();
+               
+            })
+            .then(
+              
+                (response) => {
+                    if (status === 200) {
+                        
+                      setUser(response);
+                      setSähköposti(response.email)
+                      setNimi(response.etunimi + " " + response.sukunimi)
+                      setPuhelin(response.puh)
+                      setOsoite(response.osoite)
+                      setPosti(response.postinro)
+                    } 
+                    
+                });  ;
+      } , []);
+
+
+
+                        
+                    
+      
 
     //laskee kokonaishinnan
 
@@ -146,34 +189,33 @@ export default function Order({user, emptyCart}) {
        <div className="row bg-light">
             <div className="col-6">
         <form onSubmit={tilaa}>
-        
-  
+    
       <h4 className="m-3">Toimitusosoite</h4>
       <div className="row">
 <div className="mb-3 col-5">
     <label for="nimi" className="form-label">Etu- ja sukunimi</label>
-    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" className="form-control col-2" id="nimi" required/>
+    <input onChange={(e) => setNimi(e.target.value)} type="text" placeholder="Etu ja sukunimi" value={nimi} className="form-control col-2" id="nimi" required/>
     
   </div>
   <div className="mb-3 col-5">
     <label for="puhelin" className="form-label ">Puhelin</label>
-    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" className="form-control" id="puhelin" required/>
+    <input onChange={(e) => setPuhelin(e.target.value)} type="text" placeholder="Puhelin" value={puhelin} className="form-control" id="puhelin" required/>
   </div>
   </div>
   <div className="row">
   <div className="mb-3 col-5">
     <label for="osoite" className="form-label">Katuosoite</label>
-    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" className="form-control" id="osoite" required/>
+    <input onChange={(e) => setOsoite(e.target.value)} type="text" placeholder="Katuosoite" value={osoite} className="form-control" id="osoite" required/>
   </div>
   <div className="mb-3 col-5">
     <label for="posti" className="form-label">Postinumero</label>
-    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" className="form-control" id="posti" required/>
+    <input onChange={(e) => setPosti(e.target.value)} type="text" placeholder="Postinumero" value={posti} className="form-control" id="posti" required/>
   </div>
   </div>
 
    <div className="mb-3 col-10">
     <label for="exampleInputEmail1" className="form-label">Sähköpostiosoite</label>
-    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
+    <input onChange={(e) => setSähköposti(e.target.value)} type="email" placeholder="Sähköpostiosoite" value={sähköposti} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
   </div>
   <h4>Toimitustapa</h4>
     <input onChange={(e) => setKuljetus(e.target.value)} type="radio" className="btn-check" value="kotiinkuljetus" name="kuljetus" id="kotiin" autocomplete="off"/>
