@@ -228,7 +228,7 @@ background-color: #cecece;
 
 .tuotekuva {
   width: 250px;
-  height: 240px;
+  max-height: 230px;
 }
 
 .tuotekuva-tili {
@@ -377,4 +377,9 @@ ul div h1 {
 
 #requiredForm{
   color: red;
+}
+
+@media screen and (max-width: 1400px){ .sposti {
+  max-width: 150px;
+}
 }
