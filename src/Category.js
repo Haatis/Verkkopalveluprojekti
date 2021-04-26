@@ -94,12 +94,12 @@ export default function Category({ URL, addToCart }) {
                 <div
                   className="card col-xl-3 col-lg-6 col-md-6 col-sm-12 text-center"
                   key={item.id}>
-
+                  {/* style={{height:"30rem"}} */}
                   <div className="yläosa">
                     <Link to={"/Product/" + item.id}>
                       <img src="" className="card-img-top" alt=""></img>
                       <div className="card-body">
-                      <img src={item.kuva} className="tuotekuva" alt="Logo" />
+                      <img src={item.kuva} className="tuotekuva img-fluid" alt="Logo" />
                         <h5 className="card-title">{item.tuotenimi}</h5>
                         <p className="card-text text-left">{item.tuotetiivistelmä}</p>
                       </div>

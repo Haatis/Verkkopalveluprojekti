@@ -228,7 +228,7 @@ background-color: #cecece;
 
 .tuotekuva {
   width: 250px;
-  height: 240px;
+  max-height: 230px;
 }
 
 .tuotekuva-tili {
