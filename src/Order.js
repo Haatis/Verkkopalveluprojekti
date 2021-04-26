@@ -131,12 +131,12 @@ export default function Order({user, emptyCart}) {
            ).then((response) => {
                 console.log(response);
                 localStorage.removeItem("cart")
-                alert("Tilaus onnistui")
+                
                 history.push('/')
                 emptyCart();
                 
             });}
-             
+            alert("Tilaus onnistui")
          })
          
     };
