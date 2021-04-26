@@ -54,7 +54,7 @@ export default function Account({URL, user, setUser}){
                         if (response.email!=it) {
                             alert("Tämä ei ole käyttäjäsi sivu")
                             history.push('/')
-                        }
+                        } 
                       setUser(response);
                       lähetä();
                         tilaus();

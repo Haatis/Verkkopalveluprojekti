@@ -378,3 +378,7 @@ ul div h1 {
 #requiredForm{
   color: red;
 }
+
+.sposti {
+  max-width: 150px;
+}
