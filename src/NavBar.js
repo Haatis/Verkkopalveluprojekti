@@ -6,12 +6,13 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 export default function NavBar({ URL, myCart, emptyCart, user, setUser, admin, setAdmin, Logout }) {
   const [search, setSearch] = useState("")
   const [items, setItems] = useState([])
+  let history = useHistory();
 
   const [username, setUsername] = useState('');
 
@@ -104,6 +105,7 @@ export default function NavBar({ URL, myCart, emptyCart, user, setUser, admin, s
     }
     logout();
 
+    history.push("/");
   }
 
   return (
