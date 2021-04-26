@@ -8,6 +8,7 @@ export default function Edit({URL, setUser}) {
     const [tuotenimi, setTuotenimi] = useState("");
     const [tuotetiivistelma, setTuotetiivistelma] = useState("");
     const [hinta, setHinta] = useState("");
+    const [alennettuhinta, setAlennettuhinta] = useState("");
     const [tuotekuvaus, setTuotekuvaus] = useState("");
     const [kategoria, setKategoria] = useState('');
     const [luokka, setLuokka] = useState('');
@@ -35,6 +36,15 @@ export default function Edit({URL, setUser}) {
             (response) => {
               if (status === 200) {
                 setItems(response);
+                setTuotenimi(response[0].tuotenimi)
+                setHinta(response[0].hinta)
+                setAlennettuhinta(response[0].alennettuhinta)
+                setTuotetiivistelma(response[0].tuotetiivistelmä)
+                setTuotekuvaus(response[0].tuotekuvaus)
+                setKuva(response[0].kuva)
+                setKategoria(response[0].kategoria)
+                setLuokka(response[0].luokka)
+                console.log(response)
               } else {
                 alert(response.error);
               }
@@ -50,6 +60,7 @@ export default function Edit({URL, setUser}) {
         axios.post('http://localhost/verkkokauppa/edit.php', {
           tuotenimi:tuotenimi,
           hinta:hinta,
+          alennettuhinta:alennettuhinta,
           tuotetiivistelma:tuotetiivistelma,
           tuotekuvaus:tuotekuvaus,
           kuva:kuva,
@@ -118,7 +129,7 @@ export default function Edit({URL, setUser}) {
                     
                         <div >
                             <div className="">
-                            <h2 className="ms-4"><span className="fw-bold">Tuotenimi</span> - {item.tuotenimi}</h2>
+                            <h2 className="ms-4" ><span className="fw-bold">Tuotenimi</span> - {item.tuotenimi} </h2>
                             <div className="row">
                                 <div className="col-md-6 col-sm-12">
                             <img src={item.kuva} className="tuotesivukuva" alt="Logo" />
@@ -138,52 +149,59 @@ export default function Edit({URL, setUser}) {
 <form className="bg-light row" onSubmit={edit}>
         <div className="row">
         <div className="col-2">
-          <label for="exampleEmail" sm={2}>Tuotenimi</label>
+          <label for="exampleEmail" sm={2}>Tuotenimi *</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotenimi(e.target.value)} type="text" required/>
+            <input onChange={(e) => setTuotenimi(e.target.value)} value={tuotenimi} type="text" required/>
           </div>
         </div>
         <div className="col-2">
-          <label for="examplePassword" sm={2}>Hinta</label>
+          <label for="examplePassword" sm={2}>Hinta *</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setHinta(e.target.value)} type="text" required />
-          </div>
-        </div>
-
-        <div className="col-2">
-          <label for="examplePassword" sm={2}>tuotetiivistelmä</label>
-          <div className="col-sm-10" >
-            <input onChange={(e) => setTuotetiivistelma(e.target.value)} type="text" required/>
+            <input onChange={(e) => setHinta(e.target.value)} value={hinta} type="text" required />
           </div>
         </div>
 
         <div className="col-2">
-          <label for="examplePassword" sm={2}>tuotekuvaus</label>
+          <label for="examplePassword" sm={2}>Alennettu hinta</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setTuotekuvaus(e.target.value)} type="text" required/>
+            <input onChange={(e) => setAlennettuhinta(e.target.value)} value={alennettuhinta} type="text" />
+          </div>
+        </div>
+
+        <div className="col-2">
+          <label for="examplePassword" sm={2}>tuotetiivistelmä *</label>
+          <div className="col-sm-10" >
+            <textarea onChange={(e) => setTuotetiivistelma(e.target.value)} value={tuotetiivistelma} type="text" required/>
+          </div>
+        </div>
+
+        <div className="col-2">
+          <label for="examplePassword" sm={2}>tuotekuvaus *</label>
+          <div className="col-sm-10" >
+            <textarea onChange={(e) => setTuotekuvaus(e.target.value)} value={tuotekuvaus} type="text" required/>
           </div>
         </div>
         </div>
         <div className="row">
         <div className="col-2">
-          <label for="examplePassword" sm={2}>Kuva (url)</label>
+          <label for="examplePassword" sm={2}>Kuva (url) *</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKuva(e.target.value)} type="text" required/>
+            <textarea onChange={(e) => setKuva(e.target.value)} value={kuva} type="text" required/>
           </div>
         </div>
 
         <div className="col-2">
-          <label for="examplePassword" sm={2}>Kategoria</label>
+          <label for="examplePassword" sm={2}>Kategoria *</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setKategoria(e.target.value)} type="text" required/>
+            <input onChange={(e) => setKategoria(e.target.value)} value={kategoria} type="text" required/>
           </div>
         </div>
 
 
         <div className="col-2">
-          <label for="examplePassword" sm={2}>Luokka</label>
+          <label for="examplePassword" sm={2}>Luokka *</label>
           <div className="col-sm-10" >
-            <input onChange={(e) => setLuokka(e.target.value)} type="text" required/>
+            <input onChange={(e) => setLuokka(e.target.value)} type="text" value={luokka} required/>
           </div>
         </div>
         </div>
