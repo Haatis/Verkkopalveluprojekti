@@ -177,6 +177,10 @@ return (
                 <Link to="/Category/Näytöt">Näytöt</Link>
               </NavDropdown.Item>
 
+              <NavDropdown.Item>
+                <Link to="/Category/Kuulokkeet">Kuulokkeet</Link>
+              </NavDropdown.Item>
+
             </NavDropdown>
             <div className="border border-dark my-0 py-0"></div>
             {(user) ? (<Nav.Link as={Link} to={"/Account/" + user.email} className="mx-1" href="#">Tili</Nav.Link>) : (
