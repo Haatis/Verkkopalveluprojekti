@@ -129,29 +129,29 @@ return (
               show={showKomp}
               onMouseEnter={showKompDropdown}
               onMouseLeave={hideKompDropdown}>
-              <NavDropdown.Item>
-                <Link to="/Category/Prosessorit">Prosessorit</Link>
+              <NavDropdown.Item as={Link} to="/Category/Prosessorit">
+                Prosessorit
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Emolevyt">Emolevyt</Link>
+              <NavDropdown.Item as={Link} to="/Category/Emolevyt">
+                Emolevyt
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Näytönohjaimet">Näytönohjaimet</Link>
+              <NavDropdown.Item as={Link} to="/Category/Näytönohjaimet">
+                Näytönohjaimet
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Asemat">Asemat</Link>
+              <NavDropdown.Item as={Link} to="/Category/Asemat">
+                Asemat
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Muistit">Muistit</Link>
+              <NavDropdown.Item as={Link} to="/Category/Muistit">
+                Muistit
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Kovalevyt">Kovalevyt</Link>
+              <NavDropdown.Item as={Link} to="/Category/Kovalevyt">
+                Kovalevyt
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Jäähdytys">Jäähdytys</Link>
+              <NavDropdown.Item as={Link} to="/Category/Jäähdytys">
+                Jäähdytys
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/Category/Kotelot">Kotelot</Link>
+              <NavDropdown.Item as={Link} to="/Category/Kotelot">
+                Kotelot
               </NavDropdown.Item>
             </NavDropdown>
             <div className="border border-dark my-0 py-0"></div>
@@ -163,18 +163,18 @@ return (
               onMouseEnter={showOheisDropdown}
               onMouseLeave={hideOheisDropdown}>
 
-              <NavDropdown.Item>
-                <Link to="/Category/Näppäimistöt">Näppäimistöt</Link>
+              <NavDropdown.Item as={Link} to="/Category/Näppäimistöt">
+                Näppäimistöt
               </NavDropdown.Item>
 
 
-              <NavDropdown.Item>
-                <Link to="/Category/Hiiret">Hiiret</Link>
+              <NavDropdown.Item as={Link} to="/Category/Hiiret">
+                Hiiret
               </NavDropdown.Item>
 
 
-              <NavDropdown.Item>
-                <Link to="/Category/Näytöt">Näytöt</Link>
+              <NavDropdown.Item as={Link} to="/Category/Näytöt">
+                Näytöt
               </NavDropdown.Item>
 
             </NavDropdown>
