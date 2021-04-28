@@ -190,15 +190,6 @@ console.log(account)
             }),
         })
             .then((response) => {
-<<<<<<< HEAD
-            
-                if (response.status === 401) {
-                  alert("et ole kirjautunut sisään")
-                  history.push('/')
-                  
-                }
-=======
->>>>>>> b2d0f78b835ba6d5638b44f39be09ccef7c515f4
                 status = parseInt(response.status);
                 return response.json();
             })
@@ -209,43 +200,6 @@ console.log(account)
                             alert("Tiedot tallennettu.")
                             history.push("/Account/" + email)
 
-<<<<<<< HEAD
-      const lähetä = (e) => {
-         axios.post('http://localhost/verkkokauppa/account.php', {
-          search:it,
-        }
-         ).then((response) => {
-             setAccount(response.data[0])
-           
-          
-          
-        })}
-
-        const tilaus = (e) => {
-            axios.post('http://localhost/verkkokauppa/orders.php', {
-             search:it,
-           }
-            ).then((response) => {
-                setTilaukset(response.data)
-              
-             
-             
-           })}
-
-
-           const tilaustuote = (tuote) => {
-            axios.post('http://localhost/verkkokauppa/orderedproducts.php', {
-             search:tuote,
-           }
-            ).then((response) => {
-              console.log(response.data)
-             setTuote(response.data)
-             
-           })}
-
-          
-    
-=======
                             //hakee käyttäjän muutokset back-endistä
                             const config = {
                                 method: 'POST',
@@ -281,7 +235,6 @@ console.log(account)
 
 
     }
->>>>>>> b2d0f78b835ba6d5638b44f39be09ccef7c515f4
 
     return (
         <div className="row bg-light">

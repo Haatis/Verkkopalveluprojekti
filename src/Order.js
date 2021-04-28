@@ -94,42 +94,19 @@ export default function Order({setUser ,user, emptyCart}) {
     }, []);
 
 
-    useEffect(() => {
-        let status = 0;
-            const config = {
-            method: 'POST',
-            credentials: 'include',
-                headers: {
-              'Accept' : 'application/json'
-            }}
-        fetch(URL + "getUser.php", config)
-            .then((response) => {
-                if (response.status === 401) {
-                          
-                }
-                status = parseInt(response.status);
-                return response.json();
-               
-            })
-            .then(
-              
-                (response) => {
-                    if (status === 200) {
-                        
-<<<<<<< HEAD
-=======
-                      //setUser(response);
->>>>>>> b2d0f78b835ba6d5638b44f39be09ccef7c515f4
-                      setSähköposti(response.email)
-                      setNimi(response.etunimi + " " + response.sukunimi)
-                      setPuhelin(response.puh)
-                      setOsoite(response.osoite)
-                      setPosti(response.postinro)
-                    } 
-                    
-                });  ;
-      } , []);
-
+                      useEffect(() => {
+                        if (user != null) {
+                            console.log(user)
+                            setSähköposti(user.email)
+                            setNimi(user.etunimi + " " + user.sukunimi)
+                            setOsoite(user.osoite)
+                            setPosti(user.postinro)
+                            setPuhelin(user.puh)
+                           
+                        }
+                    }, [user])
+                
+                
 
 
                         
