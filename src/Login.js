@@ -44,9 +44,9 @@ export default function Login({URL, setUser}) {
     <form className="bg-light row" onSubmit={login}>
       <div className="ms-lg-5 mt-lg-3 ms-sm-2 mt-sm-1">
           <div className="row">
-          <label for="exampleEmail" sm={2}>Käyttäjänimi</label>
+          <label for="exampleEmail" sm={2}>Sähköpostiosoite</label>
           <div className="col-sm-5 col-md-5 col-lg-3" >
-          <input className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} type="text" required/>
+          <input className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} type="email" required/>
           </div>
         </div>
         <div className="row">

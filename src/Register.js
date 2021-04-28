@@ -68,7 +68,7 @@ export default function Register({ URL }) {
 */
 
 
-                history.push("/")
+                history.push("/login")
               } else{
                 alert("Tämä sähköpostiosoite on jo käytössä toisella tilillä")
               }
