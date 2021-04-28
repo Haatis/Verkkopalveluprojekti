@@ -79,7 +79,7 @@ export default function Order({setUser ,user, emptyCart}) {
                                 kpl.push(counts[response[i].id])
                                 }
                                 if (user) {
-                                console.log(user)
+                                
                                 
                             }
                         } else {
@@ -116,7 +116,6 @@ export default function Order({setUser ,user, emptyCart}) {
                 (response) => {
                     if (status === 200) {
                         
-                      setUser(response);
                       setSähköposti(response.email)
                       setNimi(response.etunimi + " " + response.sukunimi)
                       setPuhelin(response.puh)
@@ -162,7 +161,7 @@ export default function Order({setUser ,user, emptyCart}) {
         }
 
         ).then((response) => {
-             console.log(response.data)
+             
              for (let i = 0; i < items.length; i++) {
              axios.post('http://localhost/verkkokauppa/orderinfo.php', {
               id:(response.data),
@@ -172,7 +171,7 @@ export default function Order({setUser ,user, emptyCart}) {
            
            
            ).then((response) => {
-                console.log(response);
+                
                 localStorage.removeItem("cart")
                 
                 history.push('/')

@@ -37,7 +37,7 @@ export default function Account({URL, user, setUser}){
             }}
         fetch(URL + "secret.php", config)
             .then((response) => {
-              console.log(response)
+            
                 if (response.status === 401) {
                   alert("et ole kirjautunut sisään")
                   history.push('/')
@@ -70,7 +70,7 @@ export default function Account({URL, user, setUser}){
         }
          ).then((response) => {
              setAccount(response.data[0])
-           console.log(response.data[0])
+           
           
           
         })}
@@ -81,7 +81,7 @@ export default function Account({URL, user, setUser}){
            }
             ).then((response) => {
                 setTilaukset(response.data)
-              console.log(response.data)
+              
              
              
            })}
