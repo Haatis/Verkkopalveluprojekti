@@ -38,10 +38,11 @@ export default function Account({ URL, user, setUser }) {
                 alert("Tämä ei ole käyttäjäsi sivu")
                 history.push('/')
             }
+            lähetä();
+            tilaus();
         }
-        lähetä();
-        tilaus();
     }, [user])
+
 
 
 
@@ -102,13 +103,13 @@ export default function Account({ URL, user, setUser }) {
         }
         ).then((response) => {
             setAccount(response.data[0])
-console.log(account)
+            console.log(account)
         })
     }
 
     const tilaus = (e) => {
         axios.post('http://localhost/verkkokauppa/orders.php', {
-            search: it,
+            search: user.userid,
         }
         ).then((response) => {
             setTilaukset(response.data)
@@ -200,7 +201,9 @@ console.log(account)
                             alert("Tiedot tallennettu.")
                             history.push("/Account/" + email)
 
-                            //hakee käyttäjän muutokset back-endistä
+
+
+                            //hakee käyttäjän muutokset back-endistä ja päivittää sivun tiedot
                             const config = {
                                 method: 'POST',
                                 credentials: 'include',
@@ -221,6 +224,10 @@ console.log(account)
                                     }
                                 );
                             //
+
+                        } else if (response.message === "exists") {
+
+                            alert("Tämä sähköpostiosoite on jo käytössä")
 
                         }
                     } else {
