@@ -161,7 +161,8 @@ useEffect(() => {
           <Route path="/about" component={About} />
           <Route path="/contactus"
             render={() => <ContactUs
-              URL={URL}/>} />
+              URL={URL}
+              user={user}/>} />
           <Route path="/product/:it"
             render={() => <Product
               URL={URL}

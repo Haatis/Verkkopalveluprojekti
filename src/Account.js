@@ -102,7 +102,7 @@ export default function Account({ URL, user, setUser }) {
         }
         ).then((response) => {
             setAccount(response.data[0])
-
+console.log(account)
         })
     }
 

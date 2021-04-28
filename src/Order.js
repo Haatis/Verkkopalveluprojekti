@@ -102,7 +102,7 @@ export default function Order({setUser ,user, emptyCart}) {
                 headers: {
               'Accept' : 'application/json'
             }}
-        fetch(URL + "secret.php", config)
+        fetch(URL + "getUser.php", config)
             .then((response) => {
                 if (response.status === 401) {
                           
@@ -116,7 +116,7 @@ export default function Order({setUser ,user, emptyCart}) {
                 (response) => {
                     if (status === 200) {
                         
-                      setUser(response);
+                      //setUser(response);
                       setSähköposti(response.email)
                       setNimi(response.etunimi + " " + response.sukunimi)
                       setPuhelin(response.puh)
