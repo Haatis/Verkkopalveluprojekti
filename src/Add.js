@@ -96,7 +96,7 @@ useEffect(() => {
           luokka:luokka,
           id:id,
         }).then((response) => {
-            console.log(response);
+            
             alert("tuote lisätty")
             history.push('/add')
             
@@ -107,7 +107,7 @@ useEffect(() => {
       axios.post('http://localhost/verkkokauppa/delete.php', {
         id:id,
       }).then((response) => {
-          console.log(response);
+         
           history.push('/add')
       });
   };

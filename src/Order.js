@@ -79,7 +79,7 @@ export default function Order({setUser ,user, emptyCart}) {
                                 kpl.push(counts[response[i].id])
                                 }
                                 if (user) {
-                                console.log(user)
+                                
                                 
                             }
                         } else {
@@ -94,39 +94,19 @@ export default function Order({setUser ,user, emptyCart}) {
     }, []);
 
 
-    useEffect(() => {
-        let status = 0;
-            const config = {
-            method: 'POST',
-            credentials: 'include',
-                headers: {
-              'Accept' : 'application/json'
-            }}
-        fetch(URL + "getUser.php", config)
-            .then((response) => {
-                if (response.status === 401) {
-                          
-                }
-                status = parseInt(response.status);
-                return response.json();
-               
-            })
-            .then(
-              
-                (response) => {
-                    if (status === 200) {
-                        
-                      //setUser(response);
-                      setSähköposti(response.email)
-                      setNimi(response.etunimi + " " + response.sukunimi)
-                      setPuhelin(response.puh)
-                      setOsoite(response.osoite)
-                      setPosti(response.postinro)
-                    } 
-                    
-                });  ;
-      } , []);
-
+                      useEffect(() => {
+                        if (user != null) {
+                            console.log(user)
+                            setSähköposti(user.email)
+                            setNimi(user.etunimi + " " + user.sukunimi)
+                            setOsoite(user.osoite)
+                            setPosti(user.postinro)
+                            setPuhelin(user.puh)
+                           
+                        }
+                    }, [user])
+                
+                
 
 
                         
@@ -162,7 +142,7 @@ export default function Order({setUser ,user, emptyCart}) {
         }
 
         ).then((response) => {
-             console.log(response.data)
+             
              for (let i = 0; i < items.length; i++) {
              axios.post('http://localhost/verkkokauppa/orderinfo.php', {
               id:(response.data),
@@ -172,7 +152,7 @@ export default function Order({setUser ,user, emptyCart}) {
            
            
            ).then((response) => {
-                console.log(response);
+                
                 localStorage.removeItem("cart")
                 
                 history.push('/')
